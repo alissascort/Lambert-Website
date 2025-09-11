@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -247,11 +248,20 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            /* Added gentle logo animation */
+            /* Updated logo styles for image instead of text */
+            display: flex;
+            align-items: center;
             animation: logoGlow 4s ease-in-out infinite;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: var(--transition-normal);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
         }
 
         .nav-menu {
@@ -1034,7 +1044,10 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container navbar-container">
-            <a href="#" class="logo">LK & LAMBERT</a>
+            <!-- Replaced text logo with actual company logo image -->
+            <a href="#" class="logo">
+                <img src="LIK & LAMBERT LOGO_page-0001.jpg" alt="LIK & LAMBERT CONSULTANTS" />
+            </a>
             
             <button class="mobile-toggle" id="mobileToggle">
                 <i class="fas fa-bars"></i>
