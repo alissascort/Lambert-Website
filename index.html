@@ -1,454 +1,1508 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Service Temporarily Unavailable LIK & LAMBERT CONSULTANTS - </title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIK & LAMBERT CONSULTANTS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Brand Colors */
+            --primary: #9b1b30;
+            --primary-dark: #7a1526;
+            --primary-light: #d32f2f;
+            --secondary: #d4af37;
+            --secondary-dark: #b8941f;
+            --secondary-light: #ffd54f;
+            --accent: #bfaf2a;
+            --dark: #333333;
+            --dark-light: #555555;
+            --light: #f7f7f7;
+            --light-dark: #e0e0e0;
+            --white: #ffffff;
+            --black: #000000;
+            
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+            
+            /* Enhanced transitions with slow-motion effects */
+            --transition-ultra-slow: 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-slow: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-normal: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      overflow: auto;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Added animated background particles */
-    .background-animation {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
 
-    .particle {
-      position: absolute;
-      background: rgba(212, 175, 55, 0.1);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
-    }
+        /* Added smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .particle:nth-child(1) { width: 4px; height: 4px; left: 10%; animation-delay: 0s; }
-    .particle:nth-child(2) { width: 6px; height: 6px; left: 20%; animation-delay: 1s; }
-    .particle:nth-child(3) { width: 3px; height: 3px; left: 30%; animation-delay: 2s; }
-    .particle:nth-child(4) { width: 5px; height: 5px; left: 40%; animation-delay: 3s; }
-    .particle:nth-child(5) { width: 4px; height: 4px; left: 50%; animation-delay: 4s; }
-    .particle:nth-child(6) { width: 6px; height: 6px; left: 60%; animation-delay: 5s; }
-    .particle:nth-child(7) { width: 3px; height: 3px; left: 70%; animation-delay: 0.5s; }
-    .particle:nth-child(8) { width: 5px; height: 5px; left: 80%; animation-delay: 1.5s; }
-    .particle:nth-child(9) { width: 4px; height: 4px; left: 90%; animation-delay: 2.5s; }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-    }
+        p {
+            margin-bottom: var(--spacing-md);
+        }
 
-    /* Enhanced main container with better styling */
-    .notice-container {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      padding: 3rem;
-      background: rgba(27, 27, 27, 0.95);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 16px;
-      backdrop-filter: blur(10px);
-      box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(212, 175, 55, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      text-align: center;
-      animation: slideIn 0.8s ease-out;
-    }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
 
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        ul {
+            list-style: none;
+        }
 
-    /* Added company logo/icon */
-    .logo {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 2rem;
-      background: linear-gradient(135deg, #d4af37, #f4d03f);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: #000;
-      font-weight: bold;
-      animation: pulse 2s ease-in-out infinite;
-    }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
 
-    /* Enhanced typography */
-    .status-code {
-      font-size: 1.2rem;
-      color: #d4af37;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+        .section {
+            padding: var(--spacing-xxl) 0;
+            position: relative;
+            /* Added subtle parallax effect */
+            transform-style: preserve-3d;
+        }
 
-    h1 {
-      color: #fff;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+            position: relative;
+            /* Added floating animation */
+            animation: float 6s ease-in-out infinite;
+        }
 
-    .subtitle {
-      font-size: 1.3rem;
-      color: #d4af37;
-      margin-bottom: 2rem;
-      font-weight: 500;
-    }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            /* Added text shadow for depth */
+            text-shadow: 0 2px 4px rgba(155, 27, 48, 0.1);
+        }
 
-    .description {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #ccc;
-      margin-bottom: 2rem;
-    }
+        .section-title .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+            margin: 0 auto var(--spacing-lg);
+            border-radius: 2px;
+            /* Added gentle pulsing animation */
+            animation: pulse 3s ease-in-out infinite;
+        }
 
-    /* Enhanced contact section */
-    .contact-section {
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 12px;
-      padding: 2rem;
-      margin: 2rem 0;
-    }
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-    .contact-title {
-      font-size: 1.2rem;
-      color: #d4af37;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-slow);
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            /* Added subtle glow effect */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      align-items: center;
-    }
+        /* Enhanced button hover effects with slow-motion */
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition-ultra-slow);
+        }
 
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: #fff;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-    }
+        .btn:hover::before {
+            left: 100%;
+        }
 
-    .contact-item:hover {
-      color: #d4af37;
-      transform: translateX(5px);
-    }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+        }
 
-    .contact-item i {
-      color: #d4af37;
-      width: 20px;
-    }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(155, 27, 48, 0.3);
+        }
 
-    /* Added action buttons */
-    .action-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
 
-    .btn {
-      padding: 0.8rem 2rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, var(--secondary-dark), var(--secondary));
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
 
-    .btn-primary {
-      background: linear-gradient(135deg, #d4af37, #f4d03f);
-      color: #000;
-    }
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+            height: 100%;
+            /* Added subtle border gradient */
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #f4d03f, #d4af37);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
-    }
+        .card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary);
+        }
 
-    .btn-secondary {
-      background: transparent;
-      color: #d4af37;
-      border: 2px solid #d4af37;
-    }
+        .card-header {
+            padding: var(--spacing-lg);
+        }
 
-    .btn-secondary:hover {
-      background: #d4af37;
-      color: #000;
-      transform: translateY(-2px);
-    }
+        .card-body {
+            padding: var(--spacing-lg);
+        }
 
-    /* Added status indicator */
-    .status-indicator {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      font-size: 0.9rem;
-      color: #999;
-    }
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: #ff6b6b;
-      border-radius: 50%;
-      animation: blink 1.5s ease-in-out infinite;
-    }
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) 0;
+        }
 
-    /* Added responsive design */
-    @media (max-width: 768px) {
-      .notice-container {
-        margin: 1rem;
-        padding: 2rem;
-      }
+        .logo {
+            /* Updated logo styles for image instead of text */
+            display: flex;
+            align-items: center;
+            animation: logoGlow 4s ease-in-out infinite;
+        }
 
-      h1 {
-        font-size: 2rem;
-      }
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: var(--transition-normal);
+        }
 
-      .subtitle {
-        font-size: 1.1rem;
-      }
+        .logo:hover img {
+            transform: scale(1.05);
+        }
 
-      .action-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
 
-      .btn {
-        width: 100%;
-        max-width: 250px;
-      }
-    }
+        .nav-list {
+            display: flex;
+            margin-right: var(--spacing-lg);
+        }
 
-    /* Added loading animation for better UX */
-    .loading-bar {
-      width: 100%;
-      height: 2px;
-      background: rgba(212, 175, 55, 0.2);
-      border-radius: 1px;
-      overflow: hidden;
-      margin-top: 2rem;
-    }
+        .nav-item {
+            margin: 0 var(--spacing-sm);
+        }
 
-    .loading-progress {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #d4af37, #f4d03f);
-      border-radius: 1px;
-      animation: loading 3s ease-in-out infinite;
-    }
+        .nav-link {
+            font-weight: 500;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            position: relative;
+            transition: var(--transition-slow);
+        }
 
-    @keyframes loading {
-      0% { width: 0%; }
-      50% { width: 70%; }
-      100% { width: 100%; }
-    }
-  </style>
+        /* Enhanced nav link animations */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition-slow);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, 
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            transition: var(--transition-normal);
+        }
+
+        .mobile-toggle:hover {
+            transform: rotate(90deg);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary-light) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        /* Enhanced hero background with animated particles */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center bottom;
+            opacity: 0.2;
+            animation: waveMove 20s ease-in-out infinite;
+        }
+
+        /* Added floating particles effect */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(212,175,55,0.4), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.2), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(212,175,55,0.3), transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: particleFloat 25s linear infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-xl);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            /* Added gentle rotation animation */
+            animation: logoRotate 15s linear infinite;
+        }
+
+        .hero-logo i {
+            font-size: 3rem;
+            color: var(--dark);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.1;
+            /* Added text glow effect */
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-xxl);
+            opacity: 0.8;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .value-item {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-slow);
+            /* Added subtle border gradient */
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+
+        .value-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+            font-size: 1.8rem;
+            transition: var(--transition-slow);
+            /* Added gentle bounce animation */
+            animation: iconBounce 3s ease-in-out infinite;
+        }
+
+        .value-item:hover .value-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .benefits-box {
+            background: linear-gradient(135deg, rgba(155, 27, 48, 0.08) 0%, rgba(212, 175, 55, 0.08) 100%);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            /* Added subtle border and shadow */
+            border: 1px solid rgba(155, 27, 48, 0.1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .benefits-box h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+            transition: var(--transition-normal);
+        }
+
+        .benefit-item:hover {
+            transform: translateX(5px);
+        }
+
+        .benefit-icon {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-right: var(--spacing-md);
+            margin-top: 4px;
+            flex-shrink: 0;
+            /* Added gentle pulse animation */
+            animation: checkPulse 2s ease-in-out infinite;
+        }
+
+        .benefit-text {
+            color: var(--dark-light);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .service-card {
+            text-align: center;
+            padding: var(--spacing-xl);
+            transition: var(--transition-slow);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+            font-size: 2rem;
+            transition: var(--transition-slow);
+            /* Added gentle floating animation */
+            animation: serviceFloat 4s ease-in-out infinite;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-description {
+            color: var(--dark-light);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+        }
+
+        .projects-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .project-highlight {
+            background: linear-gradient(135deg, rgba(155, 27, 48, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            /* Added subtle border and enhanced shadow */
+            border: 1px solid rgba(155, 27, 48, 0.1);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+        }
+
+        .project-highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-highlight h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .project-description {
+            color: var(--dark-light);
+        }
+
+        .clients-list {
+            margin-top: var(--spacing-xl);
+        }
+
+        .client-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md);
+            background: var(--white);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+
+        .client-item:hover {
+            transform: translateX(8px) scale(1.02);
+            box-shadow: var(--shadow-md);
+            border-color: var(--secondary);
+        }
+
+        .client-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+            transition: var(--transition-normal);
+        }
+
+        .client-item:hover .client-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
+
+        .client-info h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .client-info p {
+            font-size: 0.9rem;
+            color: var(--dark-light);
+            margin: 0;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+        }
+
+        .contact-info {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-details {
+            margin-top: var(--spacing-xl);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-lg);
+            transition: var(--transition-normal);
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            transition: var(--transition-slow);
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
+
+        .contact-text h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .contact-text p {
+            color: var(--dark-light);
+            margin: 0;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            /* Added subtle border gradient */
+            border: 1px solid rgba(155, 27, 48, 0.1);
+            transition: var(--transition-slow);
+        }
+
+        .contact-form:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: 1px solid var(--light-dark);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition-slow);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(155, 27, 48, 0.1);
+            transform: scale(1.02);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #2a2a2a 100%);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0 var(--spacing-xl);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--white);
+        }
+
+        .footer-col p {
+            opacity: 0.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links {
+            margin-top: var(--spacing-md);
+        }
+
+        .footer-link {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.8;
+            transition: var(--transition-normal);
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: var(--spacing-xxl);
+            padding-top: var(--spacing-lg);
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* Enhanced animations with slow-motion effects */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scaleX(1); opacity: 1; }
+            50% { transform: scaleX(1.1); opacity: 0.8; }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { text-shadow: 0 0 5px rgba(155, 27, 48, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(155, 27, 48, 0.6), 0 0 30px rgba(212, 175, 55, 0.3); }
+        }
+
+        @keyframes logoRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-5px) translateY(-2px); }
+            50% { transform: translateX(0) translateY(-5px); }
+            75% { transform: translateX(5px) translateY(-2px); }
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(-10px) translateX(5px); }
+            66% { transform: translateY(-5px) translateX(-5px); }
+            100% { transform: translateY(0px) translateX(0px); }
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes checkPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes serviceFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-3px) rotate(1deg); }
+            50% { transform: translateY(-6px) rotate(0deg); }
+            75% { transform: translateY(-3px) rotate(-1deg); }
+        }
+
+        /* Enhanced scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .projects-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                padding: var(--spacing-sm) 0;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--white);
+                box-shadow: var(--shadow-lg);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: var(--spacing-xl);
+                transition: var(--transition-slow);
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .nav-item {
+                margin: var(--spacing-sm) 0;
+                width: 100%;
+            }
+
+            .nav-link {
+                display: block;
+                padding: var(--spacing-md);
+            }
+
+            .mobile-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-logo {
+                width: 80px;
+                height: 80px;
+            }
+
+            .hero-logo i {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Added animated background -->
-  <div class="background-animation">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
-
-  <div class="notice-container">
-    <!-- Added company logo -->
-    <div class="logo">
-      <i class="fas fa-shield-alt"></i>
-    </div>
-
-    <!-- Added status indicator -->
-    <div class="status-indicator">
-      <div class="status-dot"></div>
-      <span>Service Status: Temporarily Unavailable</span>
-    </div>
-
-    <div class="status-code">Service Maintenance</div>
-    <h1>Page Temporarily Unavailable</h1>
-    <p class="subtitle">We're working to restore this service</p>
-    
-    <p class="description">
-     This page has been taken down and is no longer accessible. 
-     Please contact the Fortishield-Matrix Project Team for further discussion and to review your project agreement.
-    </p>
-
-    <!-- Enhanced contact section -->
-    <div class="contact-section">
-      <div class="contact-title">Need Immediate Assistance?</div>
-      <div class="contact-info">
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <span>fortishieldmatrix.com</span>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <!-- Replaced text logo with actual company logo image -->
+            <a href="#" class="logo">
+                <img src="LIK & LAMBERT LOGO_page-0001.jpg" alt="LIK & LAMBERT CONSULTANTS" />
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="contact-item">
-          <i class="fas fa-phone"></i>
-          <span>(+255) 612722491</span>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <i class="fas fa-building"></i>
+                </div>
+                <h1 class="hero-title fade-in">LIK & LAMBERT CONSULTANTS</h1>
+                <p class="hero-subtitle fade-in">Delivering Comprehensive Consulting Solutions</p>
+                <p class="hero-description fade-in">Your trusted partner for accounts & auditing, ICT services, human resources consulting, and specialized supply solutions across Tanzania and beyond.</p>
+                <a href="#contact" class="btn btn-secondary fade-in">Get Started Today</a>
+            </div>
         </div>
-        <div class="contact-item">
-          <i class="fas fa-clock"></i>
-          <span>24/7 Support Available</span>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <div class="divider"></div>
+                <p>Learn more about our mission, values, and why we're the right choice for your business</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text slide-in-left">
+                    <h3>Our Mission</h3>
+                    <p>At LIK & LAMBERT CONSULTANTS, we are committed to providing exceptional consulting services that drive business growth and operational excellence. Located in the heart of Arusha, Tanzania, we serve clients across various sectors with integrity, expertise, and innovation.</p>
+                    <p>Our diverse portfolio spans from traditional consulting services like accounts & auditing to specialized solutions including ICT services, human resources consulting, and supply chain management.</p>
+                    
+                    <div class="values-grid">
+                        <div class="value-item zoom-in">
+                            <div class="value-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h4 class="value-title">Excellence</h4>
+                        </div>
+                        <div class="value-item zoom-in">
+                            <div class="value-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h4 class="value-title">Precision</h4>
+                        </div>
+                        <div class="value-item zoom-in">
+                            <div class="value-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h4 class="value-title">Reliability</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="benefits-box slide-in-right">
+                    <h3>Why Choose Us?</h3>
+                    <ul class="benefits-list">
+                        <li class="benefit-item">
+                            <span class="benefit-icon"><i class="fas fa-check"></i></span>
+                            <span class="benefit-text">Comprehensive expertise across multiple consulting domains</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon"><i class="fas fa-check"></i></span>
+                            <span class="benefit-text">Local knowledge with international standards</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon"><i class="fas fa-check"></i></span>
+                            <span class="benefit-text">Proven track record with diverse clientele</span>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="benefit-icon"><i class="fas fa-check"></i></span>
+                            <span class="benefit-text">Commitment to sustainable business practices</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <!-- Added action buttons -->
-    <div class="action-buttons">
-      <a href="/" class="btn btn-primary">
-        <i class="fas fa-home"></i>
-        Return Home
-      </a>
-      <a href="/contact" class="btn btn-secondary">
-        <i class="fas fa-envelope"></i>
-        Contact Support
-      </a>
-    </div>
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <div class="divider"></div>
+                <p>We offer a comprehensive range of consulting services designed to meet the diverse needs of businesses across various industries.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="card service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title">Accounts & Auditing</h3>
+                    <p class="service-description">Comprehensive financial management and auditing services to ensure your business maintains accurate records and compliance.</p>
+                </div>
+                
+                <div class="card service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="service-title">ICT Services</h3>
+                    <p class="service-description">Modern technology solutions and IT consulting to streamline your operations and enhance productivity.</p>
+                </div>
+                
+                <div class="card service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="service-title">Human Resources Consulting</h3>
+                    <p class="service-description">Strategic HR solutions including recruitment, training, and organizational development services.</p>
+                </div>
+                
+                <div class="card service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="service-title">Coal Supply</h3>
+                    <p class="service-description">Reliable coal supply services for industrial and commercial applications with quality assurance.</p>
+                </div>
+                
+                <div class="card service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3 class="service-title">Supply of Wastewood</h3>
+                    <p class="service-description">Sustainable wastewood supply solutions for various industrial and energy production needs.</p>
+                </div>
+                
+                <div class="card service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="service-title">Asante Home (Accommodation)</h3>
+                    <p class="service-description">Quality accommodation services providing comfortable and professional lodging solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Added loading indicator -->
-    <div class="loading-bar">
-      <div class="loading-progress"></div>
-    </div>
-  </div>
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Projects</h2>
+                <div class="divider"></div>
+                <p>We have successfully delivered projects across various sectors, building lasting partnerships with companies, educational institutions, hospitals, and hotels.</p>
+            </div>
+            
+            <div class="projects-content">
+                <div class="project-highlight slide-in-left">
+                    <h3>Specialized Healthcare Solutions</h3>
+                    <h4 class="project-title">Supply and Installation of Nurse Call Systems</h4>
+                    <p class="project-description">Our specialized project focuses on the supply and installation of advanced nurse call systems in hospitals, enhancing patient care and communication efficiency between patients and medical staff.</p>
+                </div>
+                
+                <div class="slide-in-right">
+                    <h3>Diverse Client Portfolio</h3>
+                    <div class="clients-list">
+                        <div class="client-item zoom-in">
+                            <div class="client-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="client-info">
+                                <h4>Corporate Clients</h4>
+                                <p>Comprehensive consulting for businesses</p>
+                            </div>
+                        </div>
+                        
+                        <div class="client-item zoom-in">
+                            <div class="client-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="client-info">
+                                <h4>Educational Institutions</h4>
+                                <p>Specialized services for schools and universities</p>
+                            </div>
+                        </div>
+                        
+                        <div class="client-item zoom-in">
+                            <div class="client-icon">
+                                <i class="fas fa-hotel"></i>
+                            </div>
+                            <div class="client-info">
+                                <h4>Hospitality Sector</h4>
+                                <p>Solutions for hotels and accommodation services</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Added JavaScript for enhanced interactivity -->
-  <script>
-    // Auto-refresh functionality
-    let refreshTimer = 300; // 5 minutes
-    
-    function updateTimer() {
-      const minutes = Math.floor(refreshTimer / 60);
-      const seconds = refreshTimer % 60;
-      
-      if (refreshTimer <= 0) {
-        location.reload();
-      } else {
-        refreshTimer--;
-        setTimeout(updateTimer, 1000);
-      }
-    }
-    
-    // Start timer
-    updateTimer();
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <div class="divider"></div>
+                <p>Ready to transform your business? Get in touch with our expert team today.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info slide-in-left">
+                    <h3>Get In Touch</h3>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>info@liklambertconsultants.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>+255 27 297 0628</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Address</h4>
+                                <p>Njiro, Themi area, opposite Puma petrol station<br>P.O. Box 5000, Arusha, Tanzania</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form slide-in-right">
+                    <h3>Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Add smooth hover effects
-    document.querySelectorAll('.btn').forEach(btn => {
-      btn.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px) scale(1.02)';
-      });
-      
-      btn.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-      });
-    });
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>LK & LAMBERT CONSULTANTS</h3>
+                    <p>Delivering comprehensive consulting solutions across Tanzania and beyond. Your trusted partner for business growth and operational excellence.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#home" class="footer-link">Home</a>
+                        <a href="#about" class="footer-link">About</a>
+                        <a href="#services" class="footer-link">Services</a>
+                        <a href="#projects" class="footer-link">Projects</a>
+                        <a href="#contact" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <div class="footer-links">
+                        <a href="#services" class="footer-link">Accounts & Auditing</a>
+                        <a href="#services" class="footer-link">ICT Services</a>
+                        <a href="#services" class="footer-link">HR Consulting</a>
+                        <a href="#services" class="footer-link">Supply Solutions</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="footer-link"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="#" class="footer-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <a href="#" class="footer-link"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 LIK & LAMBERT CONSULTANTS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    // Add click animation
-    document.querySelectorAll('.btn').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        const ripple = document.createElement('span');
-        const rect = this.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
-        
-        ripple.style.cssText = `
-          position: absolute;
-          width: ${size}px;
-          height: ${size}px;
-          left: ${x}px;
-          top: ${y}px;
-          background: rgba(255, 255, 255, 0.3);
-          border-radius: 50%;
-          transform: scale(0);
-          animation: ripple 0.6s ease-out;
-          pointer-events: none;
-        `;
-        
-        this.style.position = 'relative';
-        this.style.overflow = 'hidden';
-        this.appendChild(ripple);
-        
-        setTimeout(() => ripple.remove(), 600);
-      });
-    });
-
-    // Add CSS for ripple animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes ripple {
-        to {
-          transform: scale(2);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile menu when clicking on a nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Active navigation link on scroll
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === '#' + current) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+            
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .zoom-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100); // Staggered animation delay
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Simple form validation
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    
+                    if (name && email && message) {
+                        // Here you would typically send the form data to a server
+                        alert('Thank you for your message! We will get back to you soon.');
+                        contactForm.reset();
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.hero::before, .hero::after');
+                
+                parallaxElements.forEach(element => {
+                    const speed = 0.5;
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+            
+            // Preload animations
+            window.addEventListener('load', function() {
+                document.body.classList.add('loaded');
+            });
+        });
+    </script>
 </body>
 </html>
