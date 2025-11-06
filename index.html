@@ -65,7 +65,6 @@
             overflow-x: hidden;
         }
 
-        /* Added smooth scrolling behavior */
         html {
             scroll-behavior: smooth;
         }
@@ -105,7 +104,6 @@
         .section {
             padding: var(--spacing-xxl) 0;
             position: relative;
-            /* Added subtle parallax effect */
             transform-style: preserve-3d;
         }
 
@@ -113,7 +111,6 @@
             text-align: center;
             margin-bottom: var(--spacing-xxl);
             position: relative;
-            /* Added floating animation */
             animation: float 6s ease-in-out infinite;
         }
 
@@ -121,7 +118,6 @@
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: var(--spacing-md);
-            /* Added text shadow for depth */
             text-shadow: 0 2px 4px rgba(155, 27, 48, 0.1);
         }
 
@@ -131,7 +127,6 @@
             background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
             margin: 0 auto var(--spacing-lg);
             border-radius: 2px;
-            /* Added gentle pulsing animation */
             animation: pulse 3s ease-in-out infinite;
         }
 
@@ -154,11 +149,9 @@
             outline: none;
             position: relative;
             overflow: hidden;
-            /* Added subtle glow effect */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Enhanced button hover effects with slow-motion */
         .btn::before {
             content: '';
             position: absolute;
@@ -203,7 +196,6 @@
             box-shadow: var(--shadow-md);
             transition: var(--transition-slow);
             height: 100%;
-            /* Added subtle border gradient */
             border: 1px solid rgba(155, 27, 48, 0.1);
         }
 
@@ -247,7 +239,6 @@
         }
 
         .logo {
-            /* Updated logo styles for image instead of text */
             display: flex;
             align-items: center;
             animation: logoGlow 4s ease-in-out infinite;
@@ -285,7 +276,6 @@
             transition: var(--transition-slow);
         }
 
-        /* Enhanced nav link animations */
         .nav-link::after {
             content: '';
             position: absolute;
@@ -327,19 +317,18 @@
             color: var(--primary);
         }
 
-        /* Hero Section */
+        /* Updated hero section with split layout for text left and image right */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, #8B1538 0%, #6B0F2A 50%, #9B1B30 100%);
             color: var(--white);
             position: relative;
             overflow: hidden;
             padding-top: 80px;
         }
 
-        /* Enhanced hero background with animated particles */
         .hero::before {
             content: '';
             position: absolute;
@@ -354,7 +343,6 @@
             animation: waveMove 20s ease-in-out infinite;
         }
 
-        /* Added floating particles effect */
         .hero::after {
             content: '';
             position: absolute;
@@ -372,52 +360,108 @@
             animation: particleFloat 25s linear infinite;
         }
 
+        /* New hero grid layout for split design */
         .hero-content {
             position: relative;
             z-index: 1;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xxl);
+            align-items: center;
+            width: 100%;
             padding: var(--spacing-xl) 0;
         }
 
-        .hero-logo {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--spacing-xl);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-            /* Added gentle rotation animation */
-            animation: logoRotate 15s linear infinite;
+        /* Hero text section on the left */
+        .hero-text {
+            text-align: left;
         }
 
-        .hero-logo i {
-            font-size: 3rem;
-            color: var(--dark);
-        }
-
+        /* Main company title */
         .hero-title {
             font-size: 3.5rem;
             margin-bottom: var(--spacing-lg);
             line-height: 1.1;
-            /* Added text glow effect */
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            font-weight: 700;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
+        /* Auto-typing text container */
+        .hero-typing-container {
+            font-size: 1.8rem;
             margin-bottom: var(--spacing-xl);
-            opacity: 0.9;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-typing-container .static-text {
+            margin-right: 10px;
+        }
+
+        .typing-text {
+            color: var(--secondary);
+            font-weight: 600;
+            border-right: 3px solid var(--secondary);
+            padding-right: 8px;
+            animation: blink 0.7s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: var(--secondary); }
+            51%, 100% { border-color: transparent; }
         }
 
         .hero-description {
             font-size: 1.1rem;
-            margin-bottom: var(--spacing-xxl);
-            opacity: 0.8;
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* Hero image section on the right with reflection effect */
+        .hero-image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        /* Reflection/blur effect behind the image using the same image */
+        .hero-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.1);
+            width: 100%;
+            height: 100%;
+            background: url('LIK.jpeg') center/cover;
+            filter: blur(40px) brightness(0.6);
+            opacity: 0.5;
+            z-index: 1;
+            border-radius: var(--radius-xl);
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius-xl);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transition: var(--transition-slow);
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
         }
 
         /* About Section */
@@ -458,7 +502,6 @@
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-sm);
             transition: var(--transition-slow);
-            /* Added subtle border gradient */
             border: 1px solid rgba(155, 27, 48, 0.1);
         }
 
@@ -480,7 +523,6 @@
             margin: 0 auto var(--spacing-md);
             font-size: 1.8rem;
             transition: var(--transition-slow);
-            /* Added gentle bounce animation */
             animation: iconBounce 3s ease-in-out infinite;
         }
 
@@ -500,7 +542,6 @@
             background: linear-gradient(135deg, rgba(155, 27, 48, 0.08) 0%, rgba(212, 175, 55, 0.08) 100%);
             padding: var(--spacing-xl);
             border-radius: var(--radius-lg);
-            /* Added subtle border and shadow */
             border: 1px solid rgba(155, 27, 48, 0.1);
             box-shadow: var(--shadow-sm);
         }
@@ -532,7 +573,6 @@
             margin-right: var(--spacing-md);
             margin-top: 4px;
             flex-shrink: 0;
-            /* Added gentle pulse animation */
             animation: checkPulse 2s ease-in-out infinite;
         }
 
@@ -565,7 +605,6 @@
             margin: 0 auto var(--spacing-lg);
             font-size: 2rem;
             transition: var(--transition-slow);
-            /* Added gentle floating animation */
             animation: serviceFloat 4s ease-in-out infinite;
         }
 
@@ -601,7 +640,6 @@
             background: linear-gradient(135deg, rgba(155, 27, 48, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
             padding: var(--spacing-xl);
             border-radius: var(--radius-lg);
-            /* Added subtle border and enhanced shadow */
             border: 1px solid rgba(155, 27, 48, 0.1);
             box-shadow: var(--shadow-md);
             transition: var(--transition-slow);
@@ -751,7 +789,6 @@
             padding: var(--spacing-xl);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-md);
-            /* Added subtle border gradient */
             border: 1px solid rgba(155, 27, 48, 0.1);
             transition: var(--transition-slow);
         }
@@ -794,7 +831,6 @@
             resize: vertical;
         }
 
-        /* Enhanced footer with professional styling and improved visual hierarchy */
         .footer {
             background: linear-gradient(135deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
             color: var(--white);
@@ -804,7 +840,6 @@
             overflow: hidden;
         }
 
-        /* Added subtle decorative background pattern */
         .footer::before {
             content: '';
             position: absolute;
@@ -837,7 +872,6 @@
             transition: var(--transition-normal);
         }
 
-        /* Enhanced column hover effect */
         .footer-col:hover {
             transform: translateY(-3px);
         }
@@ -852,7 +886,6 @@
             display: inline-block;
         }
 
-        /* Added decorative underline to section titles */
         .footer-col h3::after {
             content: '';
             position: absolute;
@@ -880,7 +913,6 @@
             margin-top: var(--spacing-md);
         }
 
-        /* Improved link styling with better spacing and hover effects */
         .footer-link {
             display: flex;
             align-items: center;
@@ -897,7 +929,6 @@
             transform: translateX(5px);
         }
 
-        /* Special styling for social media icons */
         .footer-link i {
             margin-right: var(--spacing-md);
             width: 20px;
@@ -910,7 +941,6 @@
             color: var(--secondary-light);
         }
 
-        /* Professional footer bottom with improved spacing */
         .footer-bottom {
             text-align: center;
             opacity: 0.7;
@@ -924,15 +954,14 @@
             margin: 0;
         }
 
-        /* FIXED: Wave separator - reduced height and removed duplicate */
         .footer-wave {
             width: 100%;
-            height: 80px; /* Reduced from 140px */
+            height: 80px;
             background: white;
             position: relative;
             overflow: hidden;
             margin-bottom: 0;
-            line-height: 0; /* Prevents extra space */
+            line-height: 0;
         }
 
         .footer-wave svg {
@@ -944,7 +973,6 @@
             left: 0;
         }
 
-        /* Added wave animation */
         @keyframes waveAnimation {
             0% {
                 transform: translateX(0);
@@ -959,7 +987,6 @@
             transform-origin: center;
         }
 
-        /* Update waveSlide animation for smooth horizontal motion */
         @keyframes waveSlide {
             0% {
                 background-position-x: 0;
@@ -969,7 +996,6 @@
             }
         }
 
-        /* Enhanced animations with slow-motion effects */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -1030,7 +1056,6 @@
             }
         }
 
-        /* Enhanced scroll animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -1075,106 +1100,26 @@
             transform: scale(1);
         }
 
-        /* NEW: Auto-typing section styles */
-        .auto-typing-section {
-            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
-            padding: var(--spacing-xxl) 0;
-        }
-
-        .auto-typing-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
-            align-items: center;
-        }
-
-        .typing-content {
-            padding-right: var(--spacing-xl);
-        }
-
-        .typing-title {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: var(--spacing-lg);
-            line-height: 1.2;
-        }
-
-        .typing-text {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: var(--spacing-lg);
-            min-height: 60px;
-        }
-
-        .typed-text {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .typing-cursor {
-            display: inline-block;
-            width: 3px;
-            margin-left: 2px;
-            background-color: var(--primary);
-            animation: blink 1s infinite;
-        }
-
-        .typing-description {
-            font-size: 1.1rem;
-            color: var(--dark-light);
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .image-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .main-image {
-            max-width: 100%;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            z-index: 2;
-            position: relative;
-        }
-
-        .image-reflection {
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, transparent 100%);
-            transform: scaleY(-1);
-            opacity: 0.3;
-            border-radius: var(--radius-lg);
-            filter: blur(1px);
-            z-index: 1;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
         /* Responsive Design */
         @media (max-width: 992px) {
+            /* Stack hero content on tablets */
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
             .about-content,
             .projects-content,
-            .contact-content,
-            .auto-typing-container {
+            .contact-content {
                 grid-template-columns: 1fr;
             }
 
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            .typing-content {
-                padding-right: 0;
-                text-align: center;
             }
         }
 
@@ -1223,12 +1168,13 @@
                 z-index: 1001;
             }
 
+            /* Adjust hero typography for mobile */
             .hero-title {
                 font-size: 2.5rem;
             }
 
-            .hero-subtitle {
-                font-size: 1.2rem;
+            .hero-typing-container {
+                font-size: 1.3rem;
             }
 
             .values-grid {
@@ -1237,14 +1183,6 @@
 
             .footer-content {
                 grid-template-columns: 1fr;
-            }
-
-            .typing-title {
-                font-size: 2rem;
-            }
-
-            .typing-text {
-                font-size: 1.2rem;
             }
         }
 
@@ -1257,25 +1195,14 @@
                 font-size: 2rem;
             }
 
+            /* Further reduce hero text size on small mobile */
             .hero-title {
                 font-size: 2rem;
             }
 
-            .hero-logo {
-                width: 80px;
-                height: 80px;
-            }
-
-            .hero-logo i {
-                font-size: 2rem;
-            }
-
-            .typing-title {
-                font-size: 1.8rem;
-            }
-
-            .typing-text {
+            .hero-typing-container {
                 font-size: 1.1rem;
+                min-height: 50px;
             }
         }
     </style>
@@ -1284,7 +1211,6 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container navbar-container">
-            <!-- Replaced text logo with actual company logo image -->
             <a href="#" class="logo">
                 <img src="LIK & LAMBERT LOGO_page-0001.jpg" alt="LIK & LAMBERT CONSULTANTS" />
             </a>
@@ -1306,42 +1232,30 @@
     </nav>
 
     <!-- Hero Section -->
+    <!-- Completely redesigned hero section with split layout -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-logo">
-                    <i class="fas fa-building"></i>
-                </div>
-                <h1 class="hero-title fade-in">LIK & LAMBERT CONSULTANTS</h1>
-                <p class="hero-subtitle fade-in">Delivering Comprehensive Consulting Solutions</p>
-                <p class="hero-description fade-in">Your trusted partner for accounts & auditing, ICT services, human resources consulting, and specialized supply solutions across Tanzania and beyond.</p>
-                <a href="#contact" class="btn btn-secondary fade-in">Get Started Today</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Auto Typing Section -->
-    <section class="auto-typing-section">
-        <div class="container">
-            <div class="auto-typing-container">
-                <div class="typing-content slide-in-left">
-                    <h2 class="typing-title">We Provide Excellence</h2>
-                    <div class="typing-text">
-                        We specialize in <span class="typed-text" id="typed-text"></span><span class="typing-cursor"></span>
+                <!-- Left side: Text with auto-typing effect -->
+                <div class="hero-text fade-in">
+                    <h1 class="hero-title">LIK & LAMBERT CONSULTANTS</h1>
+                    <div class="hero-typing-container">
+                        <span class="static-text">We specialize in</span>
+                        <span class="typing-text" id="typingText"></span>
                     </div>
-                    <p class="typing-description">
-                        With years of experience and a dedicated team of professionals, we deliver tailored solutions that drive business growth and operational excellence. Our commitment to quality and client satisfaction sets us apart in the consulting industry.
-                    </p>
-                    <a href="#services" class="btn btn-primary">Explore Our Services</a>
+                    <p class="hero-description">Your trusted partner for comprehensive consulting solutions across Tanzania and beyond. We deliver excellence in every service we provide.</p>
+                    <a href="#services" class="btn btn-secondary">Explore Our Services</a>
                 </div>
-                <div class="image-container slide-in-right">
-                    <img src="consulting-image.jpg" alt="LIK & LAMBERT Consulting Services" class="main-image">
-                    <div class="image-reflection"></div>
+                
+                <!-- Right side: Image with reflection effect using LIK.jpeg -->
+                <div class="hero-image-container fade-in">
+                    <div class="hero-image-wrapper">
+                        <img src="LIK.jpeg" alt="LIK & LAMBERT Consultants Team" class="hero-image">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     <!-- About Section -->
     <section id="about" class="section about">
@@ -1591,53 +1505,40 @@
         </div>
     </section>
 
-    <!-- FIXED: Single wave separator with reduced height -->
+    <!-- Wave separator -->
     <div class="footer-wave">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="none">
             <defs>
-<linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.8" />  <!-- Gold -->
-    <stop offset="100%" style="stop-color:#b8941f;stop-opacity:0.6" /> <!-- Dark Gold -->
-</linearGradient>
-
-<linearGradient id="waveGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%" style="stop-color:#9b1b30;stop-opacity:0.75" />  <!-- Primary Red -->
-    <stop offset="100%" style="stop-color:#7a1526;stop-opacity:0.5" /> <!-- Dark Red -->
-</linearGradient>
-
-<linearGradient id="waveGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%" style="stop-color:#d32f2f;stop-opacity:0.9" />   <!-- Light Red -->
-    <stop offset="100%" style="stop-color:#9b1b30;stop-opacity:0.7" /> <!-- Primary Red -->
-</linearGradient>
-
-<linearGradient id="waveGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
-    <stop offset="0%" style="stop-color:#ffd54f;stop-opacity:0.4" />   <!-- Light Gold -->
-    <stop offset="100%" style="stop-color:#d4af37;stop-opacity:0.3" /> <!-- Gold -->
-</linearGradient>
+                <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.8" />
+                    <stop offset="100%" style="stop-color:#b8941f;stop-opacity:0.6" />
+                </linearGradient>
+                <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#9b1b30;stop-opacity:0.75" />
+                    <stop offset="100%" style="stop-color:#7a1526;stop-opacity:0.5" />
+                </linearGradient>
+                <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#d32f2f;stop-opacity:0.9" />
+                    <stop offset="100%" style="stop-color:#9b1b30;stop-opacity:0.7" />
+                </linearGradient>
+                <linearGradient id="waveGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffd54f;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#d4af37;stop-opacity:0.3" />
+                </linearGradient>
             </defs>
-
             <g id="waves">
-                <!-- Layer 1: Light teal background wave -->
                 <path d="M0,80 Q360,40 720,60 T1440,80 L1440,220 L0,220 Z" fill="url(#waveGradient4)" opacity="0.6">
                     <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="20s" repeatCount="indefinite" />
                 </path>
-
-                <!-- Layer 2: Medium teal wave -->
                 <path d="M0,100 Q360,60 720,90 T1440,110 L1440,220 L0,220 Z" fill="url(#waveGradient1)" opacity="0.8">
                     <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="22s" repeatCount="indefinite" />
                 </path>
-
-                <!-- Layer 3: Dark navy wave -->
                 <path d="M0,130 Q360,100 720,120 T1440,140 L1440,220 L0,220 Z" fill="url(#waveGradient3)" opacity="0.85">
                     <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="24s" repeatCount="indefinite" />
                 </path>
-
-                <!-- Layer 4: Red/burgundy wave accent -->
                 <path d="M0,150 Q360,120 720,145 T1440,160 L1440,220 L0,220 Z" fill="url(#waveGradient2)" opacity="0.75">
                     <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="26s" repeatCount="indefinite" />
                 </path>
-
-                <!-- Layer 5: Dark accent wave -->
                 <path d="M0,170 Q360,150 720,165 T1440,180 L1440,220 L0,220 Z" fill="#1a1a1a" opacity="0.6">
                     <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="28s" repeatCount="indefinite" />
                 </path>
@@ -1687,13 +1588,55 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 LIK & LAMBERT CONSULTANTS. All rights reserved.</p>
+                <p>&copy; 2025 LIK & LAMBERT CONSULTANTS. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const typingText = document.getElementById('typingText');
+            const services = [
+                'Accounts & Auditing',
+                'ICT Services',
+                'Human Resources Consulting',
+                'Coal Supply',
+                'Wastewood Supply',
+                'Accommodation Services'
+            ];
+            
+            let serviceIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+            
+            function typeEffect() {
+                const currentService = services[serviceIndex];
+                
+                if (isDeleting) {
+                    typingText.textContent = currentService.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 50;
+                } else {
+                    typingText.textContent = currentService.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 100;
+                }
+                
+                if (!isDeleting && charIndex === currentService.length) {
+                    typingSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    serviceIndex = (serviceIndex + 1) % services.length;
+                    typingSpeed = 500;
+                }
+                
+                setTimeout(typeEffect, typingSpeed);
+            }
+            
+            typeEffect();
+            
             // Mobile Navigation Toggle
             const mobileToggle = document.getElementById('mobileToggle');
             const navMenu = document.getElementById('navMenu');
@@ -1704,7 +1647,6 @@
                     '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
             });
             
-            // Close mobile menu when clicking on a nav link
             const navLinks = document.querySelectorAll('.nav-link');
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
@@ -1713,7 +1655,6 @@
                 });
             });
             
-            // Navbar scroll effect
             const navbar = document.querySelector('.navbar');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 50) {
@@ -1723,7 +1664,6 @@
                 }
             });
             
-            // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1741,7 +1681,6 @@
                 });
             });
             
-            // Active navigation link on scroll
             const sections = document.querySelectorAll('section');
             const navItems = document.querySelectorAll('.nav-link');
             
@@ -1772,7 +1711,7 @@
                     if (entry.isIntersecting) {
                         setTimeout(() => {
                             entry.target.classList.add('visible');
-                        }, index * 100); // Staggered animation delay
+                        }, index * 100);
                     }
                 });
             }, {
@@ -1784,19 +1723,16 @@
                 observer.observe(element);
             });
             
-            // Form submission
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Simple form validation
                     const name = document.getElementById('name').value;
                     const email = document.getElementById('email').value;
                     const message = document.getElementById('message').value;
                     
                     if (name && email && message) {
-                        // Here you would typically send the form data to a server
                         alert('Thank you for your message! We will get back to you soon.');
                         contactForm.reset();
                     } else {
@@ -1815,59 +1751,9 @@
                 });
             });
             
-            // Preload animations
             window.addEventListener('load', function() {
                 document.body.classList.add('loaded');
             });
-
-            // Auto-typing effect
-            const typedTextElement = document.getElementById('typed-text');
-            const typingTexts = [
-                'Accounts & Auditing',
-                'ICT Services',
-                'Human Resources Consulting',
-                'Coal Supply',
-                'Wastewood Supply',
-                'Accommodation Services'
-            ];
-            
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
-            
-            function typeText() {
-                const currentText = typingTexts[textIndex];
-                
-                if (isDeleting) {
-                    // Deleting text
-                    typedTextElement.textContent = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingSpeed = 50;
-                } else {
-                    // Typing text
-                    typedTextElement.textContent = currentText.substring(0, charIndex + 1);
-                    charIndex++;
-                    typingSpeed = 100;
-                }
-                
-                // Check if we've finished typing the current text
-                if (!isDeleting && charIndex === currentText.length) {
-                    // Pause at the end of typing
-                    typingSpeed = 1500;
-                    isDeleting = true;
-                } else if (isDeleting && charIndex === 0) {
-                    // Move to the next text
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % typingTexts.length;
-                    typingSpeed = 500;
-                }
-                
-                setTimeout(typeText, typingSpeed);
-            }
-            
-            // Start the typing effect
-            setTimeout(typeText, 1000);
         });
     </script>
 </body>
