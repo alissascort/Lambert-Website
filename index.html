@@ -6,7 +6,7 @@
     <title>LIK & LAMBERT CONSULTANTS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-     <style>
+   <style>
         :root {
             /* Brand Colors */
             --primary: #9b1b30;
@@ -927,7 +927,7 @@
         /* Replaced simple wave with professional multi-layered wave design */
         .footer-wave {
             width: 100%;
-            height: 120px;
+            height: 140px;
             background: white;
             position: relative;
             overflow: hidden;
@@ -938,6 +938,9 @@
             width: 100%;
             height: 100%;
             display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         /* Added wave animation */
@@ -1457,6 +1460,57 @@
             </div>
         </div>
     </section>
+
+    <!-- Professional multi-layered wave separator before footer -->
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#7fb3d5;stop-opacity:0.8" />
+                    <stop offset="100%" style="stop-color:#5a9bc4;stop-opacity:0.6" />
+                </linearGradient>
+                <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#c74c4c;stop-opacity:0.75" />
+                    <stop offset="100%" style="stop-color:#9b3636;stop-opacity:0.5" />
+                </linearGradient>
+                <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:0.9" />
+                    <stop offset="100%" style="stop-color:#0f1e35;stop-opacity:0.7" />
+                </linearGradient>
+                <linearGradient id="waveGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#a8d5e8;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#7fb3d5;stop-opacity:0.3" />
+                </linearGradient>
+            </defs>
+
+            <g id="waves">
+                <!-- Layer 1: Light teal background wave -->
+                <path d="M0,80 Q360,40 720,60 T1440,80 L1440,220 L0,220 Z" fill="url(#waveGradient4)" opacity="0.6">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="20s" repeatCount="indefinite" />
+                </path>
+
+                <!-- Layer 2: Medium teal wave -->
+                <path d="M0,100 Q360,60 720,90 T1440,110 L1440,220 L0,220 Z" fill="url(#waveGradient1)" opacity="0.8">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="22s" repeatCount="indefinite" />
+                </path>
+
+                <!-- Layer 3: Dark navy wave -->
+                <path d="M0,130 Q360,100 720,120 T1440,140 L1440,220 L0,220 Z" fill="url(#waveGradient3)" opacity="0.85">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="24s" repeatCount="indefinite" />
+                </path>
+
+                <!-- Layer 4: Red/burgundy wave accent -->
+                <path d="M0,150 Q360,120 720,145 T1440,160 L1440,220 L0,220 Z" fill="url(#waveGradient2)" opacity="0.75">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="26s" repeatCount="indefinite" />
+                </path>
+
+                <!-- Layer 5: Dark accent wave -->
+                <path d="M0,170 Q360,150 720,165 T1440,180 L1440,220 L0,220 Z" fill="#1a1a1a" opacity="0.6">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="28s" repeatCount="indefinite" />
+                </path>
+            </g>
+        </svg>
+    </div>
 
     <!-- Footer -->
     <div class="footer-wave"></div>
