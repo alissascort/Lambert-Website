@@ -1075,16 +1075,106 @@
             transform: scale(1);
         }
 
+        /* NEW: Auto-typing section styles */
+        .auto-typing-section {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .auto-typing-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .typing-content {
+            padding-right: var(--spacing-xl);
+        }
+
+        .typing-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.2;
+        }
+
+        .typing-text {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-lg);
+            min-height: 60px;
+        }
+
+        .typed-text {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            margin-left: 2px;
+            background-color: var(--primary);
+            animation: blink 1s infinite;
+        }
+
+        .typing-description {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-image {
+            max-width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            z-index: 2;
+            position: relative;
+        }
+
+        .image-reflection {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, transparent 100%);
+            transform: scaleY(-1);
+            opacity: 0.3;
+            border-radius: var(--radius-lg);
+            filter: blur(1px);
+            z-index: 1;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .about-content,
             .projects-content,
-            .contact-content {
+            .contact-content,
+            .auto-typing-container {
                 grid-template-columns: 1fr;
             }
 
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .typing-content {
+                padding-right: 0;
+                text-align: center;
             }
         }
 
@@ -1148,6 +1238,14 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
+
+            .typing-title {
+                font-size: 2rem;
+            }
+
+            .typing-text {
+                font-size: 1.2rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1170,6 +1268,14 @@
 
             .hero-logo i {
                 font-size: 2rem;
+            }
+
+            .typing-title {
+                font-size: 1.8rem;
+            }
+
+            .typing-text {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -1210,6 +1316,28 @@
                 <p class="hero-subtitle fade-in">Delivering Comprehensive Consulting Solutions</p>
                 <p class="hero-description fade-in">Your trusted partner for accounts & auditing, ICT services, human resources consulting, and specialized supply solutions across Tanzania and beyond.</p>
                 <a href="#contact" class="btn btn-secondary fade-in">Get Started Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Auto Typing Section -->
+    <section class="auto-typing-section">
+        <div class="container">
+            <div class="auto-typing-container">
+                <div class="typing-content slide-in-left">
+                    <h2 class="typing-title">We Provide Excellence</h2>
+                    <div class="typing-text">
+                        We specialize in <span class="typed-text" id="typed-text"></span><span class="typing-cursor"></span>
+                    </div>
+                    <p class="typing-description">
+                        With years of experience and a dedicated team of professionals, we deliver tailored solutions that drive business growth and operational excellence. Our commitment to quality and client satisfaction sets us apart in the consulting industry.
+                    </p>
+                    <a href="#services" class="btn btn-primary">Explore Our Services</a>
+                </div>
+                <div class="image-container slide-in-right">
+                    <img src="consulting-image.jpg" alt="LIK & LAMBERT Consulting Services" class="main-image">
+                    <div class="image-reflection"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -1690,6 +1818,55 @@
             window.addEventListener('load', function() {
                 document.body.classList.add('loaded');
             });
+
+            // Auto-typing effect
+            const typedTextElement = document.getElementById('typed-text');
+            const typingTexts = [
+                'Accounts & Auditing',
+                'ICT Services',
+                'Human Resources Consulting',
+                'Coal Supply',
+                'Wastewood Supply',
+                'Accommodation Services'
+            ];
+            
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+            
+            function typeText() {
+                const currentText = typingTexts[textIndex];
+                
+                if (isDeleting) {
+                    // Deleting text
+                    typedTextElement.textContent = currentText.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 50;
+                } else {
+                    // Typing text
+                    typedTextElement.textContent = currentText.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 100;
+                }
+                
+                // Check if we've finished typing the current text
+                if (!isDeleting && charIndex === currentText.length) {
+                    // Pause at the end of typing
+                    typingSpeed = 1500;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    // Move to the next text
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % typingTexts.length;
+                    typingSpeed = 500;
+                }
+                
+                setTimeout(typeText, typingSpeed);
+            }
+            
+            // Start the typing effect
+            setTimeout(typeText, 1000);
         });
     </script>
 </body>
