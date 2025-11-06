@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -322,6 +322,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
+            /* Changed background from teal/blue to red/maroon gradient to match original design */
             background: linear-gradient(135deg, #8B1538 0%, #6B0F2A 50%, #9B1B30 100%);
             color: var(--white);
             position: relative;
@@ -437,14 +438,18 @@
         .hero-image-wrapper::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(1.1);
-            width: 100%;
-            height: 100%;
+            /* Adjusted positioning for better reflection effect - offset slightly down and right */
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            width: calc(100% + 20px);
+            height: calc(100% + 20px);
             background: url('LIK.jpeg') center/cover;
-            filter: blur(40px) brightness(0.6);
-            opacity: 0.5;
+            /* Increased blur for softer reflection and adjusted brightness */
+            filter: blur(50px) brightness(0.5);
+            /* Increased opacity for more visible reflection */
+            opacity: 0.4;
             z-index: 1;
             border-radius: var(--radius-xl);
         }
