@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects - LIK & LAMBERT CONSULTANTS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Brand Colors */
+            --primary: #9b1b30;
+            --primary-dark: #7a1526;
+            --primary-light: #d32f2f;
+            --secondary: #d4af37;
+            --secondary-dark: #b8941f;
+            --secondary-light: #ffd54f;
+            --accent: #bfaf2a;
+            --dark: #333333;
+            --dark-light: #555555;
+            --light: #f7f7f7;
+            --light-dark: #e0e0e0;
+            --white: #ffffff;
+            --black: #000000;
+
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+
+            /* Transitions */
+            --transition-slow: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-normal: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-xxl) 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 2px 4px rgba(155, 27, 48, 0.1);
+        }
+
+        .section-title .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+            margin: 0 auto var(--spacing-lg);
+            border-radius: 2px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-slow);
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(155, 27, 48, 0.3);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            animation: logoGlow 4s ease-in-out infinite;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: var(--transition-normal);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            margin-right: var(--spacing-lg);
+        }
+
+        .nav-item {
+            margin: 0 var(--spacing-sm);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            position: relative;
+            transition: var(--transition-slow);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition-slow);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            transition: var(--transition-normal);
+        }
+
+        .mobile-toggle:hover {
+            transform: rotate(90deg);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary-light) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center bottom;
+            opacity: 0.2;
+            animation: waveMove 20s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.1;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+        }
+
+        /* Projects Overview */
+        .projects-overview {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+        }
+
+        .projects-intro {
+            max-width: 900px;
+            margin: 0 auto var(--spacing-xxl);
+            text-align: center;
+        }
+
+        .projects-intro p {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Project Categories */
+        .project-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--spacing-xxl);
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .category-btn {
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--white);
+            border: 2px solid var(--primary);
+            border-radius: var(--radius-md);
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-normal);
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary);
+        }
+
+        .project-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-category {
+            position: absolute;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            background: var(--primary);
+            color: var(--white);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-content {
+            padding: var(--spacing-xl);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .project-description {
+            color: var(--dark-light);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-features {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-icon {
+            color: var(--secondary);
+            margin-right: var(--spacing-sm);
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            color: var(--dark-light);
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            transition: var(--transition-normal);
+        }
+
+        .project-link:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .project-link i {
+            margin-left: var(--spacing-sm);
+            transition: var(--transition-normal);
+        }
+
+        .project-link:hover i {
+            transform: translateX(3px);
+        }
+
+        /* Project Details */
+        .project-detail {
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .project-detail:nth-child(even) {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+        }
+
+        .project-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .project-header h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .project-header p {
+            font-size: 1.2rem;
+            color: var(--dark-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .project-detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .project-detail-text h4 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-detail-text p {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .project-highlights {
+            margin-top: var(--spacing-xl);
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+            transition: var(--transition-normal);
+        }
+
+        .highlight-item:hover {
+            transform: translateX(5px);
+        }
+
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--spacing-md);
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            transition: var(--transition-slow);
+        }
+
+        .highlight-item:hover .highlight-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
+
+        .highlight-text h5 {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 4px;
+        }
+
+        .highlight-text p {
+            color: var(--dark-light);
+            margin: 0;
+        }
+
+        .project-detail-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-detail-image img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition-slow);
+        }
+
+        .project-detail-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Clients Section */
+        .clients-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary-light) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-xl);
+            align-items: center;
+        }
+
+        .client-logo {
+            background: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .client-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .client-logo img {
+            max-width: 100%;
+            max-height: 60px;
+            filter: grayscale(100%);
+            transition: var(--transition-normal);
+        }
+
+        .client-logo:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: var(--spacing-xl);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-lg);
+            font-size: 1.8rem;
+            transition: var(--transition-slow);
+        }
+
+        .stat-item:hover .stat-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary-light) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-lg);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+        }
+
+        /* Footer Wave */
+        .footer-wave {
+            width: 100%;
+            height: 80px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 0;
+            line-height: 0;
+        }
+
+        .footer-wave svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0 var(--spacing-lg);
+            border-top: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(155, 27, 48, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-col {
+            transition: var(--transition-normal);
+        }
+
+        .footer-col:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+            border-radius: 2px;
+            transition: var(--transition-normal);
+        }
+
+        .footer-col:hover h3::after {
+            width: 100%;
+        }
+
+        .footer-col p {
+            opacity: 0.85;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin-top: var(--spacing-md);
+        }
+
+        .footer-link {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.8;
+            transition: var(--transition-normal);
+            font-size: 0.95rem;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .footer-link i {
+            margin-right: var(--spacing-md);
+            width: 20px;
+            text-align: center;
+            transition: var(--transition-normal);
+        }
+
+        .footer-link:hover i {
+            transform: scale(1.2) rotate(15deg);
+            color: var(--secondary-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            letter-spacing: 0.3px;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scaleX(1); opacity: 1; }
+            50% { transform: scaleX(1.1); opacity: 0.8; }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { text-shadow: 0 0 5px rgba(155, 27, 48, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(155, 27, 48, 0.6), 0 0 30px rgba(212, 175, 55, 0.3); }
+        }
+
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-5px) translateY(-2px); }
+            50% { transform: translateX(0) translateY(-5px); }
+            75% { transform: translateX(5px) translateY(-2px); }
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes checkPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes waveAnimation {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(1440px);
+            }
+        }
+
+        .wave-layer {
+            animation: waveAnimation 25s linear infinite;
+            transform-origin: center;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .project-detail-content,
+            .footer-content,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .clients-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                padding: var(--spacing-sm) 0;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--white);
+                box-shadow: var(--shadow-lg);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: var(--spacing-xl);
+                transition: var(--transition-slow);
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .nav-item {
+                margin: var(--spacing-sm) 0;
+                width: 100%;
+            }
+
+            .nav-link {
+                display: block;
+                padding: var(--spacing-md);
+            }
+
+            .mobile-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <img src="LIK & LAMBERT LOGO_page-0001.jpg" alt="LIK & LAMBERT CONSULTANTS" />
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in">Our Projects</h1>
+                <p class="hero-subtitle fade-in">Showcasing Our Success Across Multiple Sectors and Countries</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Overview -->
+    <section class="section projects-overview">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Project Portfolio</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="projects-intro fade-in">
+                <p>At Lik & Lambert Consultants, we take pride in our diverse portfolio of successful projects executed across various sectors and countries. Our firm has built a solid reputation for delivering exceptional consultancy, supply, and implementation services to leading industries, healthcare institutions, and corporate organizations in Tanzania and Kenya.</p>
+                <p>Through these projects, Lik & Lambert Consultants continues to demonstrate its capacity as a trusted regional consulting and implementation firm, combining professional expertise, strategic insight, and operational excellence. Our commitment is to deliver value-driven solutions that promote growth, efficiency, and sustainability for all our partners.</p>
+            </div>
+
+            <!-- Project Categories -->
+            <div class="project-categories fade-in">
+                <button class="category-btn active" data-category="all">All Projects</button>
+                <button class="category-btn" data-category="industrial">Industrial</button>
+                <button class="category-btn" data-category="healthcare">Healthcare</button>
+                <button class="category-btn" data-category="regional">Regional</button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                <!-- Industrial Project 1 -->
+                <div class="project-card fade-in" data-category="industrial">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Industrial Coal Supply">
+                        <div class="project-category">Industrial</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Industrial Coal Supply</h3>
+                        <p class="project-description">Reliable high-quality coal supply to major industrial clients across Tanzania, ensuring sustained production capacities and cost-effectiveness.</p>
+                        <div class="project-features">
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check"></i></span>
+                                <span class="feature-text">Supply to Arusha Redgold, A-Z Textile Mills, and Sunflag Tanzania</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check"></i></span>
+                                <span class="feature-text">Energy efficiency and industrial optimization consultancy</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check"></i></span>
+                                <span class="feature-text">Environmental compliance and sustainable practices</span>
+                            </div>
+                        </div>
+                        <a href="#industrial-projects" class="project-link">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Healthcare Project -->
+                <div class="project-card fade-in" data-category="healthcare">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nurse Call System">
+                        <div class="project-category">Healthcare</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Nurse Call System Implementation</h3>
+                        <p class="project-description">State-of-the-art communication solution enhancing patient care and hospital efficiency at major medical facilities.</p>
+                        <div class="project-features">
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check"></i></span>
+                                <span class="feature-text">Implemented at Mount Meru Referral Hospital and AICC Hospital</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check"></i></span>
+                                <span class="feature-text">Enhanced patient care and hospital efficiency</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check"></i></span>
+                                <span class="feature-text">Advanced medical equipment supply and training</span>
+                            </div>
+                        </div>
+                        <a href="#healthcare-projects" class="project-link">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Regional Project -->
+                <div class="project-card fade-in" data-category="regional">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kenya Projects">
+                        <div class="project-category">Regional</div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Regional Expansion - Kenya</h3>
+                        <p class="project-description">Strategic consultancy and resource supply chain management for leading companies in Kenya's mining and manufacturing sectors.</p>
+                        <div class="project-features">
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check"></i></span>
+                                <span class="feature-text">Collaboration with Innovana Mining and Belgravia Capital</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check"></i></span>
+                                <span class="feature-text">Industrial consultancy and resource supply chain management</span>
+                            </div>
+                            <div class="feature-item">
+                                <span class="feature-icon"><i class="fas fa-check"></i></span>
+                                <span class="feature-text">Strategic investment facilitation</span>
+                            </div>
+                        </div>
+                        <a href="#regional-projects" class="project-link">
+                            View Details <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industrial Projects Detail -->
+    <section id="industrial-projects" class="project-detail">
+        <div class="container">
+            <div class="project-header fade-in">
+                <h3>Industrial Projects – Tanzania</h3>
+                <p>Building long-term partnerships with major industrial clients across Arusha and Dar es Salaam</p>
+            </div>
+            
+            <div class="project-detail-content">
+                <div class="project-detail-text slide-in-left">
+                    <h4>Strategic Industrial Partnerships</h4>
+                    <p>We have established long-term partnerships with major industrial clients across Arusha and Dar es Salaam. Our consultancy and supply services extend to renowned companies such as Arusha Redgold, A-Z Textile Mills, Red Earth, Sunflag Tanzania Ltd., Lake Cement, Backbone, and Sayona Industries.</p>
+                    <p>Our primary role with these industries has been the supply of high-quality coal—a crucial resource for industrial operations. Through reliable sourcing, timely delivery, and professional consultancy on energy efficiency and industrial optimization, Lik & Lambert Consultants has helped these companies sustain their production capacities while ensuring cost-effectiveness and environmental compliance.</p>
+                    <p>We also provide strategic consultancy to leading manufacturing brands such as DARSH Industries, Sunflag Bakery Ltd., and A-Z Industries, where our team advises on operational improvement, supply chain efficiency, and sustainable industrial practices.</p>
+                    
+                    <div class="project-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <h5>Coal Supply Excellence</h5>
+                                <p>Reliable high-quality coal supply ensuring uninterrupted industrial operations</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <h5>Operational Optimization</h5>
+                                <p>Strategic consultancy for improved efficiency and sustainable practices</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <h5>Environmental Compliance</h5>
+                                <p>Ensuring all operations meet environmental standards and regulations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-detail-image slide-in-right">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Industrial Operations">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Healthcare Projects Detail -->
+    <section id="healthcare-projects" class="project-detail">
+        <div class="container">
+            <div class="project-header fade-in">
+                <h3>Healthcare Projects</h3>
+                <p>Delivering specialized consultancy and advanced medical technology solutions</p>
+            </div>
+            
+            <div class="project-detail-content">
+                <div class="project-detail-image slide-in-left">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Healthcare Technology">
+                </div>
+                
+                <div class="project-detail-text slide-in-right">
+                    <h4>Advanced Medical Solutions</h4>
+                    <p>Lik & Lambert Consultants is deeply involved in the healthcare sector, where we deliver specialized consultancy and advanced medical technology solutions.</p>
+                    <p>We have successfully implemented the Nurse Call System—a state-of-the-art communication solution that enhances patient care and hospital efficiency—at Mount Meru Referral Hospital and AICC Hospital in Arusha.</p>
+                    <p>Additionally, our company supplies a wide range of medical equipment and orthopedic products, including spine, trauma, arthroplasty, and arthroscopy products. We are authorized to promote, import, sell, and distribute these healthcare products, ensuring hospitals and medical facilities have access to the latest and most reliable technologies in patient treatment and surgical solutions.</p>
+                    
+                    <div class="project-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <h5>Nurse Call Systems</h5>
+                                <p>Advanced communication solutions enhancing patient care and hospital efficiency</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-briefcase-medical"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <h5>Medical Equipment Supply</h5>
+                                <p>Comprehensive range of orthopedic and surgical products</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <h5>Professional Training</h5>
+                                <p>Ensuring medical personnel are equipped with latest knowledge and skills</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regional Projects Detail -->
+    <section id="regional-projects" class="project-detail">
+        <div class="container">
+            <div class="project-header fade-in">
+                <h3>Regional Projects – Kenya</h3>
+                <p>Extending our footprint into Kenya with strategic partnerships and consultancy services</p>
+            </div>
+            
+            <div class="project-detail-content">
+                <div class="project-detail-text slide-in-left">
+                    <h4>Cross-Border Excellence</h4>
+                    <p>Beyond Tanzania, Lik & Lambert Consultants has extended its footprint into Kenya, where we have collaborated with leading companies such as Innovana Mining, Montreal Company, and Belgravia Capital.</p>
+                    <p>Our projects in Kenya primarily involve industrial consultancy, resource supply chain management, and strategic investment facilitation within the mining and manufacturing sectors.</p>
+                    <p>Through these regional partnerships, we continue to demonstrate our capacity as a trusted consulting and implementation firm, combining professional expertise, strategic insight, and operational excellence across borders.</p>
+                    
+                    <div class="project-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-globe-africa"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <h5>Regional Expansion</h5>
+                                <p>Successfully extending services to Kenya with strategic partnerships</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <h5>Strategic Partnerships</h5>
+                                <p>Collaboration with Innovana Mining, Montreal Company, and Belgravia Capital</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <h5>Investment Facilitation</h5>
+                                <p>Strategic guidance for mining and manufacturing sector investments</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-detail-image slide-in-right">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Regional Operations">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="section clients-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Valued Clients</h2>
+                <div class="divider"></div>
+                <p>Trusted by leading organizations across multiple sectors</p>
+            </div>
+            
+            <div class="clients-grid">
+                <div class="client-logo fade-in">
+                    <!-- Client logos would go here -->
+                    <span>Arusha Redgold</span>
+                </div>
+                <div class="client-logo fade-in">
+                    <span>A-Z Textile Mills</span>
+                </div>
+                <div class="client-logo fade-in">
+                    <span>Sunflag Tanzania</span>
+                </div>
+                <div class="client-logo fade-in">
+                    <span>Lake Cement</span>
+                </div>
+                <div class="client-logo fade-in">
+                    <span>Mount Meru Hospital</span>
+                </div>
+                <div class="client-logo fade-in">
+                    <span>AICC Hospital</span>
+                </div>
+                <div class="client-logo fade-in">
+                    <span>Innovana Mining</span>
+                </div>
+                <div class="client-logo fade-in">
+                    <span>Belgravia Capital</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section stats-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Impact</h2>
+                <div class="divider"></div>
+                <p>Numbers that reflect our commitment and success</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Industrial Clients</div>
+                </div>
+                
+                <div class="stat-item fade-in">
+                    <div class="stat-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Major Hospitals Served</div>
+                </div>
+                
+                <div class="stat-item fade-in">
+                    <div class="stat-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                
+                <div class="stat-item fade-in">
+                    <div class="stat-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Successful Partnerships</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title fade-in">Ready to Start Your Project?</h2>
+                <p class="cta-description fade-in">Contact us today to discuss how we can help bring your vision to life with our expertise and comprehensive solutions.</p>
+                <a href="contact.html" class="btn btn-primary fade-in">Start a Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Wave -->
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.8" />
+                    <stop offset="100%" style="stop-color:#b8941f;stop-opacity:0.6" />
+                </linearGradient>
+                <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#9b1b30;stop-opacity:0.75" />
+                    <stop offset="100%" style="stop-color:#7a1526;stop-opacity:0.5" />
+                </linearGradient>
+                <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#d32f2f;stop-opacity:0.9" />
+                    <stop offset="100%" style="stop-color:#9b1b30;stop-opacity:0.7" />
+                </linearGradient>
+                <linearGradient id="waveGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffd54f;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#d4af37;stop-opacity:0.3" />
+                </linearGradient>
+            </defs>
+
+            <g id="waves">
+                <path d="M0,80 Q360,40 720,60 T1440,80 L1440,220 L0,220 Z" fill="url(#waveGradient4)" opacity="0.6">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="20s" repeatCount="indefinite" />
+                </path>
+                <path d="M0,100 Q360,60 720,90 T1440,110 L1440,220 L0,220 Z" fill="url(#waveGradient1)" opacity="0.8">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="22s" repeatCount="indefinite" />
+                </path>
+                <path d="M0,130 Q360,100 720,120 T1440,140 L1440,220 L0,220 Z" fill="url(#waveGradient3)" opacity="0.85">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="24s" repeatCount="indefinite" />
+                </path>
+                <path d="M0,150 Q360,120 720,145 T1440,160 L1440,220 L0,220 Z" fill="url(#waveGradient2)" opacity="0.75">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="26s" repeatCount="indefinite" />
+                </path>
+                <path d="M0,170 Q360,150 720,165 T1440,180 L1440,220 L0,220 Z" fill="#1a1a1a" opacity="0.6">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="28s" repeatCount="indefinite" />
+                </path>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>LK & LAMBERT CONSULTANTS</h3>
+                    <p>Delivering comprehensive consulting solutions across Tanzania and beyond. Your trusted partner for business growth and operational excellence.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="about.html" class="footer-link">About</a>
+                        <a href="services.html" class="footer-link">Services</a>
+                        <a href="projects.html" class="footer-link">Projects</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <div class="footer-links">
+                        <a href="services.html" class="footer-link">Accounts & Auditing</a>
+                        <a href="services.html" class="footer-link">ICT Services</a>
+                        <a href="services.html" class="footer-link">HR Consulting</a>
+                        <a href="services.html" class="footer-link">Supply Solutions</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="footer-link"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="#" class="footer-link"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <a href="#" class="footer-link"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 LIK & LAMBERT CONSULTANTS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile menu when clicking on a nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Project category filtering
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Scroll animations
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .zoom-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
