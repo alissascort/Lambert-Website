@@ -9,7 +9,7 @@
    <style>
         :root {
             /* Brand Colors */
-            --primary: #9b1b30; 
+            --primary: #9b1b30;
             --primary-dark: #7a1526;
             --primary-light: #d32f2f;
             --secondary: #d4af37;
@@ -317,19 +317,29 @@
             color: var(--primary);
         }
 
-        /* Updated hero section with split layout for text left and image right */
+        /* Updated hero section to use full-screen video background */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            /* Changed background from teal/blue to red/maroon gradient to match original design */
-            background: linear-gradient(135deg, #8B1538 0%, #6B0F2A 50%, #9B1B30 100%);
             color: var(--white);
             position: relative;
             overflow: hidden;
             padding-top: 80px;
         }
 
+        /* Video background styling - using cover to fill entire space */
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Changed from contain to cover for full-screen video */
+            z-index: -2;
+        }
+
+        /* Dark overlay for text readability - reduced opacity */
         .hero::before {
             content: '';
             position: absolute;
@@ -337,11 +347,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-            background-size: cover;
-            background-position: center bottom;
-            opacity: 0.2;
-            animation: waveMove 20s ease-in-out infinite;
+            background: rgba(0, 0, 0, 0.4); /* Darker overlay for better text contrast */
+            z-index: -1;
         }
 
         .hero::after {
@@ -359,50 +366,57 @@
             background-repeat: repeat;
             background-size: 200px 100px;
             animation: particleFloat 25s linear infinite;
+            z-index: -1;
         }
 
-        /* New hero grid layout for split design */
+        /* Hero content positioned on left side */
         .hero-content {
             position: relative;
             z-index: 1;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xxl);
+            display: flex;
+            justify-content: flex-start; /* Align to left */
             align-items: center;
             width: 100%;
+            max-width: 1200px; /* Increased max-width */
             padding: var(--spacing-xl) 0;
         }
 
-        /* Hero text section on the left */
+        /* Hero text section positioned on left with proper alignment */
         .hero-text {
-            text-align: left;
+            text-align: left; /* Left-aligned text */
+            max-width: 700px;
+            padding-left: 0; /* No extra padding, controlled by container */
         }
 
         /* Main company title */
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 4rem; /* Larger font size */
             margin-bottom: var(--spacing-lg);
             line-height: 1.1;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Stronger shadow for better readability */
+            font-weight: 800; /* Bolder font */
+            animation: zoomIn 1.5s ease-out forwards; /* Fade and zoom in */
         }
 
-        /* Auto-typing text container */
+        /* Auto-typing text container - left aligned */
         .hero-typing-container {
-            font-size: 1.8rem;
+            font-size: 2rem; /* Larger font size */
             margin-bottom: var(--spacing-xl);
-            min-height: 60px;
+            min-height: 70px; /* Ensure enough space */
             display: flex;
             align-items: center;
+            justify-content: flex-start; /* Left-aligned typing text */
+            animation: fadeInUp 1.5s ease-out forwards 0.5s; /* Fade in after title */
         }
 
         .hero-typing-container .static-text {
             margin-right: 10px;
+            font-weight: 600;
         }
 
         .typing-text {
             color: var(--secondary);
-            font-weight: 600;
+            font-weight: 700;
             border-right: 3px solid var(--secondary);
             padding-right: 8px;
             animation: blink 0.7s step-end infinite;
@@ -414,59 +428,12 @@
         }
 
         .hero-description {
-            font-size: 1.1rem;
+            font-size: 1.3rem; /* Larger font size */
             margin-bottom: var(--spacing-xl);
-            opacity: 0.9;
+            opacity: 0.95; /* Slightly more opaque */
             line-height: 1.8;
-        }
-
-        /* Hero image section on the right with reflection effect */
-        .hero-image-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-        }
-
-        /* Reflection/blur effect behind the image using the same image */
-        .hero-image-wrapper::before {
-            content: '';
-            position: absolute;
-            /* Adjusted positioning for better reflection effect - offset slightly down and right */
-            top: 20px;
-            left: 20px;
-            right: -20px;
-            bottom: -20px;
-            width: calc(100% + 20px);
-            height: calc(100% + 20px);
-            background: url('LIK.jpeg') center/cover;
-            /* Increased blur for softer reflection and adjusted brightness */
-            filter: blur(50px) brightness(0.5);
-            /* Increased opacity for more visible reflection */
-            opacity: 0.4;
-            z-index: 1;
-            border-radius: var(--radius-xl);
-        }
-
-        .hero-image {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: auto;
-            border-radius: var(--radius-xl);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            transition: var(--transition-slow);
-        }
-
-        .hero-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Added shadow for readability */
+            animation: fadeInUp 1.5s ease-out forwards 1s; /* Fade in after typing container */
         }
 
         /* About Section */
@@ -836,6 +803,82 @@
             resize: vertical;
         }
 
+        /* Careers Section */
+        .careers {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+            padding: var(--spacing-xxl) 0 calc(var(--spacing-xxl) * 1.5);
+        }
+
+        .careers h2 {
+            font-size: 2.8rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .careers h2 span {
+            color: var(--secondary);
+        }
+
+        .careers p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .team-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xxl);
+            justify-items: center;
+        }
+
+        .team-image img {
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+            width: 100%;
+            height: auto;
+            object-fit: cover; /* Ensure images cover their area */
+        }
+
+        .team-image:hover img {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Updated careers section styles */
+        .team-showcase {
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--spacing-lg);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .team-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+            aspect-ratio: 3/4;
+        }
+
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .team-image:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .team-image:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+        /* End of updated careers section styles */
+
         .footer {
             background: linear-gradient(135deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
             color: var(--white);
@@ -1104,9 +1147,40 @@
             opacity: 1;
             transform: scale(1);
         }
+        
+        /* Custom animations for hero text fade-in */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
 
         /* Responsive Design */
         @media (max-width: 992px) {
+            .hero-content {
+                justify-content: center;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+            
             /* Stack hero content on tablets */
             .hero-content {
                 grid-template-columns: 1fr;
@@ -1125,6 +1199,11 @@
 
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Added responsive styles for careers section */
+            .team-showcase {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
@@ -1180,6 +1259,7 @@
 
             .hero-typing-container {
                 font-size: 1.3rem;
+                justify-content: center; /* Center on mobile */
             }
 
             .values-grid {
@@ -1188,6 +1268,12 @@
 
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+
+            /* Added responsive styles for careers section on mobile */
+            .team-showcase {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--spacing-md);
             }
         }
 
@@ -1209,6 +1295,11 @@
                 font-size: 1.1rem;
                 min-height: 50px;
             }
+
+            /* Added responsive styles for careers section on small mobile */
+            .team-showcase {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1226,22 +1317,28 @@
             
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="About.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="Service.html" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="Projects.html" class="nav-link">Projects</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#careers" class="nav-link">Careers</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <!-- Completely redesigned hero section with split layout -->
     <section id="home" class="hero">
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="LIK01.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
         <div class="container">
             <div class="hero-content">
-                <!-- Left side: Text with auto-typing effect -->
+                <!-- Text content now spans full width with video background -->
                 <div class="hero-text fade-in">
                     <h1 class="hero-title">LIK & LAMBERT CONSULTANTS</h1>
                     <div class="hero-typing-container">
@@ -1251,261 +1348,104 @@
                     <p class="hero-description">Your trusted partner for comprehensive consulting solutions across Tanzania and beyond. We deliver excellence in every service we provide.</p>
                     <a href="#services" class="btn btn-secondary">Explore Our Services</a>
                 </div>
-                
-                <!-- Right side: Image with reflection effect using LIK.jpeg -->
-                <div class="hero-image-container fade-in">
-                    <div class="hero-image-wrapper">
-                        <img src="LIK.jpeg" alt="LIK & LAMBERT Consultants Team" class="hero-image">
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers" class="section careers">
+        <div class="container">
+            <div class="section-title">
+                <p style="color: var(--primary); font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--spacing-sm);">Careers at LIK & LAMBERT CONSULTANTS</p>
+                <h2 style="font-size: 2.8rem; margin-bottom: var(--spacing-lg);">We provide better consulting solutions because we hire people who <span style="color: var(--secondary);">care</span></h2>
+                <div class="divider"></div>
+                <p style="max-width: 800px; margin: var(--spacing-lg) auto; font-size: 1.15rem; line-height: 1.8;">If you are an ambitious person looking for new challenges and opportunities to grow, you have come to the right place. Consulting is a dynamic industry and we pride ourselves on our high standards and the determination we see in our team members year after year.</p>
+            </div>
+            
+            <!-- Reduced button size from large to medium -->
+            <div style="text-align: center; margin-top: var(--spacing-xl);">
+                <a href="#contact" class="btn btn-primary" style="font-size: 0.95rem; padding: var(--spacing-md) var(--spacing-lg);">Join Us</a>
+            </div>
+            
+            <!-- Team showcase images -->
+            <div class="team-showcase">
+                <div class="team-image">
+                    <img src="AT WORK.jpeg" alt="Professional at work">
+                </div>
+                <div class="team-image">
+                    <img src="LIK.jpeg" alt="Business consultant">
+                </div>
+                <div class="team-image">
+                    <img src="IT CON.jpeg" alt="IT professional">
+                </div>
+                <div class="team-image">
+                    <img src="HR44.jpeg" alt="HR consultant">
+                </div>
+                <div class="team-image">
+                    <img src="HRLIK.jpeg" alt="Consulting team">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section about">
+    <!-- Added statistics section similar to bello.png -->
+    <!-- Statistics Section -->
+    <section class="section" style="background: var(--white); padding: calc(var(--spacing-xxl) * 1.5) 0;">
         <div class="container">
-            <div class="section-title">
-                <h2>About Us</h2>
-                <div class="divider"></div>
-                <p>Learn more about our mission, values, and why we're the right choice for your business</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text slide-in-left">
-                    <h3>Our Mission</h3>
-                    <p>At LIK & LAMBERT CONSULTANTS, we are committed to providing exceptional consulting services that drive business growth and operational excellence. Located in the heart of Arusha, Tanzania, we serve clients across various sectors with integrity, expertise, and innovation.</p>
-                    <p>Our diverse portfolio spans from traditional consulting services like accounts & auditing to specialized solutions including ICT services, human resources consulting, and supply chain management.</p>
-                    
-                    <div class="values-grid">
-                        <div class="value-item zoom-in">
-                            <div class="value-icon">
-                                <i class="fas fa-award"></i>
-                            </div>
-                            <h4 class="value-title">Excellence</h4>
-                        </div>
-                        <div class="value-item zoom-in">
-                            <div class="value-icon">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <h4 class="value-title">Precision</h4>
-                        </div>
-                        <div class="value-item zoom-in">
-                            <div class="value-icon">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <h4 class="value-title">Reliability</h4>
-                        </div>
-                    </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--spacing-xxl) * 2); align-items: center;">
+                <!-- Left side: Track record title -->
+                <div>
+                    <p style="color: var(--primary); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--spacing-lg);">Our track record</p>
+                    <h2 style="font-size: 3rem; line-height: 1.2; color: var(--dark); margin-bottom: 0;">High-performing <span style="color: var(--primary);">consultants</span> across Tanzania</h2>
                 </div>
                 
-                <div class="benefits-box slide-in-right">
-                    <h3>Why Choose Us?</h3>
-                    <ul class="benefits-list">
-                        <li class="benefit-item">
-                            <span class="benefit-icon"><i class="fas fa-check"></i></span>
-                            <span class="benefit-text">Comprehensive expertise across multiple consulting domains</span>
-                        </li>
-                        <li class="benefit-item">
-                            <span class="benefit-icon"><i class="fas fa-check"></i></span>
-                            <span class="benefit-text">Local knowledge with international standards</span>
-                        </li>
-                        <li class="benefit-item">
-                            <span class="benefit-icon"><i class="fas fa-check"></i></span>
-                            <span class="benefit-text">Proven track record with diverse clientele</span>
-                        </li>
-                        <li class="benefit-item">
-                            <span class="benefit-icon"><i class="fas fa-check"></i></span>
-                            <span class="benefit-text">Commitment to sustainable business practices</span>
-                        </li>
-                    </ul>
+                <!-- Right side: Discover text -->
+                 <div class="statistics-cta">
+                <p class="discover-text">Discover why we are the best at what we do</p>             
+                <!-- Right side: Learn more link -->
+                    <a href="#about" style="color: var(--dark); font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: var(--spacing-sm); transition: var(--transition-normal);">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Statistics grid -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-xxl); margin-top: calc(var(--spacing-xxl) * 1.5); padding-top: calc(var(--spacing-xxl) * 1.5); border-top: 1px solid var(--light-dark);">
+                <!-- Stat 1 -->
+                <div style="border-left: 3px solid var(--light-dark); padding-left: var(--spacing-lg);">
+                    <div style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md);">15<span style="font-size: 3rem;">+</span></div>
+                    <p style="font-size: 1.1rem; color: var(--dark); margin: 0;">Years in Business</p>
+                </div>
+                
+                <!-- Stat 2 -->
+                <div style="border-left: 3px solid var(--light-dark); padding-left: var(--spacing-lg);">
+                    <div style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md);">100<span style="font-size: 3rem;">+</span></div>
+                    <p style="font-size: 1.1rem; color: var(--dark); margin: 0;">Satisfied Clients</p>
+                </div>
+                
+                <!-- Stat 3 -->
+                <div style="border-left: 3px solid var(--light-dark); padding-left: var(--spacing-lg);">
+                    <div style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md);">6</div>
+                    <p style="font-size: 1.1rem; color: var(--dark); margin: 0;">Service Offerings</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
+    <!-- Added testimonial section similar to LIK4.png -->
+    <!-- Testimonial Section -->
+    <section class="section" style="background: #9b1b30; color: var(--white); padding: calc(var(--spacing-xxl) * 1.5) 0;">
         <div class="container">
-            <div class="section-title">
-                <h2>Our Services</h2>
-                <div class="divider"></div>
-                <p>We offer a comprehensive range of consulting services designed to meet the diverse needs of businesses across various industries.</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="card service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="service-title">Accounts & Auditing</h3>
-                    <p class="service-description">Comprehensive financial management and auditing services to ensure your business maintains accurate records and compliance.</p>
-                </div>
-                
-                <div class="card service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3 class="service-title">ICT Services</h3>
-                    <p class="service-description">Modern technology solutions and IT consulting to streamline your operations and enhance productivity.</p>
-                </div>
-                
-                <div class="card service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="service-title">Human Resources Consulting</h3>
-                    <p class="service-description">Strategic HR solutions including recruitment, training, and organizational development services.</p>
-                </div>
-                
-                <div class="card service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3 class="service-title">Coal Supply</h3>
-                    <p class="service-description">Reliable coal supply services for industrial and commercial applications with quality assurance.</p>
-                </div>
-                
-                <div class="card service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-tree"></i>
-                    </div>
-                    <h3 class="service-title">Supply of Wastewood</h3>
-                    <p class="service-description">Sustainable wastewood supply solutions for various industrial and energy production needs.</p>
-                </div>
-                
-                <div class="card service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3 class="service-title">Asante Home (Accommodation)</h3>
-                    <p class="service-description">Quality accommodation services providing comfortable and professional lodging solutions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section projects">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Projects</h2>
-                <div class="divider"></div>
-                <p>We have successfully delivered projects across various sectors, building lasting partnerships with companies, educational institutions, hospitals, and hotels.</p>
-            </div>
-            
-            <div class="projects-content">
-                <div class="project-highlight slide-in-left">
-                    <h3>Specialized Healthcare Solutions</h3>
-                    <h4 class="project-title">Supply and Installation of Nurse Call Systems</h4>
-                    <p class="project-description">Our specialized project focuses on the supply and installation of advanced nurse call systems in hospitals, enhancing patient care and communication efficiency between patients and medical staff.</p>
-                </div>
-                
-                <div class="slide-in-right">
-                    <h3>Diverse Client Portfolio</h3>
-                    <div class="clients-list">
-                        <div class="client-item zoom-in">
-                            <div class="client-icon">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="client-info">
-                                <h4>Corporate Clients</h4>
-                                <p>Comprehensive consulting for businesses</p>
-                            </div>
-                        </div>
-                        
-                        <div class="client-item zoom-in">
-                            <div class="client-icon">
-                                <i class="fas fa-user-graduate"></i>
-                            </div>
-                            <div class="client-info">
-                                <h4>Educational Institutions</h4>
-                                <p>Specialized services for schools and universities</p>
-                            </div>
-                        </div>
-                        
-                        <div class="client-item zoom-in">
-                            <div class="client-icon">
-                                <i class="fas fa-hotel"></i>
-                            </div>
-                            <div class="client-info">
-                                <h4>Hospitality Sector</h4>
-                                <p>Solutions for hotels and accommodation services</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Us</h2>
-                <div class="divider"></div>
-                <p>Ready to transform your business? Get in touch with our expert team today.</p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-info slide-in-left">
-                    <h3>Get In Touch</h3>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <p>info@liklambertconsultants.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <p>+255 27 297 0628</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Address</h4>
-                                <p>Njiro, Themi area, opposite Puma petrol station<br>P.O. Box 5000, Arusha, Tanzania</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form slide-in-right">
-                    <h3>Send us a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name" class="form-label">Your Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email" class="form-label">Your Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message" class="form-label">Your Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <p style="color: var(--secondary); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: var(--spacing-lg);">Our commitment to service</p>
+                <blockquote style="margin: 0; padding: 0;">
+                    <p style="font-size: 2.2rem; font-weight: 400; line-height: 1.5; font-style: italic; margin-bottom: var(--spacing-xl); opacity: 0.95;">"Our people are what make us differentpeople who stand out for their consistency, commitment, and character."</p>
+                    <footer style="font-size: 1rem; opacity: 0.8;">
+                        <strong style="display: block; margin-bottom: var(--spacing-xs);">Lambert Mkubwa</strong>
+                        <span style="font-size: 0.9rem; opacity: 0.7;">CEO & Founder</span><br>
+                        <span style="font-size: 0.9rem; opacity: 0.7;">LIK & LAMBERT CONSULTANTS</span>
+                    </footer>
+                </blockquote>
             </div>
         </div>
     </section>
@@ -1563,11 +1503,12 @@
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <div class="footer-links">
-                        <a href="index.html" class="footer-link">Home</a>
-                        <a href="About.html" class="footer-link">About</a>
-                        <a href="Service.html" class="footer-link">Services</a>
-                        <a href="Projects.html" class="footer-link">Projects</a>
-                        <a href="contact.html" class="footer-link">Contact</a>
+                        <a href="#home" class="footer-link">Home</a>
+                        <a href="#about" class="footer-link">About</a>
+                        <a href="#services" class="footer-link">Services</a>
+                        <a href="#projects" class="footer-link">Projects</a>
+                        <a href="#careers" class="footer-link">Careers</a>
+                        <a href="#contact" class="footer-link">Contact</a>
                     </div>
                 </div>
                 
@@ -1746,19 +1687,8 @@
                 });
             }
             
-            window.addEventListener('scroll', function() {
-                const scrolled = window.pageYOffset;
-                const parallaxElements = document.querySelectorAll('.hero::before, .hero::after');
-                
-                parallaxElements.forEach(element => {
-                    const speed = 0.5;
-                    element.style.transform = `translateY(${scrolled * speed}px)`;
-                });
-            });
-            
-            window.addEventListener('load', function() {
-                document.body.classList.add('loaded');
-            });
+            // Removed the parallax effect for video background, as it's handled by CSS.
+            // The original parallax logic was for background images, not video.
         });
     </script>
 </body>
