@@ -900,6 +900,58 @@
                 height: 250px;
             }
         }
+        .coal-types {
+    margin-top: 20px;
+}
+
+.coal-types h4 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.coal-type-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.coal-icon {
+    color: #e74c3c;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.coal-text {
+    line-height: 1.5;
+}
+        .production-capacity {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.production-capacity h4 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.capacity-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.capacity-icon {
+    color: #27ae60;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.capacity-text {
+    line-height: 1.5;
+}
     </style>
 </head>
 <body>
@@ -1214,6 +1266,234 @@
             </div>
         </div>
     </section>
+    <section id="hr-consultation" class="service-detail">
+    <div class="container">
+        <div class="service-content">
+            <div class="service-text slide-in-left">
+                <h3>HR Consultation</h3>
+                <p>We provide comprehensive Human Resources Consultation services designed to optimize your workforce, enhance employee engagement, and ensure regulatory compliance.</p>
+                <p>Our HR specialists partner with organizations to develop effective talent management strategies, streamline recruitment processes, and foster positive workplace cultures. From policy development and performance management to employee relations and training programs, we deliver tailored HR solutions that drive organizational success.</p>
+                <p>Our approach combines industry best practices with innovative HR technologies, ensuring your human capital becomes a strategic competitive advantage.</p>
+                
+                <div class="service-features">
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Talent acquisition and recruitment strategy</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Performance management systems</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Employee development and training programs</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">HR policy development and compliance</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-image slide-in-right">
+                <div class="service-slider" id="hr-slider">
+                    <div class="slides">
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1551836026-d5c8c2c4228d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="HR Strategy">
+                            <div class="slide-content">
+                                <h4>Talent Management</h4>
+                                <p>Developing strategies to attract and retain top talent</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Development">
+                            <div class="slide-content">
+                                <h4>Employee Development</h4>
+                                <p>Creating growth opportunities for your workforce</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="HR Compliance">
+                            <div class="slide-content">
+                                <h4>HR Compliance</h4>
+                                <p>Ensuring regulatory adherence and risk management</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-arrow prev" onclick="changeSlide('hr-slider', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-arrow next" onclick="changeSlide('hr-slider', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="slider-nav">
+                        <div class="slider-dot active" onclick="goToSlide('hr-slider', 0)"></div>
+                        <div class="slider-dot" onclick="goToSlide('hr-slider', 1)"></div>
+                        <div class="slider-dot" onclick="goToSlide('hr-slider', 2)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="industrial-coal" class="service-detail">
+    <div class="container">
+        <div class="service-content">
+            <div class="service-text slide-in-left">
+                <h3>Industrial Coal</h3>
+                <p>We specialize in the mining and supply of high-quality industrial coal products, serving diverse industrial applications with reliable energy solutions.</p>
+                <p>Our mining operations are strategically located in Kitai, Songea, Ruvuma, and West Wood, ensuring consistent supply and logistical efficiency. We offer a comprehensive range of coal types to meet various industrial requirements, from energy generation to manufacturing processes.</p>
+                <p>Our commitment to sustainable mining practices and quality control ensures that our clients receive premium coal products that deliver optimal performance and value.</p>
+                
+                <div class="coal-types">
+                    <h4>Coal Types We Supply:</h4>
+                    <div class="coal-type-item">
+                        <span class="coal-icon"><i class="fas fa-cube"></i></span>
+                        <span class="coal-text"><strong>Cobbles:</strong> Large-sized coal pieces ideal for specific industrial applications requiring slow, consistent burn.</span>
+                    </div>
+                    <div class="coal-type-item">
+                        <span class="coal-icon"><i class="fas fa-mountain"></i></span>
+                        <span class="coal-text"><strong>ROM (Run of Mine):</strong> Raw coal directly from our mining sites, suitable for various processing needs.</span>
+                    </div>
+                    <div class="coal-type-item">
+                        <span class="coal-icon"><i class="fas fa-gem"></i></span>
+                        <span class="coal-text"><strong>Crushed:</strong> Processed coal in smaller, uniform sizes for efficient combustion in industrial boilers.</span>
+                    </div>
+                    <div class="coal-type-item">
+                        <span class="coal-icon"><i class="fas fa-fire"></i></span>
+                        <span class="coal-text"><strong>PCAS (Pulverized Coal for Activated Carbon):</strong> Specially processed coal for activated carbon production and specialized applications.</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-image slide-in-right">
+                <div class="service-slider" id="coal-slider">
+                    <div class="slides">
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1598791318878-10e76d178023?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coal Mining">
+                            <div class="slide-content">
+                                <h4>Mining Operations</h4>
+                                <p>Strategic locations in Kitai, Songea, Ruvuma and West Wood</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1548588627-02f7e56ef95b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coal Processing">
+                            <div class="slide-content">
+                                <h4>Quality Processing</h4>
+                                <p>Advanced processing for consistent coal quality</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Industrial Application">
+                            <div class="slide-content">
+                                <h4>Industrial Applications</h4>
+                                <p>Reliable energy solutions for diverse industries</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-arrow prev" onclick="changeSlide('coal-slider', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-arrow next" onclick="changeSlide('coal-slider', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="slider-nav">
+                        <div class="slider-dot active" onclick="goToSlide('coal-slider', 0)"></div>
+                        <div class="slider-dot" onclick="goToSlide('coal-slider', 1)"></div>
+                        <div class="slider-dot" onclick="goToSlide('coal-slider', 2)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <section id="west-wood" class="service-detail">
+    <div class="container">
+        <div class="service-content">
+            <div class="service-text slide-in-left">
+                <h3>West Wood Mining Operations</h3>
+                <p>Our West Wood mining facility represents the pinnacle of modern mining technology and sustainable resource extraction practices in the region.</p>
+                <p>Strategically located in the mineral-rich West Wood area, this facility specializes in high-quality coal production with advanced processing capabilities. We employ state-of-the-art extraction methods and environmental management systems to ensure responsible mining while maximizing output efficiency.</p>
+                <p>The West Wood operation serves as our flagship mining site, featuring comprehensive processing facilities that transform raw coal into premium products for domestic and international markets.</p>
+                
+                <div class="service-features">
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Advanced surface and underground mining operations</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">State-of-the-art coal processing and beneficiation</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Environmental compliance and land rehabilitation</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-check"></i></span>
+                        <span class="feature-text">Logistics and supply chain optimization</span>
+                    </div>
+                </div>
+
+                <div class="production-capacity">
+                    <h4>Production Highlights:</h4>
+                    <div class="capacity-item">
+                        <span class="capacity-icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="capacity-text"><strong>Annual Output:</strong> 500,000+ tons of premium coal products</span>
+                    </div>
+                    <div class="capacity-item">
+                        <span class="capacity-icon"><i class="fas fa-users"></i></span>
+                        <span class="capacity-text"><strong>Employment:</strong> 300+ direct jobs with local community focus</span>
+                    </div>
+                    <div class="capacity-item">
+                        <span class="capacity-icon"><i class="fas fa-truck-loading"></i></span>
+                        <span class="capacity-text"><strong>Infrastructure:</strong> Direct rail access and modern loading facilities</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-image slide-in-right">
+                <div class="service-slider" id="westwood-slider">
+                    <div class="slides">
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1548588627-02f7e56ef95b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="West Wood Facility">
+                            <div class="slide-content">
+                                <h4>West Wood Main Facility</h4>
+                                <p>Modern mining infrastructure and processing plant</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Processing Operations">
+                            <div class="slide-content">
+                                <h4>Advanced Processing</h4>
+                                <p>Cutting-edge coal beneficiation technology</p>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img src="https://images.unsplash.com/photo-1598791318878-10e76d178023?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Environmental Management">
+                            <div class="slide-content">
+                                <h4>Sustainable Operations</h4>
+                                <p>Environmental stewardship and community engagement</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-arrow prev" onclick="changeSlide('westwood-slider', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-arrow next" onclick="changeSlide('westwood-slider', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="slider-nav">
+                        <div class="slider-dot active" onclick="goToSlide('westwood-slider', 0)"></div>
+                        <div class="slider-dot" onclick="goToSlide('westwood-slider', 1)"></div>
+                        <div class="slider-dot" onclick="goToSlide('westwood-slider', 2)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Additional service sections would follow the same pattern -->
     <!-- Due to length constraints, I'm showing 3 examples but the pattern continues for all services -->
