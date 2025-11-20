@@ -301,6 +301,34 @@
         .nav-link.active {
             color: var(--primary);
         }
+        
+        /* Dropdown Styles */
+        .nav-item.dropdown {
+            position: relative;
+        }
+        
+        .nav-link.dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .dropdown-toggle::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid currentColor;
+            transition: var(--transition-fast);
+            opacity: 0.7;
+        }
+        
+        .nav-link.dropdown-toggle:hover::after {
+            opacity: 1;
+            transform: translateY(1px);
+        }
 
         .mobile-toggle {
             display: none;
@@ -1227,7 +1255,12 @@
             <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="About.html" class="nav-link">About</a></li>
+                      <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">About</a>
+                    <div class="dropdown-menu">
+                        <a href="Who are we.html" class="dropdown-item">Who are we</a>
+                    </div>
+                </li>
                     <li class="nav-item"><a href="Service.html" class="nav-link">Services</a></li>
                     <li class="nav-item"><a href="Projects.html" class="nav-link">Projects</a></li>
                     <li class="nav-item"><a href="#careers" class="nav-link">Careers</a></li>
