@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - LIK & LAMBERT CONSULTANTS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Brand Colors */
+            --primary: #9b1b30;
+            --primary-dark: #7a1526;
+            --primary-light: #d32f2f;
+            --secondary: #d4af37;
+            --secondary-dark: #b8941f;
+            --secondary-light: #ffd54f;
+            --accent: #bfaf2a;
+            --dark: #333333;
+            --dark-light: #555555;
+            --light: #f7f7f7;
+            --light-dark: #e0e0e0;
+            --white: #ffffff;
+            --black: #000000;
+
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+
+            /* Transitions */
+            --transition-slow: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-normal: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-xxl) 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 2px 4px rgba(155, 27, 48, 0.1);
+        }
+
+        .section-title .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+            margin: 0 auto var(--spacing-lg);
+            border-radius: 2px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-slow);
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(155, 27, 48, 0.3);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            animation: logoGlow 4s ease-in-out infinite;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: var(--transition-normal);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            margin-right: var(--spacing-lg);
+        }
+
+        .nav-item {
+            margin: 0 var(--spacing-sm);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            position: relative;
+            transition: var(--transition-slow);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition-slow);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+              /* Dropdown Styles */
+        .nav-item.dropdown {
+            position: relative;
+        }
+        
+        .nav-link.dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .dropdown-toggle::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid currentColor;
+            transition: var(--transition-fast);
+            opacity: 0.7;
+        }
+        
+        .nav-link.dropdown-toggle:hover::after {
+            opacity: 1;
+            transform: translateY(1px);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-sm) 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition-normal);
+            z-index: 1000;
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            color: var(--dark);
+            transition: var(--transition-fast);
+            font-weight: 500;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(155, 27, 48, 0.05);
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            transition: var(--transition-normal);
+        }
+
+        .mobile-toggle:hover {
+            transform: rotate(90deg);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary-light) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center bottom;
+            opacity: 0.2;
+            animation: waveMove 20s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.1;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+        }
+
+        /* About Content */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .value-item {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+
+        .value-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-md);
+            font-size: 1.8rem;
+            transition: var(--transition-slow);
+            animation: iconBounce 3s ease-in-out infinite;
+        }
+
+        .value-item:hover .value-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
+
+        .value-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .benefits-box {
+            background: linear-gradient(135deg, rgba(155, 27, 48, 0.08) 0%, rgba(212, 175, 55, 0.08) 100%);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(155, 27, 48, 0.1);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .benefits-box h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-md);
+            transition: var(--transition-normal);
+        }
+
+        .benefit-item:hover {
+            transform: translateX(5px);
+        }
+
+        .benefit-icon {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-right: var(--spacing-md);
+            margin-top: 4px;
+            flex-shrink: 0;
+            animation: checkPulse 2s ease-in-out infinite;
+        }
+
+        .benefit-text {
+            color: var(--dark-light);
+        }
+
+        /* Founder Section */
+        .founder-section {
+            background: linear-gradient(135deg, rgba(247, 247, 247, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+
+        .founder-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .founder-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bouncing-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--secondary) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: var(--shadow-lg);
+            animation: bounce 6s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bouncing-circle::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            border-radius: 50%;
+            animation: rotate 15s linear infinite;
+        }
+
+        .circle-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--white);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 2;
+        }
+
+        .circle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-info {
+            padding: var(--spacing-lg);
+        }
+
+        .founder-name {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .founder-role {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 600;
+        }
+
+        .qualifications {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .qualification-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+            padding: var(--spacing-sm);
+            background: rgba(155, 27, 48, 0.05);
+            border-radius: var(--radius-md);
+            transition: var(--transition-normal);
+        }
+
+        .qualification-item:hover {
+            transform: translateX(5px);
+            background: rgba(155, 27, 48, 0.1);
+        }
+
+        .qualification-item i {
+            color: var(--primary);
+            margin-right: var(--spacing-md);
+            width: 20px;
+            text-align: center;
+        }
+
+        .qualities-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+        }
+
+        .quality-badge {
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+            animation: float 4s ease-in-out infinite;
+            animation-delay: calc(var(--i, 0) * 0.5s);
+        }
+
+        .quality-badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Culture Section */
+        .culture-section {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .culture-item {
+            padding: var(--spacing-xl);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+
+        .culture-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
+        }
+
+        .culture-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.5rem;
+            transition: var(--transition-slow);
+        }
+
+        .culture-item:hover .culture-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
+
+        .culture-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* CSR Section */
+        .csr-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .csr-item {
+            padding: var(--spacing-xl);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+
+        .csr-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
+        }
+
+        .csr-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.5rem;
+            transition: var(--transition-slow);
+        }
+
+        .csr-item:hover .csr-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
+
+        .csr-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Profile Section */
+        .profile-section {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+        }
+
+        .profile-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .profile-content p {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Footer Wave - Fixed to match index.html */
+        .footer-wave {
+            width: 100%;
+            height: 80px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 0;
+            line-height: 0;
+        }
+
+        .footer-wave svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0 var(--spacing-lg);
+            border-top: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(155, 27, 48, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-col {
+            transition: var(--transition-normal);
+        }
+
+        .footer-col:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+            border-radius: 2px;
+            transition: var(--transition-normal);
+        }
+
+        .footer-col:hover h3::after {
+            width: 100%;
+        }
+
+        .footer-col p {
+            opacity: 0.85;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin-top: var(--spacing-md);
+        }
+
+        .footer-link {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.8;
+            transition: var(--transition-normal);
+            font-size: 0.95rem;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .footer-link i {
+            margin-right: var(--spacing-md);
+            width: 20px;
+            text-align: center;
+            transition: var(--transition-normal);
+        }
+
+        .footer-link:hover i {
+            transform: scale(1.2) rotate(15deg);
+            color: var(--secondary-light);
+        }
+
+       .footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.footer-credits {
+    margin-bottom: var(--spacing-md);
+    opacity: 0.8;
+}
+
+.design-credit, .content-credit {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.design-credit strong, .content-credit strong {
+    color: var(--secondary-light);
+    font-weight: 600;
+}
+
+.copyright {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary-light);
+    opacity: 0.9;
+}
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scaleX(1); opacity: 1; }
+            50% { transform: scaleX(1.1); opacity: 0.8; }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { text-shadow: 0 0 5px rgba(155, 27, 48, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(155, 27, 48, 0.6), 0 0 30px rgba(212, 175, 55, 0.3); }
+        }
+
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-5px) translateY(-2px); }
+            50% { transform: translateX(0) translateY(-5px); }
+            75% { transform: translateX(5px) translateY(-2px); }
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes checkPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes waveAnimation {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(1440px);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .wave-layer {
+            animation: waveAnimation 25s linear infinite;
+            transform-origin: center;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .culture-grid,
+            .csr-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                padding: var(--spacing-sm) 0;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--white);
+                box-shadow: var(--shadow-lg);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: var(--spacing-xl);
+                transition: var(--transition-slow);
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .nav-item {
+                margin: var(--spacing-sm) 0;
+                width: 100%;
+            }
+
+            .nav-link {
+                display: block;
+                padding: var(--spacing-md);
+            }
+
+            .mobile-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .founder-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .bouncing-circle {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .circle-image {
+                width: 230px;
+                height: 230px;
+            }
+            
+            .founder-name {
+                font-size: 1.8rem;
+            }
+            
+            .qualification-item {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Navigation -->
+<nav class="navbar">
+    <div class="container navbar-container">
+        <a href="index.html" class="logo">
+            <img src="LIK & LAMBERT LOGO_page-0001.jpg" alt="LIK & LAMBERT CONSULTANTS" />
+        </a>
+        
+        <button class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="nav-menu" id="navMenu">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                   <a href="#" class="nav-link dropdown-toggle active">About</a>
+                    <div class="dropdown-menu">
+                        <a href="Who are we.html" class="dropdown-item">Who are we</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="Service.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="Projects.html" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in">About LIK & LAMBERT</h1>
+                <p class="hero-subtitle fade-in">Your Trusted Partner in Comprehensive Consulting Solutions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text slide-in-left">
+                    <p>LIK AND LAMBERT CONSULTANTS is a privately owned legal and business consultancy firm, established on June 9, 2016, under the Business Names Registration Act (Cap. 213) of Tanzania. Headquartered in the vibrant city of Arusha, we stand as a dynamic legal powerhouse committed to delivering exceptional and innovative solutions across diverse sectors.</p>
+                    <p>Our firm is powered by a team of sharp, creative, and highly experienced legal professionals dedicated to providing strategic guidance and tailored services that meet the evolving needs of our clients. We take pride in being a locally registered company with a global outlook bridging professionalism, integrity, and excellence to ensure every client receives the highest standard of service.</p>
+                    <p>For nearly a decade, LIK AND LAMBERT CONSULTANTS has been a trusted partner to individuals, institutions, and corporations in industries such as health, tourism, manufacturing, finance, energy, and banking. Our mission is to continuously set new benchmarks of quality, reliability, and innovation within the legal and consultancy landscape.</p>
+                </div>
+                
+                <div class="benefits-box slide-in-right">
+                    <h3>Our Commitment</h3>
+                    <p>Whether supporting startups in navigating complex regulatory frameworks or assisting multinational corporations in managing cross-border transactions, our expertise, precision, and dedication ensure that every client achieves their strategic and business objectives with confidence.</p>
+                    <p>At LIK AND LAMBERT CONSULTANTS, excellence is not just our standard it is our commitment.</p>
+                    
+                    <div class="values-grid">
+                        <div class="value-item zoom-in">
+                            <div class="value-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h4 class="value-title">Excellence</h4>
+                        </div>
+                        <div class="value-item zoom-in">
+                            <div class="value-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h4 class="value-title">Precision</h4>
+                        </div>
+                        <div class="value-item zoom-in">
+                            <div class="value-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h4 class="value-title">Reliability</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="section founder-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Founder</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="founder-content">
+                <div class="founder-image-container">
+                    <div class="bouncing-circle">
+                        <div class="circle-image">
+                            <img src="LIK.jpeg" alt="Mr.Eden Wilfred - Founder">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="founder-info">
+                    <h3 class="founder-name">Mr.Eden Wilfred</h3>
+                    <p class="founder-role">CEO & Founder </p>
+                    
+                   <div class="qualifications">
+    <div class="qualification-item">
+        <i class="fas fa-building"></i>
+        <span>Strategic Business Consulting & Financial Advisory</span>
+    </div>
+    <div class="qualification-item">
+        <i class="fas fa-network-wired"></i>
+        <span>Organizational Development & Team Building Specialist</span>
+    </div>
+    <div class="qualification-item">
+        <i class="fas fa-balance-scale"></i>
+        <span>Industrial and Business Relations Expertise</span>
+    </div>
+    <div class="qualification-item">
+        <i class="fas fa-cogs"></i>
+        <span>IT Consultation and Implementation Services with Strategies/span>
+    </div>
+    <div class="qualification-item">
+        <i class="fas fa-rocket"></i>
+        <span>Business Growth & Transformation Leadership</span>
+    </div>
+</div>
+                    
+                    <div class="qualities-container">
+                        <div class="quality-badge" style="--i:0">Innovative Leadership</div>
+                        <div class="quality-badge" style="--i:1">Strategic Vision</div>
+                        <div class="quality-badge" style="--i:2">People-Focused</div>
+                        <div class="quality-badge" style="--i:3">Cross-Cultural Expertise</div>
+                        <div class="quality-badge" style="--i:4">Organizational Excellence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Culture Section -->
+    <section class="section culture-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Culture</h2>
+                <div class="divider"></div>
+                <p>The cornerstone of who we are and how we operate</p>
+            </div>
+            
+            <div class="culture-grid">
+                <div class="culture-item fade-in">
+                    <div class="culture-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="culture-title">Unbridled Innovation</h3>
+                    <p>We embrace forward-thinking ideas and transformative approaches to problem-solving. Our team thrives on creativity, continuously exploring new perspectives to deliver innovative and practical solutions that redefine what's possible in the consulting and legal landscape.</p>
+                </div>
+                
+                <div class="culture-item fade-in">
+                    <div class="culture-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="culture-title">Client-Centric Compass</h3>
+                    <p>Our clients' success is at the heart of everything we do. Guided by a deep understanding of each client's goals and challenges, we tailor our services to meet their unique needs. We are relentless in our pursuit of excellence, ensuring that every strategy, solution, and recommendation advances our clients' best interests.</p>
+                </div>
+                
+                <div class="culture-item fade-in">
+                    <div class="culture-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="culture-title">Collaborative Spirit</h3>
+                    <p>We believe great results come from great teamwork. Our culture encourages open communication, respect for diverse viewpoints, and collective problem-solving. By blending varied experiences and expertise, we create powerful synergies that enable us to craft robust strategies and achieve exceptional outcomes for our clients.</p>
+                </div>
+                
+                <div class="culture-item fade-in">
+                    <div class="culture-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="culture-title">Responsiveness</h3>
+                    <p>Timeliness and precision define our service delivery. We are committed to providing quick, thoughtful, and effective responses to our clients, ensuring that every concern is addressed with focus and urgency. This culture of responsiveness has earned us a reputation as one of the most dependable and client-recommended consulting firms in the market.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSR Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Corporate Social Responsibility</h2>
+                <div class="divider"></div>
+                <p>Creating positive impact in the communities we serve</p>
+            </div>
+            
+            <div class="csr-grid">
+                <div class="csr-item fade-in">
+                    <div class="csr-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="csr-title">Community Empowerment and Education</h3>
+                    <p>We are deeply invested in uplifting our local communities through education, capacity building, and mentorship programs. As a firm that values knowledge and excellence, we believe education is the foundation of sustainable development.</p>
+                    <p>We regularly support community-based initiatives, legal literacy workshops, and mentorship programs for youth and women, equipping them with the tools, knowledge, and confidence to pursue personal and professional growth. By investing in education and empowerment, we help build stronger, self-reliant communities that can shape a better future.</p>
+                </div>
+                
+                <div class="csr-item fade-in">
+                    <div class="csr-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="csr-title">Environmental Sustainability</h3>
+                    <p>LIK AND LAMBERT CONSULTANTS is committed to environmental stewardship and promoting sustainable business practices. We actively engage in initiatives that encourage eco-friendly operations within our firm and among our partners.</p>
+                    <p>From supporting tree-planting drives and clean-up campaigns to adopting paperless systems and energy-efficient technologies, we aim to minimize our ecological footprint. Our goal is to ensure that our growth and the success of our clients align with the preservation of natural resources and the well-being of future generations.</p>
+                </div>
+                
+                <div class="csr-item fade-in">
+                    <div class="csr-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="csr-title">Legal Aid and Access to Justice</h3>
+                    <p>As a company rooted in the legal and consultancy sector, we recognize the importance of equal access to justice. We dedicate part of our expertise and resources to providing pro bono legal support, advocacy, and advisory services to underprivileged individuals and marginalized groups.</p>
+                    <p>Through partnerships with local organizations, we help promote legal awareness, protect human rights, and support fair governance. This initiative reflects our deep belief that justice should not be a privilege—but a right accessible to all.</p>
+                </div>
+                
+                <div class="csr-item fade-in">
+                    <div class="csr-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="csr-title">Ethical Business and Employee Well-being</h3>
+                    <p>We uphold the highest standards of ethics, transparency, and accountability in every aspect of our operations. Our internal culture fosters respect, fairness, and professional growth for every team member.</p>
+                    <p>We invest in continuous training, wellness programs, and safe working conditions to ensure that our employees thrive both personally and professionally. By creating a supportive and ethical work environment, we strengthen our ability to serve our clients and society with excellence and integrity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="section profile-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Profile</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="profile-content">
+                <p>LIK AND LAMBERT CONSULTANTS is a diversified professional services firm committed to delivering excellence across multiple sectors. Established with a vision to provide strategic, innovative, and high-quality consultancy solutions, our company has grown into a trusted partner for clients seeking expertise in Taxation Services, IT Consultation and Implementation, Business Consultancy, Claim and Operational Consulting, Immigration Consulting, Company Registration, Financial Advisory, Human Resource Consulting, Management and Strategic Consulting, Wealth Management, Private Equity, Debt Syndication, and Credit Assessment.</p>
+                
+                <p>Our multidisciplinary approach allows us to integrate financial insight, technological advancement, and regulatory knowledge to provide comprehensive solutions tailored to each client's unique business needs. Through this approach, we have built a reputation for precision, professionalism, and reliability, ensuring that our clients make well-informed decisions that drive long-term growth and success.</p>
+                
+                <p>In addition to our consultancy portfolio, LIK AND LAMBERT CONSULTANTS also plays a vital role in the healthcare and industrial sectors through the provision and distribution of high-quality medical materials, including Nurse Call Systems and specialized spine, trauma, arthroplasty, and arthroscopy products, alongside training programs designed to enhance medical proficiency. We also engage in the supply of coal to various regions, supporting both public and private sector needs.</p>
+                
+                <p>As we continue to expand our footprint across Tanzania, our mission remains steadfast—to improve the well-being of people and the performance of organizations through integrity, innovation, and service excellence. With your continued support and collaboration, LIK AND LAMBERT CONSULTANTS aspires to extend its impact nationwide, shaping a future where quality, efficiency, and professional expertise define every service we deliver.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fixed Footer Wave - Same as index.html -->
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.8" />  <!-- Gold -->
+                    <stop offset="100%" style="stop-color:#b8941f;stop-opacity:0.6" /> <!-- Dark Gold -->
+                </linearGradient>
+
+                <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#9b1b30;stop-opacity:0.75" />  <!-- Primary Red -->
+                    <stop offset="100%" style="stop-color:#7a1526;stop-opacity:0.5" /> <!-- Dark Red -->
+                </linearGradient>
+
+                <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#d32f2f;stop-opacity:0.9" />   <!-- Light Red -->
+                    <stop offset="100%" style="stop-color:#9b1b30;stop-opacity:0.7" /> <!-- Primary Red -->
+                </linearGradient>
+
+                <linearGradient id="waveGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffd54f;stop-opacity:0.4" />   <!-- Light Gold -->
+                    <stop offset="100%" style="stop-color:#d4af37;stop-opacity:0.3" /> <!-- Gold -->
+                </linearGradient>
+            </defs>
+
+            <g id="waves">
+                <!-- Layer 1: Light teal background wave -->
+                <path d="M0,80 Q360,40 720,60 T1440,80 L1440,220 L0,220 Z" fill="url(#waveGradient4)" opacity="0.6">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="20s" repeatCount="indefinite" />
+                </path>
+
+                <!-- Layer 2: Medium teal wave -->
+                <path d="M0,100 Q360,60 720,90 T1440,110 L1440,220 L0,220 Z" fill="url(#waveGradient1)" opacity="0.8">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="22s" repeatCount="indefinite" />
+                </path>
+
+                <!-- Layer 3: Dark navy wave -->
+                <path d="M0,130 Q360,100 720,120 T1440,140 L1440,220 L0,220 Z" fill="url(#waveGradient3)" opacity="0.85">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="24s" repeatCount="indefinite" />
+                </path>
+
+                <!-- Layer 4: Red/burgundy wave accent -->
+                <path d="M0,150 Q360,120 720,145 T1440,160 L1440,220 L0,220 Z" fill="url(#waveGradient2)" opacity="0.75">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="26s" repeatCount="indefinite" />
+                </path>
+
+                <!-- Layer 5: Dark accent wave -->
+                <path d="M0,170 Q360,150 720,165 T1440,180 L1440,220 L0,220 Z" fill="#1a1a1a" opacity="0.6">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="28s" repeatCount="indefinite" />
+                </path>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>LK & LAMBERT CONSULTANTS</h3>
+                    <p>Delivering comprehensive consulting solutions across Tanzania and beyond. Your trusted partner for business growth and operational excellence.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="About.html" class="footer-link">About</a>
+                        <a href="Service.html" class="footer-link">Services</a>
+                        <a href="Projects.html" class="footer-link">Projects</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <div class="footer-links">
+                        <a href="services.html" class="footer-link">Accounts & Auditing</a>
+                        <a href="services.html" class="footer-link">ICT Services</a>
+                        <a href="services.html" class="footer-link">HR Consulting</a>
+                        <a href="services.html" class="footer-link">Supply Solutions</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <div class="footer-links">
+                        <a href="https://www.facebook.com/share/17XqtALBGo/" class="footer-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="footer-link"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="https://www.instagram.com/lik_and_lambert_consultants?igsh=MzU4c3k4eDYwNmg3" class="footer-link"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+            </div>
+            
+          <div class="footer-bottom">
+    <div class="footer-credits">
+        <p class="design-credit">This Website is Designed and Maintained by <strong>FORTISHILED-MATRIX</strong></p>
+        <p class="content-credit">Content Maintained by <strong>LIK & LAMBERT CONSULTANTS</strong></p>
+    </div>
+    <p class="copyright">&copy; 2025 LIK & LAMBERT CONSULTANTS. All Rights Reserved.</p>
+</div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Toggle
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navMenu = document.getElementById('navMenu');
+            
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile menu when clicking on a nav link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Scroll animations
+            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .zoom-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 100);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
