@@ -248,7 +248,8 @@
         .nav-link.active {
             color: var(--primary);
         }
-              /* Dropdown Styles */
+        
+        /* Dropdown Styles */
         .nav-item.dropdown {
             position: relative;
         }
@@ -489,18 +490,166 @@
             color: var(--dark-light);
         }
 
-        /* Founder Section */
-        .founder-section {
-            background: linear-gradient(135deg, rgba(247, 247, 247, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+        /* Mission & Vision Section */
+        .mission-vision-section {
+            background: linear-gradient(135deg, rgba(155, 27, 48, 0.03) 0%, rgba(212, 175, 55, 0.03) 100%);
         }
 
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mv-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(155, 27, 48, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .mv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition-normal);
+        }
+
+        .mv-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+
+        .vision-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--secondary);
+        }
+
+        .mv-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+            font-size: 2rem;
+            transition: var(--transition-slow);
+        }
+
+        .mission-card .mv-icon {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+        }
+
+        .vision-card .mv-icon {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
+
+        .mv-card:hover .mv-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .mv-title {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            display: inline-block;
+        }
+
+        .mv-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+            transition: var(--transition-normal);
+        }
+
+        .mv-card:hover .mv-title::after {
+            width: 100%;
+        }
+
+        .mv-text {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-lg);
+            flex-grow: 1;
+        }
+
+        .mv-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .mv-highlight-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-sm);
+            background: rgba(155, 27, 48, 0.05);
+            border-radius: var(--radius-md);
+            transition: var(--transition-normal);
+        }
+
+        .mv-highlight-item:hover {
+            transform: translateX(5px);
+            background: rgba(155, 27, 48, 0.1);
+        }
+
+        .mv-highlight-item i {
+            margin-right: var(--spacing-md);
+            width: 20px;
+            text-align: center;
+        }
+
+        .mission-card .mv-highlight-item i {
+            color: var(--primary);
+        }
+
+        .vision-card .mv-highlight-item i {
+            color: var(--secondary);
+        }
+
+        /* Founder Section */
         .founder-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--spacing-xl);
             align-items: center;
             max-width: 1000px;
-            margin: 0 auto;
+            margin: var(--spacing-xl) 0;
+            padding: var(--spacing-xl);
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
         }
 
         .founder-image-container {
@@ -867,35 +1016,35 @@
             color: var(--secondary-light);
         }
 
-       .footer-bottom {
-    text-align: center;
-    padding-top: var(--spacing-xl);
-    border-top: 1px solid rgba(212, 175, 55, 0.15);
-}
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+        }
 
-.footer-credits {
-    margin-bottom: var(--spacing-md);
-    opacity: 0.8;
-}
+        .footer-credits {
+            margin-bottom: var(--spacing-md);
+            opacity: 0.8;
+        }
 
-.design-credit, .content-credit {
-    margin: 0 0 var(--spacing-xs) 0;
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
+        .design-credit, .content-credit {
+            margin: 0 0 var(--spacing-xs) 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
 
-.design-credit strong, .content-credit strong {
-    color: var(--secondary-light);
-    font-weight: 600;
-}
+        .design-credit strong, .content-credit strong {
+            color: var(--secondary-light);
+            font-weight: 600;
+        }
 
-.copyright {
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--secondary-light);
-    opacity: 0.9;
-}
+        .copyright {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary-light);
+            opacity: 0.9;
+        }
 
         /* Animations */
         @keyframes float {
@@ -1004,7 +1153,8 @@
             .about-content,
             .culture-grid,
             .csr-grid,
-            .footer-content {
+            .footer-content,
+            .mission-vision-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -1110,28 +1260,34 @@
     </style>
 </head>
 <body>
-  <!-- Navigation -->
-<nav class="navbar">
-    <div class="container navbar-container">
-        <a href="index.html" class="logo">
-            <img src="LIK & LAMBERT LOGO_page-0001.jpg" alt="LIK & LAMBERT CONSULTANTS" />
-        </a>
-        
-        <button class="mobile-toggle" id="mobileToggle">
-            <i class="fas fa-bars"></i>
-        </button>
-        
-        <div class="nav-menu" id="navMenu">
-            <ul class="nav-list">
-                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#"class="nav-link">About</a></li>
-                <li class="nav-item"><a href="Service.html" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="Projects.html" class="nav-link">Projects</a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <img src="LIK & LAMBERT LOGO_page-0001.jpg" alt="LIK & LAMBERT CONSULTANTS" />
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                       <a href="#" class="nav-link dropdown-toggle active">About</a>
+                        <div class="dropdown-menu">
+                            <a href="Who are we.html" class="dropdown-item">Who are we</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="Service.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="Projects.html" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
         </div>
-    </div> 
-</nav>
+    </nav>
+
     <!-- Hero Section -->
     <section class="page-hero">
         <div class="container">
@@ -1151,17 +1307,36 @@
             </div>
             
             <div class="about-content">
-                <div class="about-text slide-in-left">
-                    <p>LIK AND LAMBERT CONSULTANTS is a privately owned legal and business consultancy firm, established on June 9, 2016, under the Business Names Registration Act (Cap. 213) of Tanzania. Headquartered in the vibrant city of Arusha, we stand as a dynamic legal powerhouse committed to delivering exceptional and innovative solutions across diverse sectors.</p>
-                    <p>Our firm is powered by a team of sharp, creative, and highly experienced legal professionals dedicated to providing strategic guidance and tailored services that meet the evolving needs of our clients. We take pride in being a locally registered company with a global outlook bridging professionalism, integrity, and excellence to ensure every client receives the highest standard of service.</p>
-                    <p>For nearly a decade, LIK AND LAMBERT CONSULTANTS has been a trusted partner to individuals, institutions, and corporations in industries such as health, tourism, manufacturing, finance, energy, and banking. Our mission is to continuously set new benchmarks of quality, reliability, and innovation within the legal and consultancy landscape.</p>
-                </div>
-                
-                <div class="benefits-box slide-in-right">
+                <!-- Our Commitment on the LEFT -->
+                <div class="benefits-box slide-in-left">
                     <h3>Our Commitment</h3>
                     <p>Whether supporting startups in navigating complex regulatory frameworks or assisting multinational corporations in managing cross-border transactions, our expertise, precision, and dedication ensure that every client achieves their strategic and business objectives with confidence.</p>
                     <p>At LIK AND LAMBERT CONSULTANTS, excellence is not just our standard it is our commitment.</p>
                     
+                    <!-- Founder section moved here -->
+                    <div class="founder-content">
+                        <div class="founder-image-container">
+                            <div class="bouncing-circle">
+                                <div class="circle-image">
+                                    <img src="LIK.jpeg" alt="Mr.Eden Wilfred - Founder">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="founder-info">
+                            <h3 class="founder-name">Mr.Eden Wilfred</h3>
+                            <p class="founder-role">CEO & Founder </p>
+                            
+                           <div class="qualifications">
+                <div class="qualification-item">
+                    <i class="fas fa-building"></i>
+                    <span>Strategic Business Consulting & Financial Advisory</span>
+                </div>
+            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Values grid after the founder section -->
                     <div class="values-grid">
                         <div class="value-item zoom-in">
                             <div class="value-icon">
@@ -1183,60 +1358,74 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- About Us text on the RIGHT -->
+                <div class="about-text slide-in-right">
+                    <p>LIK AND LAMBERT CONSULTANTS is a privately owned legal and business consultancy firm, established on June 9, 2016, under the Business Names Registration Act (Cap. 213) of Tanzania. Headquartered in the vibrant city of Arusha, we stand as a dynamic legal powerhouse committed to delivering exceptional and innovative solutions across diverse sectors.</p>
+                    <p>Our firm is powered by a team of sharp, creative, and highly experienced legal professionals dedicated to providing strategic guidance and tailored services that meet the evolving needs of our clients. We take pride in being a locally registered company with a global outlook bridging professionalism, integrity, and excellence to ensure every client receives the highest standard of service.</p>
+                    <p>For nearly a decade, LIK AND LAMBERT CONSULTANTS has been a trusted partner to individuals, institutions, and corporations in industries such as health, tourism, manufacturing, finance, energy, and banking. Our mission is to continuously set new benchmarks of quality, reliability, and innovation within the legal and consultancy landscape.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Founder Section -->
-    <section class="section founder-section">
+    <!-- Mission & Vision Section -->
+    <section class="section mission-vision-section">
         <div class="container">
             <div class="section-title">
-                <h2>Founder</h2>
+                <h2>Our Mission & Vision</h2>
                 <div class="divider"></div>
+                <p>Guiding our journey towards excellence and innovation</p>
             </div>
             
-            <div class="founder-content">
-                <div class="founder-image-container">
-                    <div class="bouncing-circle">
-                        <div class="circle-image">
-                            <img src="LIK.jpeg" alt="Mr.Eden Wilfred - Founder">
+            <div class="mission-vision-grid">
+                <!-- Mission Card -->
+                <div class="mv-card mission-card fade-in">
+                    <div class="mv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <div class="mv-content">
+                        <h3 class="mv-title">Our Mission</h3>
+                        <p class="mv-text">Our mission is to deliver innovative, accurate, and high-value consultancy grounded in trusted expertise, modern strategies, and client-centered support enhancing performance, strengthening compliance, and enabling long-term success in a rapidly evolving world.</p>
+                        <div class="mv-highlights">
+                            <div class="mv-highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Innovative Solutions</span>
+                            </div>
+                            <div class="mv-highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Trusted Expertise</span>
+                            </div>
+                            <div class="mv-highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Client-Centered Support</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="founder-info">
-                    <h3 class="founder-name">Mr.Eden Wilfred</h3>
-                    <p class="founder-role">CEO & Founder </p>
-                    
-                   <div class="qualifications">
-    <div class="qualification-item">
-        <i class="fas fa-building"></i>
-        <span>Strategic Business Consulting & Financial Advisory</span>
-    </div>
-    <div class="qualification-item">
-        <i class="fas fa-network-wired"></i>
-        <span>Organizational Development & Team Building Specialist</span>
-    </div>
-    <div class="qualification-item">
-        <i class="fas fa-balance-scale"></i>
-        <span>Industrial and Business Relations Expertise</span>
-    </div>
-    <div class="qualification-item">
-        <i class="fas fa-cogs"></i>
-        <span>IT Consultation and Implementation Services with Strategies/span>
-    </div>
-    <div class="qualification-item">
-        <i class="fas fa-rocket"></i>
-        <span>Business Growth & Transformation Leadership</span>
-    </div>
-</div>
-                    
-                    <div class="qualities-container">
-                        <div class="quality-badge" style="--i:0">Innovative Leadership</div>
-                        <div class="quality-badge" style="--i:1">Strategic Vision</div>
-                        <div class="quality-badge" style="--i:2">People-Focused</div>
-                        <div class="quality-badge" style="--i:3">Cross-Cultural Expertise</div>
-                        <div class="quality-badge" style="--i:4">Organizational Excellence</div>
+                <!-- Vision Card -->
+                <div class="mv-card vision-card fade-in">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="mv-content">
+                        <h3 class="mv-title">Our Vision</h3>
+                        <p class="mv-text">To be a leading multi-disciplinary consultancy that empowers organizations with intelligent solutions, advanced technologies, and expert guidance driving sustainable growth, operational excellence, and meaningful transformation across all sectors.</p>
+                        <div class="mv-highlights">
+                            <div class="mv-highlight-item">
+                                <i class="fas fa-rocket"></i>
+                                <span>Multi-Disciplinary Excellence</span>
+                            </div>
+                            <div class="mv-highlight-item">
+                                <i class="fas fa-rocket"></i>
+                                <span>Sustainable Growth</span>
+                            </div>
+                            <div class="mv-highlight-item">
+                                <i class="fas fa-rocket"></i>
+                                <span>Meaningful Transformation</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
