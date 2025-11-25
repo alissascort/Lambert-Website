@@ -1,0 +1,945 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Culture - LIK & LAMBERT CONSULTANTS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Brand Colors */
+            --primary: #9b1b30;
+            --primary-dark: #7a1526;
+            --primary-light: #d32f2f;
+            --secondary: #d4af37;
+            --secondary-dark: #b8941f;
+            --secondary-light: #ffd54f;
+            --accent: #bfaf2a;
+            --dark: #333333;
+            --dark-light: #555555;
+            --light: #f7f7f7;
+            --light-dark: #e0e0e0;
+            --white: #ffffff;
+            --black: #000000;
+
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-xxl: 3rem;
+
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+
+            /* Shadows */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+
+            /* Transitions */
+            --transition-slow: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-normal: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-xxl) 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            text-shadow: 0 2px 4px rgba(155, 27, 48, 0.1);
+        }
+
+        .section-title .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+            margin: 0 auto var(--spacing-lg);
+            border-radius: 2px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--dark-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-slow);
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(155, 27, 48, 0.3);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-normal);
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-md) 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            animation: logoGlow 4s ease-in-out infinite;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            transition: var(--transition-normal);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-list {
+            display: flex;
+            margin-right: var(--spacing-lg);
+        }
+
+        .nav-item {
+            margin: 0 var(--spacing-sm);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-md);
+            position: relative;
+            transition: var(--transition-slow);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition-slow);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+        
+        /* Dropdown Styles */
+        .nav-item.dropdown {
+            position: relative;
+        }
+        
+        .nav-link.dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .dropdown-toggle::after {
+            content: '';
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid currentColor;
+            transition: var(--transition-fast);
+            opacity: 0.7;
+        }
+        
+        .nav-link.dropdown-toggle:hover::after {
+            opacity: 1;
+            transform: translateY(1px);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-sm) 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition-normal);
+            z-index: 1000;
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            color: var(--dark);
+            transition: var(--transition-fast);
+            font-weight: 500;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(155, 27, 48, 0.05);
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            transition: var(--transition-normal);
+        }
+
+        .mobile-toggle:hover {
+            transform: rotate(90deg);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary-light) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center bottom;
+            opacity: 0.2;
+            animation: waveMove 20s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.1;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+        }
+
+        /* Culture Section */
+        .culture-section {
+            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .culture-item {
+            padding: var(--spacing-xl);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+
+        .culture-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--secondary);
+        }
+
+        .culture-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.5rem;
+            transition: var(--transition-slow);
+        }
+
+        .culture-item:hover .culture-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: var(--dark);
+        }
+
+        .culture-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Footer Wave */
+        .footer-wave {
+            width: 100%;
+            height: 80px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 0;
+            line-height: 0;
+        }
+
+        .footer-wave svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0 var(--spacing-lg);
+            border-top: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(155, 27, 48, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-col {
+            transition: var(--transition-normal);
+        }
+
+        .footer-col:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+            border-radius: 2px;
+            transition: var(--transition-normal);
+        }
+
+        .footer-col:hover h3::after {
+            width: 100%;
+        }
+
+        .footer-col p {
+            opacity: 0.85;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin-top: var(--spacing-md);
+        }
+
+        .footer-link {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.8;
+            transition: var(--transition-normal);
+            font-size: 0.95rem;
+            padding: var(--spacing-sm) 0;
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .footer-link i {
+            margin-right: var(--spacing-md);
+            width: 20px;
+            text-align: center;
+            transition: var(--transition-normal);
+        }
+
+        .footer-link:hover i {
+            transform: scale(1.2) rotate(15deg);
+            color: var(--secondary-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .footer-credits {
+            margin-bottom: var(--spacing-md);
+            opacity: 0.8;
+        }
+
+        .design-credit, .content-credit {
+            margin: 0 0 var(--spacing-xs) 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .design-credit strong, .content-credit strong {
+            color: var(--secondary-light);
+            font-weight: 600;
+        }
+
+        .copyright {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary-light);
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scaleX(1); opacity: 1; }
+            50% { transform: scaleX(1.1); opacity: 0.8; }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { text-shadow: 0 0 5px rgba(155, 27, 48, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(155, 27, 48, 0.6), 0 0 30px rgba(212, 175, 55, 0.3); }
+        }
+
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-5px) translateY(-2px); }
+            50% { transform: translateX(0) translateY(-5px); }
+            75% { transform: translateX(5px) translateY(-2px); }
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes waveAnimation {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(1440px);
+            }
+        }
+
+        .wave-layer {
+            animation: waveAnimation 25s linear infinite;
+            transform-origin: center;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .culture-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                padding: var(--spacing-sm) 0;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--white);
+                box-shadow: var(--shadow-lg);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: var(--spacing-xl);
+                transition: var(--transition-slow);
+                z-index: 1000;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .nav-item {
+                margin: var(--spacing-sm) 0;
+                width: 100%;
+            }
+
+            .nav-link {
+                display: block;
+                padding: var(--spacing-md);
+            }
+
+            .mobile-toggle {
+                display: block;
+                z-index: 1001;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo">
+                <img src="LIK & LAMBERT LOGO_page-0001.jpg" alt="LIK & LAMBERT CONSULTANTS" />
+            </a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                       <a href="#" class="nav-link dropdown-toggle">About</a>
+                        <div class="dropdown-menu">
+                            <a href="Who-are-we.html" class="dropdown-item">Who are we</a>
+                            <a href="Our-Culture.html" class="dropdown-item active">Our Culture</a>
+                            <a href="Corporate-Social-Responsibility.html" class="dropdown-item">Corporate Social Responsibility</a>
+                            <a href="Our-Profile.html" class="dropdown-item">Our Profile</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="Service.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="Projects.html" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title fade-in">Our Culture</h1>
+                <p class="hero-subtitle fade-in">The cornerstone of who we are and how we operate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section class="section culture-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Culture</h2>
+                <div class="divider"></div>
+                <p>The values and principles that define our organization</p>
+            </div>
+            
+            <div class="culture-grid">
+                <div class="culture-item fade-in">
+                    <div class="culture-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="culture-title">Unbridled Innovation</h3>
+                    <p>We embrace forward-thinking ideas and transformative approaches to problem-solving. Our team thrives on creativity, continuously exploring new perspectives to deliver innovative and practical solutions that redefine what's possible in the consulting and legal landscape.</p>
+                </div>
+                
+                <div class="culture-item fade-in">
+                    <div class="culture-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="culture-title">Client-Centric Compass</h3>
+                    <p>Our clients' success is at the heart of everything we do. Guided by a deep understanding of each client's goals and challenges, we tailor our services to meet their unique needs. We are relentless in our pursuit of excellence, ensuring that every strategy, solution, and recommendation advances our clients' best interests.</p>
+                </div>
+                
+                <div class="culture-item fade-in">
+                    <div class="culture-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="culture-title">Collaborative Spirit</h3>
+                    <p>We believe great results come from great teamwork. Our culture encourages open communication, respect for diverse viewpoints, and collective problem-solving. By blending varied experiences and expertise, we create powerful synergies that enable us to craft robust strategies and achieve exceptional outcomes for our clients.</p>
+                </div>
+                
+                <div class="culture-item fade-in">
+                    <div class="culture-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="culture-title">Responsiveness</h3>
+                    <p>Timeliness and precision define our service delivery. We are committed to providing quick, thoughtful, and effective responses to our clients, ensuring that every concern is addressed with focus and urgency. This culture of responsiveness has earned us a reputation as one of the most dependable and client-recommended consulting firms in the market.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Wave -->
+    <div class="footer-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.8" />
+                    <stop offset="100%" style="stop-color:#b8941f;stop-opacity:0.6" />
+                </linearGradient>
+                <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#9b1b30;stop-opacity:0.75" />
+                    <stop offset="100%" style="stop-color:#7a1526;stop-opacity:0.5" />
+                </linearGradient>
+                <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#d32f2f;stop-opacity:0.9" />
+                    <stop offset="100%" style="stop-color:#9b1b30;stop-opacity:0.7" />
+                </linearGradient>
+                <linearGradient id="waveGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffd54f;stop-opacity:0.4" />
+                    <stop offset="100%" style="stop-color:#d4af37;stop-opacity:0.3" />
+                </linearGradient>
+            </defs>
+            <g id="waves">
+                <path d="M0,80 Q360,40 720,60 T1440,80 L1440,220 L0,220 Z" fill="url(#waveGradient4)" opacity="0.6">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="20s" repeatCount="indefinite" />
+                </path>
+                <path d="M0,100 Q360,60 720,90 T1440,110 L1440,220 L0,220 Z" fill="url(#waveGradient1)" opacity="0.8">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="22s" repeatCount="indefinite" />
+                </path>
+                <path d="M0,130 Q360,100 720,120 T1440,140 L1440,220 L0,220 Z" fill="url(#waveGradient3)" opacity="0.85">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="24s" repeatCount="indefinite" />
+                </path>
+                <path d="M0,150 Q360,120 720,145 T1440,160 L1440,220 L0,220 Z" fill="url(#waveGradient2)" opacity="0.75">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="26s" repeatCount="indefinite" />
+                </path>
+                <path d="M0,170 Q360,150 720,165 T1440,180 L1440,220 L0,220 Z" fill="#1a1a1a" opacity="0.6">
+                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="28s" repeatCount="indefinite" />
+                </path>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>LK & LAMBERT CONSULTANTS</h3>
+                    <p>Delivering comprehensive consulting solutions across Tanzania and beyond. Your trusted partner for business growth and operational excellence.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link">Home</a>
+                        <a href="Who-are-we.html" class="footer-link">About</a>
+                        <a href="Service.html" class="footer-link">Services</a>
+                        <a href="Projects.html" class="footer-link">Projects</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <div class="footer-links">
+                        <a href="Service.html" class="footer-link">Accounts & Auditing</a>
+                        <a href="Service.html" class="footer-link">ICT Services</a>
+                        <a href="Service.html" class="footer-link">HR Consulting</a>
+                        <a href="Service.html" class="footer-link">Supply Solutions</a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <div class="footer-links">
+                        <a href="https://www.facebook.com/liklambert" target="_blank" class="footer-link"><i class="fab fa-facebook"></i> Facebook</a>
+                        <a href="https://www.linkedin.com/company/lik-lambert-consultants" target="_blank" class="footer-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="mailto:info@liklambert.com" class="footer-link"><i class="fas fa-envelope"></i> Email</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-credits">
+                    <div class="design-credit"><strong>Design & Development:</strong> Web Design Studio</div>
+                    <div class="content-credit"><strong>Content:</strong> LIK & LAMBERT CONSULTANTS</div>
+                </div>
+                <p class="copyright">&copy; 2025 LIK & LAMBERT CONSULTANTS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Navbar Scroll Effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
