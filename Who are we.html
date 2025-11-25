@@ -377,12 +377,12 @@
             opacity: 0.9;
         }
 
-        /* About Content */
+        /* Fixed about-content grid to use equal columns with proper gap */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--spacing-xl);
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: var(--spacing-xxl);
         }
 
@@ -448,12 +448,14 @@
             color: var(--dark);
         }
 
+        /* Adjusted benefits-box to not take extra padding and be balanced */
         .benefits-box {
             background: linear-gradient(135deg, rgba(155, 27, 48, 0.08) 0%, rgba(212, 175, 55, 0.08) 100%);
-            padding: var(--spacing-xl);
+            padding: var(--spacing-lg);
             border-radius: var(--radius-lg);
             border: 1px solid rgba(155, 27, 48, 0.1);
             box-shadow: var(--shadow-sm);
+            height: fit-content;
         }
 
         .benefits-box h3 {
@@ -638,18 +640,18 @@
             color: var(--secondary);
         }
 
-        /* Founder Section */
+        /* Fixed founder-content to use equal columns and balanced layout */
         .founder-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
+            gap: var(--spacing-lg);
             align-items: center;
-            max-width: 1000px;
-            margin: var(--spacing-xl) 0;
-            padding: var(--spacing-xl);
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
+            max-width: none;
+            margin: 0;
+            padding: 0;
+            background: none;
+            border-radius: 0;
+            box-shadow: none;
         }
 
         .founder-image-container {
@@ -701,8 +703,9 @@
             object-fit: cover;
         }
 
+        /* Adjusted founder-info to not have extra padding and be balanced */
         .founder-info {
-            padding: var(--spacing-lg);
+            padding: 0;
         }
 
         .founder-name {
@@ -1154,7 +1157,8 @@
             .culture-grid,
             .csr-grid,
             .footer-content,
-            .mission-vision-grid {
+            .mission-vision-grid,
+            .founder-content {
                 grid-template-columns: 1fr;
             }
         }
@@ -1309,22 +1313,18 @@
             <div class="about-content">
                 <!-- Our Commitment on the LEFT -->
                 <div class="benefits-box slide-in-left">
-                    <h3>Our Commitment</h3>
-                    <p>Whether supporting startups in navigating complex regulatory frameworks or assisting multinational corporations in managing cross-border transactions, our expertise, precision, and dedication ensure that every client achieves their strategic and business objectives with confidence.</p>
-                    <p>At LIK AND LAMBERT CONSULTANTS, excellence is not just our standard it is our commitment.</p>
-                    
-                    <!-- Founder section moved here -->
+                    <!-- Founder section moved to the TOP -->
                     <div class="founder-content">
                         <div class="founder-image-container">
                             <div class="bouncing-circle">
                                 <div class="circle-image">
-                                    <img src="LIK.jpeg" alt="Mr.Eden Wilfred - Founder">
+                                    <img src="LIK.jpeg" alt=" Eden E. Wilfred - Founder">
                                 </div>
                             </div>
                         </div>
                         
                         <div class="founder-info">
-                            <h3 class="founder-name">Mr.Eden Wilfred</h3>
+                            <h3 class="founder-name"> Eden E. Wilfred</h3>
                             <p class="founder-role">CEO & Founder </p>
                             
                            <div class="qualifications">
@@ -1336,7 +1336,11 @@
                         </div>
                     </div>
                     
-                    <!-- Values grid after the founder section -->
+                    <h3>Our Commitment</h3>
+                    <p>Whether supporting startups in navigating complex regulatory frameworks or assisting multinational corporations in managing cross-border transactions, our expertise, precision, and dedication ensure that every client achieves their strategic and business objectives with confidence.</p>
+                    <p>At LIK AND LAMBERT CONSULTANTS, excellence is not just our standard it is our commitment.</p>
+                    
+                    <!-- Values grid after the commitment text -->
                     <div class="values-grid">
                         <div class="value-item zoom-in">
                             <div class="value-icon">
