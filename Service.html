@@ -451,7 +451,8 @@
             overflow: hidden;
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
-            height: 400px;
+            /* increased height from 400px to 550px for better consistency with longer text content */
+            height: 550px;
         }
 
         .slides {
@@ -697,35 +698,35 @@
             color: var(--secondary-light);
         }
 
-      .footer-bottom {
-    text-align: center;
-    padding-top: var(--spacing-xl);
-    border-top: 1px solid rgba(212, 175, 55, 0.15);
-}
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+        }
 
-.footer-credits {
-    margin-bottom: var(--spacing-md);
-    opacity: 0.8;
-}
+        .footer-credits {
+            margin-bottom: var(--spacing-md);
+            opacity: 0.8;
+        }
 
-.design-credit, .content-credit {
-    margin: 0 0 var(--spacing-xs) 0;
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
+        .design-credit, .content-credit {
+            margin: 0 0 var(--spacing-xs) 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
 
-.design-credit strong, .content-credit strong {
-    color: var(--secondary-light);
-    font-weight: 600;
-}
+        .design-credit strong, .content-credit strong {
+            color: var(--secondary-light);
+            font-weight: 600;
+        }
 
-.copyright {
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--secondary-light);
-    opacity: 0.9;
-}
+        .copyright {
+            margin: 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--secondary-light);
+            opacity: 0.9;
+        }
 
         /* Animations */
         @keyframes float {
@@ -895,8 +896,9 @@
                 grid-template-columns: 1fr;
             }
 
+            /* adjusted slider height for tablet/mobile - reduced to 400px */
             .service-slider {
-                height: 300px;
+                height: 400px;
             }
         }
 
@@ -913,62 +915,65 @@
                 font-size: 2rem;
             }
 
+            /* adjusted slider height for small mobile - reduced to 300px */
             .service-slider {
-                height: 250px;
+                height: 300px;
             }
         }
-       .coal-types {
-    margin-top: 20px;
-}
 
-.coal-types h4 {
-    margin-bottom: 15px;
-    color: #333;
-    font-size: 1.2rem;
-}
+        .coal-types {
+            margin-top: 20px;
+        }
 
-.coal-type-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 12px;
-}
+        .coal-types h4 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.2rem;
+        }
 
-.coal-icon {
-    color: #e74c3c;
-    margin-right: 10px;
-    margin-top: 3px;
-}
+        .coal-type-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
 
-.coal-text {
-    line-height: 1.5;
-}
+        .coal-icon {
+            color: #e74c3c;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+
+        .coal-text {
+            line-height: 1.5;
+        }
+
         .production-capacity {
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
 
-.production-capacity h4 {
-    margin-bottom: 15px;
-    color: #333;
-    font-size: 1.2rem;
-}
+        .production-capacity h4 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.2rem;
+        }
 
-.capacity-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 12px;
-}
+        .capacity-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
 
-.capacity-icon {
-    color: #27ae60;
-    margin-right: 10px;
-    margin-top: 3px;
-}
+        .capacity-icon {
+            color: #27ae60;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
 
-.capacity-text {
-    line-height: 1.5;
-}
+        .capacity-text {
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
