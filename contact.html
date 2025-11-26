@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* All your existing CSS remains exactly the same */
         :root {
             /* Brand Colors */
             --primary: #9b1b30;
@@ -1684,7 +1685,332 @@
     </footer>
 
     <script>
+        // Simplified Phone Input Implementation
         document.addEventListener('DOMContentLoaded', function() {
+            // Basic country data for demonstration
+            const countryData = [
+    { code: 'AF', name: 'Afghanistan', dialCode: '+93', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PHJlY3QgeD0iMCIgeT0iMTUiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxNSIgZmlsbD0iI2RjMDAwMCIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMTUiIHI9IjUiIGZpbGw9IiNmZmYiLz48L3N2Zz4=' },
+    { code: 'AL', name: 'Albania', dialCode: '+355', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'DZ', name: 'Algeria', dialCode: '+213', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'AR', name: 'Argentina', dialCode: '+54', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjNzVhZGRiIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==' },
+    { code: 'AM', name: 'Armenia', dialCode: '+374', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZjgyYzAwIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDAzM2E2Ii8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==' },
+    { code: 'AU', name: 'Australia', dialCode: '+61', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDAzMzg5Ii8+PHN0YXIgeD0iMzAiIHk9IjE1IiByPSI2IiBmaWxsPSIjZmZmIi8+PC9zdmc+' },
+    { code: 'AT', name: 'Austria', dialCode: '+43', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2RjMDAwMCIvPjwvc3ZnPg==' },
+    { code: 'AZ', name: 'Azerbaijan', dialCode: '+994', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDA3ZTJhIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMTUiIHI9IjQiIGZpbGw9IiNmZmYiLz48L3N2Zz4=' },
+    { code: 'BH', name: 'Bahrain', dialCode: '+973', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'BD', name: 'Bangladesh', dialCode: '+880', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDA3ZTJhIi8+PGNpcmNsZSBjeD0iMjAiIGN5PSIxNSIgcj0iNiIgZmlsbD0iI2RjMDAwMCIvPjwvc3ZnPg==' },
+    { code: 'BY', name: 'Belarus', dialCode: '+375', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZmZmIi8+PC9zdmc+' },
+    { code: 'BE', name: 'Belgium', dialCode: '+32', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iNDAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwM2ZhNCIvPjwvc3ZnPg==' },
+    { code: 'BJ', name: 'Benin', dialCode: '+229', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDA3ZTJhIi8+PHJlY3QgeD0iNDAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2RjMDAwMCIvPjwvc3ZnPg==' },
+    { code: 'BT', name: 'Bhutan', dialCode: '+975', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmY2MzAwIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZmZmIi8+PC9zdmc+' },
+    { code: 'BO', name: 'Bolivia', dialCode: '+591', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZWR0aD0iNjAiIGhlaWdodD0iMTAiIGZpbGw9IiMwMDdlMmEiLz48L3N2Zz4=' },
+    { code: 'BA', name: 'Bosnia and Herzegovina', dialCode: '+387', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDAzM2E2Ii8+PC9zdmc+' },
+    { code: 'BW', name: 'Botswana', dialCode: '+267', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA3ZTJhIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzAwN2UyYSIvPjwvc3ZnPg==' },
+    { code: 'BR', name: 'Brazil', dialCode: '+55', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSIxNSIgcj0iOCIgZmlsbD0iIzAwN2UyYSIvPjwvc3ZnPg==' },
+    { code: 'BG', name: 'Bulgaria', dialCode: '+359', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA3ZTJhIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2RjMDAwMCIvPjwvc3ZnPg==' },
+    { code: 'BF', name: 'Burkina Faso', dialCode: '+226', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDA3ZTJhIi8+PHJlY3QgeD0iMzAiIHk9IjAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2RjMDAwMCIvPjwvc3ZnPg==' },
+    { code: 'BI', name: 'Burundi', dialCode: '+257', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'KH', name: 'Cambodia', dialCode: '+855', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDAzM2E2Ii8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzAwMzNhNiIvPjwvc3ZnPg==' },
+    { code: 'CM', name: 'Cameroon', dialCode: '+237', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDA3ZTJhIi8+PHJlY3QgeD0iNDAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2RjMDAwMCIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMTUiIHI9IjQiIGZpbGw9IiNmZmYiLz48L3N2Zz4=' },
+    { code: 'CA', name: 'Canada', dialCode: '+1', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'CV', name: 'Cape Verde', dialCode: '+238', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'CF', name: 'Central African Republic', dialCode: '+236', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDA3ZTJhIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzAwN2UyYSIvPjwvc3ZnPg==' },
+    { code: 'TD', name: 'Chad', dialCode: '+235', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iNDAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwN2UyYSIvPjwvc3ZnPg==' },
+    { code: 'CL', name: 'Chile', dialCode: '+56', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDAzMzg5Ii8+PC9zdmc+' },
+    { code: 'CN', name: 'China', dialCode: '+86', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZWMwMDAwIi8+PHN0YXIgeD0iMTUiIHk9IjE1IiByPSI0IiBmaWxsPSIjZmZmIi8+PC9zdmc+' },
+    { code: 'CO', name: 'Colombia', dialCode: '+57', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'KM', name: 'Comoros', dialCode: '+269', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'CG', name: 'Congo', dialCode: '+242', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'CR', name: 'Costa Rica', dialCode: '+506', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2RjMDAwMCIvPjwvc3ZnPg==' },
+    { code: 'HR', name: 'Croatia', dialCode: '+385', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'CU', name: 'Cuba', dialCode: '+53', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'CY', name: 'Cyprus', dialCode: '+357', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'CZ', name: 'Czech Republic', dialCode: '+420', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'DK', name: 'Denmark', dialCode: '+45', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'DJ', name: 'Djibouti', dialCode: '+253', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'DO', name: 'Dominican Republic', dialCode: '+1-809', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'EC', name: 'Ecuador', dialCode: '+593', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'EG', name: 'Egypt', dialCode: '+20', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SV', name: 'El Salvador', dialCode: '+503', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'GQ', name: 'Equatorial Guinea', dialCode: '+240', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'ER', name: 'Eritrea', dialCode: '+291', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'EE', name: 'Estonia', dialCode: '+372', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'ET', name: 'Ethiopia', dialCode: '+251', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'FJ', name: 'Fiji', dialCode: '+679', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'FI', name: 'Finland', dialCode: '+358', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDAzM2E2Ii8+PC9zdmc+' },
+    { code: 'FR', name: 'France', dialCode: '+33', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iNDAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iIzAwM2ZhNCIvPjwvc3ZnPg==' },
+    { code: 'GA', name: 'Gabon', dialCode: '+241', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'GM', name: 'Gambia', dialCode: '+220', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'GE', name: 'Georgia', dialCode: '+995', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'DE', name: 'Germany', dialCode: '+49', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzAwM2ZhNCIvPjwvc3ZnPg==' },
+    { code: 'GH', name: 'Ghana', dialCode: '+233', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'GR', name: 'Greece', dialCode: '+30', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'GT', name: 'Guatemala', dialCode: '+502', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'GN', name: 'Guinea', dialCode: '+224', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'GW', name: 'Guinea-Bissau', dialCode: '+245', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'GY', name: 'Guyana', dialCode: '+592', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'HT', name: 'Haiti', dialCode: '+509', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'HN', name: 'Honduras', dialCode: '+504', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'HU', name: 'Hungary', dialCode: '+36', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'IS', name: 'Iceland', dialCode: '+354', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDAzM2E2Ii8+PC9zdmc+' },
+    { code: 'IN', name: 'India', dialCode: '+91', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZmY5MzMzIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzAwOTMzMyIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMTUiIHI9IjUiIGZpbGw9IiMwMDkzMzMiLz48Y2lyY2xlIGN4PSIzMCIgY3k9IjE1IiByPSIzIiBmaWxsPSIjZmZmIi8+PC9zdmc+' },
+    { code: 'ID', name: 'Indonesia', dialCode: '+62', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'IR', name: 'Iran', dialCode: '+98', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'IQ', name: 'Iraq', dialCode: '+964', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'IE', name: 'Ireland', dialCode: '+353', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'IL', name: 'Israel', dialCode: '+972', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'IT', name: 'Italy', dialCode: '+39', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDA3ZTJhIi8+PHJlY3QgeD0iNDAiIHk9IjAiIHdpZHRoPSIyMCIgaGVpZ2h0PSIzMCIgZmlsbD0iI2RjMDAwMCIvPjwvc3ZnPg==' },
+    { code: 'JM', name: 'Jamaica', dialCode: '+1-876', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'JP', name: 'Japan', dialCode: '+81', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSIxNSIgcj0iOCIgZmlsbD0iI2RjMDAwMCIvPjwvc3ZnPg==' },
+    { code: 'JO', name: 'Jordan', dialCode: '+962', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'KZ', name: 'Kazakhstan', dialCode: '+7', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'KE', name: 'Kenya', dialCode: '+254', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDAwIi8+PHJlY3QgeD0iMCIgeT0iMTAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjAiIHk9IjIwIiB3aWR0aD0iNjAiIGhlaWdodD0iMTAiIGZpbGw9IiMwMDAiLz48cGF0aCBkPSJNMzAgMTVjMCAyLjUtMi4yIDQuNS01IDQuNVMxOSAxNy41IDE5IDE1czIuMi00LjUgNS00LjUgNSA0LjUgNSA0LjV6IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTMwIDE1YzAgMS4xLTEgMi0yIDJzLTItMS0yLTJzMS0yIDItMiAyIDEgMiAyeiIgZmlsbD0iIzAwMCIvPjwvc3ZnPg==' },
+    { code: 'KW', name: 'Kuwait', dialCode: '+965', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'KG', name: 'Kyrgyzstan', dialCode: '+996', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'LA', name: 'Laos', dialCode: '+856', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'LV', name: 'Latvia', dialCode: '+371', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'LB', name: 'Lebanon', dialCode: '+961', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'LS', name: 'Lesotho', dialCode: '+266', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'LR', name: 'Liberia', dialCode: '+231', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'LY', name: 'Libya', dialCode: '+218', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'LI', name: 'Liechtenstein', dialCode: '+423', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'LT', name: 'Lithuania', dialCode: '+370', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'LU', name: 'Luxembourg', dialCode: '+352', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MG', name: 'Madagascar', dialCode: '+261', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MW', name: 'Malawi', dialCode: '+265', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MY', name: 'Malaysia', dialCode: '+60', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MV', name: 'Maldives', dialCode: '+960', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'ML', name: 'Mali', dialCode: '+223', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MT', name: 'Malta', dialCode: '+356', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MR', name: 'Mauritania', dialCode: '+222', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MU', name: 'Mauritius', dialCode: '+230', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MX', name: 'Mexico', dialCode: '+52', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MD', name: 'Moldova', dialCode: '+373', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MC', name: 'Monaco', dialCode: '+377', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MN', name: 'Mongolia', dialCode: '+976', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'ME', name: 'Montenegro', dialCode: '+382', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MA', name: 'Morocco', dialCode: '+212', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MZ', name: 'Mozambique', dialCode: '+258', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'MM', name: 'Myanmar', dialCode: '+95', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'NA', name: 'Namibia', dialCode: '+264', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'NP', name: 'Nepal', dialCode: '+977', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'NL', name: 'Netherlands', dialCode: '+31', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZGMwMDAwIi8+PHJlY3QgeD0iMCIgeT0iMjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iIzAwM2ZhNCIvPjwvc3ZnPg==' },
+    { code: 'NZ', name: 'New Zealand', dialCode: '+64', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDAzMzg5Ii8+PHN0YXIgeD0iMzAiIHk9IjE1IiByPSI2IiBmaWxsPSIjZmZmIi8+PC9zdmc+' },
+    { code: 'NI', name: 'Nicaragua', dialCode: '+505', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'NE', name: 'Niger', dialCode: '+227', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'NG', name: 'Nigeria', dialCode: '+234', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'KP', name: 'North Korea', dialCode: '+850', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'NO', name: 'Norway', dialCode: '+47', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'OM', name: 'Oman', dialCode: '+968', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'PK', name: 'Pakistan', dialCode: '+92', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'PA', name: 'Panama', dialCode: '+507', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'PG', name: 'Papua New Guinea', dialCode: '+675', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'PY', name: 'Paraguay', dialCode: '+595', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'PE', name: 'Peru', dialCode: '+51', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'PH', name: 'Philippines', dialCode: '+63', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'PL', name: 'Poland', dialCode: '+48', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'PT', name: 'Portugal', dialCode: '+351', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'QA', name: 'Qatar', dialCode: '+974', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'RO', name: 'Romania', dialCode: '+40', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'RU', name: 'Russia', dialCode: '+7', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'RW', name: 'Rwanda', dialCode: '+250', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SA', name: 'Saudi Arabia', dialCode: '+966', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SN', name: 'Senegal', dialCode: '+221', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'RS', name: 'Serbia', dialCode: '+381', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SC', name: 'Seychelles', dialCode: '+248', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SL', name: 'Sierra Leone', dialCode: '+232', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SG', name: 'Singapore', dialCode: '+65', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SK', name: 'Slovakia', dialCode: '+421', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SI', name: 'Slovenia', dialCode: '+386', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SB', name: 'Solomon Islands', dialCode: '+677', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SO', name: 'Somalia', dialCode: '+252', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'ZA', name: 'South Africa', dialCode: '+27', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'KR', name: 'South Korea', dialCode: '+82', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'ES', name: 'Spain', dialCode: '+34', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'LK', name: 'Sri Lanka', dialCode: '+94', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SD', name: 'Sudan', dialCode: '+249', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SE', name: 'Sweden', dialCode: '+46', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'CH', name: 'Switzerland', dialCode: '+41', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'SY', name: 'Syria', dialCode: '+963', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'TW', name: 'Taiwan', dialCode: '+886', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'TJ', name: 'Tajikistan', dialCode: '+992', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'TZ', name: 'Tanzania', dialCode: '+255', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3MmNjIi8+PHJlY3QgeD0iMCIgeT0iMTUiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxNSIgZmlsbD0iIzAwNzJjYyIvPjxwYXRoIGQ9Ik0wIDBoNjB2MzBIMHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+' },
+    { code: 'TH', name: 'Thailand', dialCode: '+66', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'TG', name: 'Togo', dialCode: '+228', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'TT', name: 'Trinidad and Tobago', dialCode: '+1-868', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'TN', name: 'Tunisia', dialCode: '+216', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'TR', name: 'Turkey', dialCode: '+90', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'TM', name: 'Turkmenistan', dialCode: '+993', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'UG', name: 'Uganda', dialCode: '+256', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjMDAwIi8+PHJlY3QgeD0iMCIgeT0iMTAiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxMCIgZmlsbD0iI2ZmZiIvPjxyZWN0IHg9IjAiIHk9IjIwIiB3aWR0aD0iNjAiIGhlaWdodD0iMTAiIGZpbGw9IiMwMDAiLz48Y2lyY2xlIGN4PSIzMCIgY3k9IjE1IiByPSI1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMzAiIGN5PSIxNSIgcj0iMyIgZmlsbD0iIzAwMCIvPjwvc3ZnPg==' },
+    { code: 'UA', name: 'Ukraine', dialCode: '+380', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3ZTJhIi8+PC9zdmc+' },
+    { code: 'AE', name: 'United Arab Emirates', dialCode: '+971', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'GB', name: 'United Kingdom', dialCode: '+44', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDAyNDdkIi8+PHBhdGggZD0iTTAgMGg2MHYzMEgweiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMCAwaDYwdjMwSDB6IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDI0N2QiIHN0cm9rZS13aWR0aD0iMSIvPjxwYXRoIGQ9Ik0wIDBoNjB2MzBIMHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0iTTAgMGg2MHYzMEgweiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyNDdkIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=' },
+    { code: 'US', name: 'United States', dialCode: '+1', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjYmYwYTIzIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjEzIiBmaWxsPSIjMDAyNDdkIi8+PHBhdGggZD0iTTAgMEgyNHYxM0gweiIgZmlsbD0iIzAwMjQ3ZCIvPjxwYXRoIGQ9Ik0wIDBoMjR2MTNIMHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0iTTAgMGgyNHYxM0gweiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAyNDdkIiBzdHJva2Utd2lkdGg9IjEiLz48L3N2Zz4=' },
+    { code: 'UY', name: 'Uruguay', dialCode: '+598', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'UZ', name: 'Uzbekistan', dialCode: '+998', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'VE', name: 'Venezuela', dialCode: '+58', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'VN', name: 'Vietnam', dialCode: '+84', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'YE', name: 'Yemen', dialCode: '+967', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'ZM', name: 'Zambia', dialCode: '+260', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' },
+    { code: 'ZW', name: 'Zimbabwe', dialCode: '+263', flag: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjZGMwMDAwIi8+PC9zdmc+' }
+];
+
+            // DOM elements
+            const countrySelector = document.getElementById('countrySelector');
+            const countryDropdown = document.getElementById('countryDropdown');
+            const countrySearch = document.getElementById('countrySearch');
+            const countryList = document.getElementById('countryList');
+            const selectedFlag = document.getElementById('selectedFlag');
+            const selectedCode = document.getElementById('selectedCode');
+            const phoneInput = document.getElementById('phone');
+            const phoneValidation = document.getElementById('phoneValidation');
+            const phoneHelpText = document.getElementById('phoneHelpText');
+            const phoneInputWrapper = document.getElementById('phoneInputWrapper');
+
+            // Current selected country
+            let selectedCountry = countryData[0]; // Default to Tanzania
+
+            // Populate country list
+            function populateCountryList(countries = countryData) {
+                countryList.innerHTML = '';
+                countries.forEach(country => {
+                    const countryItem = document.createElement('div');
+                    countryItem.className = 'country-item';
+                    if (country.code === selectedCountry.code) {
+                        countryItem.classList.add('active');
+                    }
+                    
+                    countryItem.innerHTML = `
+                        <img src="${country.flag}" class="country-item-flag" alt="${country.name} flag">
+                        <span class="country-item-name">${country.name}</span>
+                        <span class="country-item-code">${country.dialCode}</span>
+                    `;
+                    
+                    countryItem.addEventListener('click', () => {
+                        selectCountry(country);
+                        closeDropdown();
+                    });
+                    
+                    countryList.appendChild(countryItem);
+                });
+            }
+
+            // Select a country
+            function selectCountry(country) {
+                selectedCountry = country;
+                selectedFlag.src = country.flag;
+                selectedFlag.alt = `${country.name} flag`;
+                selectedCode.textContent = country.dialCode;
+                
+                // Update all active states
+                document.querySelectorAll('.country-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Validate phone number with new country
+                validatePhoneNumber();
+                
+                // Populate country list again to update active state
+                populateCountryList();
+            }
+
+            // Open dropdown
+            function openDropdown() {
+                countryDropdown.classList.add('active');
+                countrySelector.classList.add('active');
+                countrySearch.focus();
+            }
+
+            // Close dropdown
+            function closeDropdown() {
+                countryDropdown.classList.remove('active');
+                countrySelector.classList.remove('active');
+                countrySearch.value = '';
+                populateCountryList();
+            }
+
+            // Filter countries based on search
+            function filterCountries() {
+                const searchTerm = countrySearch.value.toLowerCase();
+                const filteredCountries = countryData.filter(country => 
+                    country.name.toLowerCase().includes(searchTerm) || 
+                    country.dialCode.includes(searchTerm)
+                );
+                populateCountryList(filteredCountries);
+            }
+
+            // Validate phone number
+            function validatePhoneNumber() {
+                const phoneNumber = phoneInput.value.trim();
+                const fullNumber = selectedCountry.dialCode + phoneNumber;
+                
+                // Simple validation - you can enhance this with a library like libphonenumber
+                const isValid = phoneNumber.length >= 7 && /^[0-9+\-\s()]+$/.test(phoneNumber);
+                
+                if (phoneNumber === '') {
+                    phoneInputWrapper.classList.remove('valid', 'invalid');
+                    phoneValidation.className = 'phone-validation';
+                    phoneHelpText.className = 'phone-help-text';
+                    phoneHelpText.textContent = 'Enter a valid phone number';
+                } else if (isValid) {
+                    phoneInputWrapper.classList.remove('invalid');
+                    phoneInputWrapper.classList.add('valid');
+                    phoneValidation.className = 'phone-validation valid';
+                    phoneHelpText.className = 'phone-help-text valid';
+                    phoneHelpText.textContent = `Valid ${selectedCountry.name} number: ${fullNumber}`;
+                } else {
+                    phoneInputWrapper.classList.remove('valid');
+                    phoneInputWrapper.classList.add('invalid');
+                    phoneValidation.className = 'phone-validation invalid';
+                    phoneValidation.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
+                    phoneHelpText.className = 'phone-help-text invalid';
+                    phoneHelpText.textContent = 'Please enter a valid phone number';
+                }
+                
+                return isValid;
+            }
+
+            // Initialize
+            function initPhoneInput() {
+                populateCountryList();
+                
+                // Event listeners
+                countrySelector.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (countryDropdown.classList.contains('active')) {
+                        closeDropdown();
+                    } else {
+                        openDropdown();
+                    }
+                });
+                
+                countrySearch.addEventListener('input', filterCountries);
+                
+                phoneInput.addEventListener('input', validatePhoneNumber);
+                phoneInput.addEventListener('focus', () => {
+                    phoneInputWrapper.classList.add('focused');
+                });
+                phoneInput.addEventListener('blur', () => {
+                    phoneInputWrapper.classList.remove('focused');
+                });
+                
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!countryDropdown.contains(e.target) && !countrySelector.contains(e.target)) {
+                        closeDropdown();
+                    }
+                });
+                
+                // Auto-detect user's country based on IP (simplified)
+                // In a real implementation, you would use a service like ipapi
+                // For now, we'll default to Tanzania
+                selectCountry(countryData[0]);
+            }
+
+            // Initialize the phone input
+            initPhoneInput();
+
+            // Your existing JavaScript code for other functionality
             // Mobile Navigation Toggle
             const mobileToggle = document.getElementById('mobileToggle');
             const navMenu = document.getElementById('navMenu');
@@ -1742,14 +2068,19 @@
                     const name = document.getElementById('name').value;
                     const email = document.getElementById('email').value;
                     const message = document.getElementById('message').value;
+                    const phoneValid = validatePhoneNumber();
                     
-                    if (name && email && message) {
+                    if (name && email && message && phoneValid) {
                         // Here you would typically send the form data to a server
                         // For demo purposes, we'll show a success message
                         showNotification('Thank you for your message! We will get back to you within 24 hours.', 'success');
                         contactForm.reset();
+                        // Reset phone input
+                        selectCountry(countryData[0]);
+                        phoneInput.value = '';
+                        validatePhoneNumber();
                     } else {
-                        showNotification('Please fill in all required fields.', 'error');
+                        showNotification('Please fill in all required fields correctly.', 'error');
                     }
                 });
             }
@@ -1824,361 +2155,27 @@
             animatedElements.forEach(element => {
                 observer.observe(element);
             });
-        });
-           // Optional: Add click tracking
-    document.addEventListener('DOMContentLoaded', function() {
-        const whatsappBtn = document.querySelector('.whatsapp-float');
-        if (whatsappBtn) {
-            whatsappBtn.addEventListener('click', function() {
-                // Add your analytics tracking here
-                console.log('WhatsApp button clicked from: ' + window.location.href);
+
+            // Mobile dropdown toggle
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        const dropdown = this.parentElement;
+                        dropdown.classList.toggle('active');
+                    }
+                });
             });
-        }
 
-        // Reduce animation for users who prefer reduced motion
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            const whatsappFloat = document.querySelector('.whatsapp-float');
-            if (whatsappFloat) {
-                whatsappFloat.style.animation = 'none';
-            }
-        }
-    });
-        // Mobile dropdown toggle
-const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-dropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            const dropdown = this.parentElement;
-            dropdown.classList.toggle('active');
-        }
-    });
-});
-
-// Prevent About dropdown from navigating when clicked on desktop
-const aboutLink = document.querySelector('.nav-item.dropdown .dropdown-toggle');
-aboutLink.addEventListener('click', function(e) {
-    if (window.innerWidth > 768) { // Only on desktop
-        e.preventDefault();
-    }
-});
-        <!-- Required: make sure these DOM elements exist in your page:
-#countrySelector, #countryDropdown, #countrySearch, #countryList,
-#selectedFlag, #selectedCode, #phone, #phoneValidation, #phoneHelpText,
-#phoneInputWrapper, #contactForm, #name, #email, #message
--->
-
-(async function() {
-  // --- Helpers --------------------------------------------------------------
-  const loadScript = (src) => new Promise((res, rej) => {
-    if (document.querySelector(`script[src="${src}"]`)) return res();
-    const s = document.createElement('script');
-    s.src = src;
-    s.onload = res;
-    s.onerror = rej;
-    document.head.appendChild(s);
-  });
-
-  // Load google-libphonenumber (browser bundle) via unpkg
-  // This provides global i18n.phonenumbers.PhoneNumberUtil
-  await loadScript('https://unpkg.com/google-libphonenumber@3.2.27/dist/libphonenumber.js');
-
-  // Get PhoneNumber util instance
-  const phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
-  const phoneFormat = i18n.phonenumbers.PhoneNumberFormat;
-
-  // Fetch RestCountries v3.1 data
-  const restUrl = 'https://restcountries.com/v3.1/all?fields=name,cca2,flags,idd,unMember';
-  const restResp = await fetch(restUrl);
-  if (!restResp.ok) throw new Error('Failed to fetch countries from RestCountries API');
-  const restData = await restResp.json();
-
-  // Build countries list. Keep only UN members (193) + VA and PS to make 195.
-  const includeExtra = ['VA', 'PS']; // Vatican & Palestine
-  const filtered = restData
-    .filter(c => c.unMember === true || includeExtra.includes(c.cca2))
-    .map(c => {
-      // Build dial code: idd.root (like "+1") + first suffix (if any)
-      let dialCode = '';
-      if (c.idd && c.idd.root) {
-        if (Array.isArray(c.idd.suffixes) && c.idd.suffixes.length > 0) {
-          // some countries have multiple suffixes; use the first non-empty suffix
-          const s = c.idd.suffixes.find(x => x && x.length) || '';
-          dialCode = `${c.idd.root}${s}`;
-        } else {
-          dialCode = c.idd.root;
-        }
-      }
-      // sometimes idd.root is empty; leave dialCode as empty string
-      return {
-        code: c.cca2 || '',
-        name: c.name && c.name.common ? c.name.common : c.name,
-        dialCode: dialCode,
-        flag: (c.flags && (c.flags.svg || c.flags.png)) || ''
-      };
-    })
-    // sort alphabetically by name for UI stability
-    .sort((a,b) => a.name.localeCompare(b.name));
-
-  // If filtered length is not 195, still continue but log
-  if (filtered.length !== 195) {
-    console.warn('Country list length (filtered) is', filtered.length, '- expected 195. Using RESTCountries result anyway.');
-  }
-
-  // --- DOM references ------------------------------------------------------
-  const countrySelector = document.getElementById('countrySelector');
-  const countryDropdown = document.getElementById('countryDropdown');
-  const countrySearch = document.getElementById('countrySearch');
-  const countryList = document.getElementById('countryList');
-  const selectedFlag = document.getElementById('selectedFlag');
-  const selectedCode = document.getElementById('selectedCode');
-  const phoneInput = document.getElementById('phone');
-  const phoneValidation = document.getElementById('phoneValidation');
-  const phoneHelpText = document.getElementById('phoneHelpText');
-  const phoneInputWrapper = document.getElementById('phoneInputWrapper');
-  const contactForm = document.getElementById('contactForm');
-
-  // --- State ---------------------------------------------------------------
-  let countryData = filtered;        // full set
-  let selectedCountry = countryData[0];
-
-  // --- UI render -----------------------------------------------------------
-  function populateCountryList(countries = countryData) {
-    countryList.innerHTML = '';
-    for (const country of countries) {
-      const div = document.createElement('div');
-      div.className = 'country-item';
-      if (country.code === selectedCountry.code) div.classList.add('active');
-
-      div.innerHTML = `
-        <img src="${country.flag}" class="country-item-flag" alt="${country.name} flag" onerror="this.style.visibility='hidden'">
-        <span class="country-item-name">${country.name}</span>
-        <span class="country-item-code">${country.dialCode || ''}</span>
-      `;
-
-      div.addEventListener('click', () => {
-        selectCountry(country);
-        closeDropdown();
-      });
-
-      countryList.appendChild(div);
-    }
-  }
-
-  function selectCountry(country) {
-    selectedCountry = country;
-    selectedFlag.src = country.flag || '';
-    selectedFlag.alt = country.name + ' flag';
-    selectedCode.textContent = country.dialCode || '';
-    // update active class
-    document.querySelectorAll('.country-item').forEach(it => it.classList.remove('active'));
-    // update validation (re-validate current phone)
-    validatePhoneNumber();
-    populateCountryList();
-  }
-
-  function openDropdown() {
-    countryDropdown.classList.add('active');
-    countrySelector.classList.add('active');
-    if (countrySearch) countrySearch.focus();
-  }
-  function closeDropdown() {
-    countryDropdown.classList.remove('active');
-    countrySelector.classList.remove('active');
-    if (countrySearch) countrySearch.value = '';
-    populateCountryList();
-  }
-
-  function filterCountries() {
-    const term = (countrySearch.value || '').toLowerCase().trim();
-    const filtered = countryData.filter(c =>
-      c.name.toLowerCase().includes(term) ||
-      (c.dialCode || '').includes(term) ||
-      (c.code || '').toLowerCase() === term
-    );
-    populateCountryList(filtered);
-  }
-
-  // --- Validation using google-libphonenumber ------------------------------
-  // returns { valid: bool, formatted: string|null, reason: string|null }
-  function validateWithLib(numberRaw, countryCode) {
-    try {
-      // phoneUtil.parse requires region code like 'TZ', optional leading plus OK.
-      const parsed = phoneUtil.parseAndKeepRawInput(numberRaw || '', countryCode || '');
-      // isPossibleNumber checks length/structure; isValidNumber checks according to region rules
-      const isValid = phoneUtil.isValidNumberForRegion(parsed, countryCode) || phoneUtil.isValidNumber(parsed);
-      const formatted = isValid ? phoneUtil.format(parsed, phoneFormat.INTERNATIONAL) : null;
-      return { valid: !!isValid, formatted, reason: isValid ? null : 'Invalid according to libphonenumber' };
-    } catch (err) {
-      // parse error - not a valid number
-      return { valid: false, formatted: null, reason: err && err.message ? err.message : 'Parse error' };
-    }
-  }
-
-  function validatePhoneNumber() {
-    const phoneNumberRaw = phoneInput.value.trim();
-    const region = (selectedCountry && selectedCountry.code) ? selectedCountry.code : '';
-    const dialPrefix = selectedCountry && selectedCountry.dialCode ? selectedCountry.dialCode : '';
-
-    if (phoneNumberRaw === '') {
-      phoneInputWrapper.classList.remove('valid', 'invalid');
-      phoneValidation.className = 'phone-validation';
-      phoneHelpText.className = 'phone-help-text';
-      phoneHelpText.textContent = 'Enter a phone number';
-      return false;
-    }
-
-    // If user typed local number without leading +, try with region to validate.
-    // If they provided an international number starting with +, parse directly.
-    const candidate = phoneNumberRaw.startsWith('+') ? phoneNumberRaw : (dialPrefix ? (dialPrefix + phoneNumberRaw.replace(/^0+/, '')) : phoneNumberRaw);
-
-    const result = validateWithLib(candidate, region);
-
-    if (result.valid) {
-      phoneInputWrapper.classList.remove('invalid');
-      phoneInputWrapper.classList.add('valid');
-      phoneValidation.className = 'phone-validation valid';
-      phoneHelpText.className = 'phone-help-text valid';
-      phoneHelpText.textContent = `Valid ${selectedCountry.name} number: ${result.formatted}`;
-      phoneValidation.innerHTML = '<i class="fas fa-check-circle"></i>';
-      return true;
-    } else {
-      phoneInputWrapper.classList.remove('valid');
-      phoneInputWrapper.classList.add('invalid');
-      phoneValidation.className = 'phone-validation invalid';
-      phoneValidation.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
-      phoneHelpText.className = 'phone-help-text invalid';
-      phoneHelpText.textContent = `Invalid number. ${result.reason || ''}`.trim();
-      return false;
-    }
-  }
-
-  // --- Geolocation (IP) to auto-select country -----------------------------
-  // Primary: ipapi.co/json  (no API key for basic use). Fallback: ip-api.com/json
-  async function detectCountryByIP() {
-    const tryEndpoints = [
-      'https://ipapi.co/json/',
-      'https://ip-api.com/json/'
-    ];
-    for (const url of tryEndpoints) {
-      try {
-        const r = await fetch(url, {cache: 'no-store'});
-        if (!r.ok) continue;
-        const j = await r.json();
-        // ipapi.co returns country (name) and country_code or country_code_iso3 etc.
-        const code = j.country_code || j.countryCode || j.country || null;
-        if (!code) continue;
-        // Normalize to 2-letter code
-        const countryCode = (code.length === 2) ? code.toUpperCase() :
-                            (j.country_code && j.country_code.length===2 ? j.country_code.toUpperCase() : null);
-        if (countryCode) return countryCode;
-      } catch (e) {
-        // try next
-      }
-    }
-    return null;
-  }
-
-  // --- Initialization and event wiring ------------------------------------
-  function initUI() {
-    populateCountryList();
-
-    if (countrySelector) {
-      countrySelector.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (countryDropdown.classList.contains('active')) closeDropdown(); else openDropdown();
-      });
-    }
-    if (countrySearch) countrySearch.addEventListener('input', filterCountries);
-    if (phoneInput) {
-      phoneInput.addEventListener('input', validatePhoneNumber);
-      phoneInput.addEventListener('focus', () => phoneInputWrapper && phoneInputWrapper.classList.add('focused'));
-      phoneInput.addEventListener('blur', () => phoneInputWrapper && phoneInputWrapper.classList.remove('focused'));
-    }
-    document.addEventListener('click', (e) => {
-      if (!countryDropdown.contains(e.target) && !countrySelector.contains(e.target)) closeDropdown();
-    });
-
-    // set default to first (will be overwritten by IP detection)
-    selectCountry(countryData[0]);
-  }
-
-  // --- Form submit handling -----------------------------------------------
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name')?.value || '';
-      const email = document.getElementById('email')?.value || '';
-      const message = document.getElementById('message')?.value || '';
-      const phoneValid = validatePhoneNumber();
-
-      if (!name || !email || !message || !phoneValid) {
-        showNotification && showNotification('Please fill in all required fields correctly.', 'error');
-        return;
-      }
-
-      // Build payload
-      const payload = {
-        name, email, message,
-        phone: (selectedCountry.dialCode || '') + phoneInput.value.replace(/\D+/g,'')
-      };
-
-      // Example: POST to your backend endpoint. Replace '/contact' with your endpoint.
-      fetch('/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      })
-      .then(r => {
-        if (!r.ok) throw new Error('Server error');
-        showNotification && showNotification('Thank you for your message! We will reply soon.', 'success');
-        contactForm.reset();
-        // reset phone input UI
-        selectCountry(countryData[0]);
-        phoneInput.value = '';
-        validatePhoneNumber();
-      })
-      .catch(err => {
-        console.error(err);
-        showNotification && showNotification('Failed to send message. Try again later.', 'error');
-      });
-    });
-  }
-
-  // --- Run startup: detect IP country then init UI -------------------------
-  initUI();
-  try {
-    const detected = await detectCountryByIP();
-    if (detected) {
-      // find matching country by cca2
-      const match = countryData.find(c => c.code === detected.toUpperCase());
-      if (match) selectCountry(match);
-    }
-  } catch (e) {
-    console.warn('IP detection failed', e);
-  }
-
-  // --- small helper used in example (if not present on page) --------------
-  // Minimal notification stub if page doesn't provide one.
-  if (typeof showNotification !== 'function') {
-    window.showNotification = (msg, type) => {
-      // simple ephemeral banner
-      const el = document.createElement('div');
-      el.textContent = msg;
-      el.style.position = 'fixed';
-      el.style.right = '16px';
-      el.style.top = '16px';
-      el.style.padding = '10px 14px';
-      el.style.background = type === 'success' ? '#22c55e' : '#ef4444';
-      el.style.color = '#fff';
-      el.style.zIndex = 9999;
-      el.style.borderRadius = '6px';
-      document.body.appendChild(el);
-      setTimeout(()=>el.remove(), 3500);
-    };
-  }
-
-})(); // end IIFE
+            // Prevent About dropdown from navigating when clicked on desktop
+            const aboutLink = document.querySelector('.nav-item.dropdown .dropdown-toggle');
+            aboutLink.addEventListener('click', function(e) {
+                if (window.innerWidth > 768) { // Only on desktop
+                    e.preventDefault();
+                }
+            });
+        });
     </script>
 </body>
 </html>
