@@ -1131,6 +1131,217 @@
                 opacity: 0;
             }
         }
+                /* Phone Input Styles */
+        .phone-input-container {
+            position: relative;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .phone-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--light-dark);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition-slow);
+            background: var(--white);
+        }
+        
+        .phone-input-wrapper:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(155, 27, 48, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .phone-input-wrapper.valid {
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+        
+        .phone-input-wrapper.invalid {
+            border-color: #f44336;
+            box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
+        }
+        
+        .country-selector {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md);
+            background: var(--light);
+            cursor: pointer;
+            border-right: 1px solid var(--light-dark);
+            transition: var(--transition-normal);
+            min-width: 120px;
+        }
+        
+        .country-selector:hover {
+            background: var(--light-dark);
+        }
+        
+        .country-flag {
+            width: 20px;
+            height: 15px;
+            margin-right: var(--spacing-sm);
+            border-radius: 2px;
+            box-shadow: 0 0 1px rgba(0,0,0,0.3);
+        }
+        
+        .country-code {
+            font-weight: 500;
+            color: var(--dark);
+            margin-right: var(--spacing-sm);
+        }
+        
+        .country-dropdown-arrow {
+            color: var(--dark-light);
+            transition: var(--transition-fast);
+        }
+        
+        .country-selector.active .country-dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .phone-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: var(--spacing-md);
+            font-family: inherit;
+            font-size: 1rem;
+            background: transparent;
+        }
+        
+        .phone-validation {
+            position: absolute;
+            right: var(--spacing-md);
+            color: #4CAF50;
+            opacity: 0;
+            transition: var(--transition-normal);
+        }
+        
+        .phone-validation.valid {
+            opacity: 1;
+        }
+        
+        .phone-validation.invalid {
+            color: #f44336;
+            opacity: 1;
+        }
+        
+        .country-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            border: 1px solid var(--light-dark);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            max-height: 300px;
+            overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition-normal);
+        }
+        
+        .country-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .country-search {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--light-dark);
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 10;
+        }
+        
+        .country-search-input {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 1px solid var(--light-dark);
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+        
+        .country-search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .country-list {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        
+        .country-item {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-sm) var(--spacing-md);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        
+        .country-item:hover {
+            background: var(--light);
+        }
+        
+        .country-item.active {
+            background: rgba(155, 27, 48, 0.1);
+        }
+        
+        .country-item-flag {
+            width: 20px;
+            height: 15px;
+            margin-right: var(--spacing-sm);
+            border-radius: 2px;
+            box-shadow: 0 0 1px rgba(0,0,0,0.3);
+        }
+        
+        .country-item-name {
+            flex: 1;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        .country-item-code {
+            font-size: 0.9rem;
+            color: var(--dark-light);
+            font-weight: 500;
+        }
+        
+        .phone-help-text {
+            font-size: 0.8rem;
+            color: var(--dark-light);
+            margin-top: var(--spacing-xs);
+            display: block;
+        }
+        
+        .phone-help-text.valid {
+            color: #4CAF50;
+        }
+        
+        .phone-help-text.invalid {
+            color: #f44336;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .country-selector {
+                min-width: 100px;
+            }
+            
+            .country-code {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1176,7 +1387,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+<!-- Contact Section -->
     <section id="contact" class="section contact-section">
         <div class="container">
             <div class="section-title">
@@ -1234,33 +1445,23 @@
                         </div>
                     </div>
                     
-                  <div class="social-links">
-    <a href="https://www.facebook.com/share/17XqtALBGo/" 
-       class="social-link" target="_blank" aria-label="Facebook">
-        <i class="fab fa-facebook-f"></i>
-    </a>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/17XqtALBGo/" 
+                           class="social-link" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
 
-   <a href="https://www.threads.net/@lik_and_lambert_consultants" 
-   class="social-link" target="_blank" aria-label="Threads">
-    <i class="fab fa-threads"></i>
-</a>
+                        <a href="https://www.threads.net/@lik_and_lambert_consultants" 
+                           class="social-link" target="_blank" aria-label="Threads">
+                            <i class="fab fa-threads"></i>
+                        </a>
 
-
-    <a href="https://www.instagram.com/lik_and_lambert_consultants?igsh=MzU4c3k4eDYwNmg3" 
-       class="social-link" target="_blank" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-    </a>
-</div>
+                        <a href="https://www.instagram.com/lik_and_lambert_consultants?igsh=MzU4c3k4eDYwNmg3" 
+                           class="social-link" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
-            <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/255744435343?text=Hello%20LIK%20%26%20LAMBERT%20CONSULTANTS,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services"
-   class="whatsapp-float"
-   target="_blank"
-   aria-label="Contact us on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    <span class="whatsapp-tooltip">Chat with us on WhatsApp!</span>
-</a>
-
                 
                 <div class="contact-form slide-in-right" id="contact-form">
                     <h3>Send Us a Message</h3>
@@ -1276,8 +1477,28 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control">
+                            <label class="form-label">Phone Number</label>
+                            <div class="phone-input-container">
+                                <div class="phone-input-wrapper" id="phoneInputWrapper">
+                                    <div class="country-selector" id="countrySelector">
+                                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCAzMCI+PHJlY3Qgd2lkdGg9IjYwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjZmZmIi8+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjE1IiBmaWxsPSIjMDA3MmNjIi8+PHJlY3QgeD0iMCIgeT0iMTUiIHdpZHRoPSI2MCIgaGVpZ2h0PSIxNSIgZmlsbD0iIzAwNzJjYyIvPjxwYXRoIGQ9Ik0wIDBoNjB2MzBIMHoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+" class="country-flag" id="selectedFlag">
+                                        <span class="country-code" id="selectedCode">+255</span>
+                                        <i class="fas fa-chevron-down country-dropdown-arrow"></i>
+                                    </div>
+                                    <input type="tel" id="phone" class="phone-input" placeholder="Enter phone number">
+                                    <i class="fas fa-check-circle phone-validation" id="phoneValidation"></i>
+                                </div>
+                                <span class="phone-help-text" id="phoneHelpText">Enter a valid phone number</span>
+                                
+                                <div class="country-dropdown" id="countryDropdown">
+                                    <div class="country-search">
+                                        <input type="text" class="country-search-input" id="countrySearch" placeholder="Search countries...">
+                                    </div>
+                                    <div class="country-list" id="countryList">
+                                        <!-- Country list will be populated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="form-group">
@@ -1311,6 +1532,15 @@
         </div>
     </section>
 
+      <!-- WhatsApp Floating Button -->
+<a href="https://wa.me/255744435343?text=Hello%20LIK%20%26%20LAMBERT%20CONSULTANTS,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Contact us on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chat with us on WhatsApp!</span>
+</a>
+    
     <!-- Map Section -->
     <section class="map-section">
         <div class="map-container">
@@ -1632,6 +1862,323 @@ aboutLink.addEventListener('click', function(e) {
         e.preventDefault();
     }
 });
+        <!-- Required: make sure these DOM elements exist in your page:
+#countrySelector, #countryDropdown, #countrySearch, #countryList,
+#selectedFlag, #selectedCode, #phone, #phoneValidation, #phoneHelpText,
+#phoneInputWrapper, #contactForm, #name, #email, #message
+-->
+
+(async function() {
+  // --- Helpers --------------------------------------------------------------
+  const loadScript = (src) => new Promise((res, rej) => {
+    if (document.querySelector(`script[src="${src}"]`)) return res();
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = res;
+    s.onerror = rej;
+    document.head.appendChild(s);
+  });
+
+  // Load google-libphonenumber (browser bundle) via unpkg
+  // This provides global i18n.phonenumbers.PhoneNumberUtil
+  await loadScript('https://unpkg.com/google-libphonenumber@3.2.27/dist/libphonenumber.js');
+
+  // Get PhoneNumber util instance
+  const phoneUtil = i18n.phonenumbers.PhoneNumberUtil.getInstance();
+  const phoneFormat = i18n.phonenumbers.PhoneNumberFormat;
+
+  // Fetch RestCountries v3.1 data
+  const restUrl = 'https://restcountries.com/v3.1/all?fields=name,cca2,flags,idd,unMember';
+  const restResp = await fetch(restUrl);
+  if (!restResp.ok) throw new Error('Failed to fetch countries from RestCountries API');
+  const restData = await restResp.json();
+
+  // Build countries list. Keep only UN members (193) + VA and PS to make 195.
+  const includeExtra = ['VA', 'PS']; // Vatican & Palestine
+  const filtered = restData
+    .filter(c => c.unMember === true || includeExtra.includes(c.cca2))
+    .map(c => {
+      // Build dial code: idd.root (like "+1") + first suffix (if any)
+      let dialCode = '';
+      if (c.idd && c.idd.root) {
+        if (Array.isArray(c.idd.suffixes) && c.idd.suffixes.length > 0) {
+          // some countries have multiple suffixes; use the first non-empty suffix
+          const s = c.idd.suffixes.find(x => x && x.length) || '';
+          dialCode = `${c.idd.root}${s}`;
+        } else {
+          dialCode = c.idd.root;
+        }
+      }
+      // sometimes idd.root is empty; leave dialCode as empty string
+      return {
+        code: c.cca2 || '',
+        name: c.name && c.name.common ? c.name.common : c.name,
+        dialCode: dialCode,
+        flag: (c.flags && (c.flags.svg || c.flags.png)) || ''
+      };
+    })
+    // sort alphabetically by name for UI stability
+    .sort((a,b) => a.name.localeCompare(b.name));
+
+  // If filtered length is not 195, still continue but log
+  if (filtered.length !== 195) {
+    console.warn('Country list length (filtered) is', filtered.length, '- expected 195. Using RESTCountries result anyway.');
+  }
+
+  // --- DOM references ------------------------------------------------------
+  const countrySelector = document.getElementById('countrySelector');
+  const countryDropdown = document.getElementById('countryDropdown');
+  const countrySearch = document.getElementById('countrySearch');
+  const countryList = document.getElementById('countryList');
+  const selectedFlag = document.getElementById('selectedFlag');
+  const selectedCode = document.getElementById('selectedCode');
+  const phoneInput = document.getElementById('phone');
+  const phoneValidation = document.getElementById('phoneValidation');
+  const phoneHelpText = document.getElementById('phoneHelpText');
+  const phoneInputWrapper = document.getElementById('phoneInputWrapper');
+  const contactForm = document.getElementById('contactForm');
+
+  // --- State ---------------------------------------------------------------
+  let countryData = filtered;        // full set
+  let selectedCountry = countryData[0];
+
+  // --- UI render -----------------------------------------------------------
+  function populateCountryList(countries = countryData) {
+    countryList.innerHTML = '';
+    for (const country of countries) {
+      const div = document.createElement('div');
+      div.className = 'country-item';
+      if (country.code === selectedCountry.code) div.classList.add('active');
+
+      div.innerHTML = `
+        <img src="${country.flag}" class="country-item-flag" alt="${country.name} flag" onerror="this.style.visibility='hidden'">
+        <span class="country-item-name">${country.name}</span>
+        <span class="country-item-code">${country.dialCode || ''}</span>
+      `;
+
+      div.addEventListener('click', () => {
+        selectCountry(country);
+        closeDropdown();
+      });
+
+      countryList.appendChild(div);
+    }
+  }
+
+  function selectCountry(country) {
+    selectedCountry = country;
+    selectedFlag.src = country.flag || '';
+    selectedFlag.alt = country.name + ' flag';
+    selectedCode.textContent = country.dialCode || '';
+    // update active class
+    document.querySelectorAll('.country-item').forEach(it => it.classList.remove('active'));
+    // update validation (re-validate current phone)
+    validatePhoneNumber();
+    populateCountryList();
+  }
+
+  function openDropdown() {
+    countryDropdown.classList.add('active');
+    countrySelector.classList.add('active');
+    if (countrySearch) countrySearch.focus();
+  }
+  function closeDropdown() {
+    countryDropdown.classList.remove('active');
+    countrySelector.classList.remove('active');
+    if (countrySearch) countrySearch.value = '';
+    populateCountryList();
+  }
+
+  function filterCountries() {
+    const term = (countrySearch.value || '').toLowerCase().trim();
+    const filtered = countryData.filter(c =>
+      c.name.toLowerCase().includes(term) ||
+      (c.dialCode || '').includes(term) ||
+      (c.code || '').toLowerCase() === term
+    );
+    populateCountryList(filtered);
+  }
+
+  // --- Validation using google-libphonenumber ------------------------------
+  // returns { valid: bool, formatted: string|null, reason: string|null }
+  function validateWithLib(numberRaw, countryCode) {
+    try {
+      // phoneUtil.parse requires region code like 'TZ', optional leading plus OK.
+      const parsed = phoneUtil.parseAndKeepRawInput(numberRaw || '', countryCode || '');
+      // isPossibleNumber checks length/structure; isValidNumber checks according to region rules
+      const isValid = phoneUtil.isValidNumberForRegion(parsed, countryCode) || phoneUtil.isValidNumber(parsed);
+      const formatted = isValid ? phoneUtil.format(parsed, phoneFormat.INTERNATIONAL) : null;
+      return { valid: !!isValid, formatted, reason: isValid ? null : 'Invalid according to libphonenumber' };
+    } catch (err) {
+      // parse error - not a valid number
+      return { valid: false, formatted: null, reason: err && err.message ? err.message : 'Parse error' };
+    }
+  }
+
+  function validatePhoneNumber() {
+    const phoneNumberRaw = phoneInput.value.trim();
+    const region = (selectedCountry && selectedCountry.code) ? selectedCountry.code : '';
+    const dialPrefix = selectedCountry && selectedCountry.dialCode ? selectedCountry.dialCode : '';
+
+    if (phoneNumberRaw === '') {
+      phoneInputWrapper.classList.remove('valid', 'invalid');
+      phoneValidation.className = 'phone-validation';
+      phoneHelpText.className = 'phone-help-text';
+      phoneHelpText.textContent = 'Enter a phone number';
+      return false;
+    }
+
+    // If user typed local number without leading +, try with region to validate.
+    // If they provided an international number starting with +, parse directly.
+    const candidate = phoneNumberRaw.startsWith('+') ? phoneNumberRaw : (dialPrefix ? (dialPrefix + phoneNumberRaw.replace(/^0+/, '')) : phoneNumberRaw);
+
+    const result = validateWithLib(candidate, region);
+
+    if (result.valid) {
+      phoneInputWrapper.classList.remove('invalid');
+      phoneInputWrapper.classList.add('valid');
+      phoneValidation.className = 'phone-validation valid';
+      phoneHelpText.className = 'phone-help-text valid';
+      phoneHelpText.textContent = `Valid ${selectedCountry.name} number: ${result.formatted}`;
+      phoneValidation.innerHTML = '<i class="fas fa-check-circle"></i>';
+      return true;
+    } else {
+      phoneInputWrapper.classList.remove('valid');
+      phoneInputWrapper.classList.add('invalid');
+      phoneValidation.className = 'phone-validation invalid';
+      phoneValidation.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
+      phoneHelpText.className = 'phone-help-text invalid';
+      phoneHelpText.textContent = `Invalid number. ${result.reason || ''}`.trim();
+      return false;
+    }
+  }
+
+  // --- Geolocation (IP) to auto-select country -----------------------------
+  // Primary: ipapi.co/json  (no API key for basic use). Fallback: ip-api.com/json
+  async function detectCountryByIP() {
+    const tryEndpoints = [
+      'https://ipapi.co/json/',
+      'https://ip-api.com/json/'
+    ];
+    for (const url of tryEndpoints) {
+      try {
+        const r = await fetch(url, {cache: 'no-store'});
+        if (!r.ok) continue;
+        const j = await r.json();
+        // ipapi.co returns country (name) and country_code or country_code_iso3 etc.
+        const code = j.country_code || j.countryCode || j.country || null;
+        if (!code) continue;
+        // Normalize to 2-letter code
+        const countryCode = (code.length === 2) ? code.toUpperCase() :
+                            (j.country_code && j.country_code.length===2 ? j.country_code.toUpperCase() : null);
+        if (countryCode) return countryCode;
+      } catch (e) {
+        // try next
+      }
+    }
+    return null;
+  }
+
+  // --- Initialization and event wiring ------------------------------------
+  function initUI() {
+    populateCountryList();
+
+    if (countrySelector) {
+      countrySelector.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (countryDropdown.classList.contains('active')) closeDropdown(); else openDropdown();
+      });
+    }
+    if (countrySearch) countrySearch.addEventListener('input', filterCountries);
+    if (phoneInput) {
+      phoneInput.addEventListener('input', validatePhoneNumber);
+      phoneInput.addEventListener('focus', () => phoneInputWrapper && phoneInputWrapper.classList.add('focused'));
+      phoneInput.addEventListener('blur', () => phoneInputWrapper && phoneInputWrapper.classList.remove('focused'));
+    }
+    document.addEventListener('click', (e) => {
+      if (!countryDropdown.contains(e.target) && !countrySelector.contains(e.target)) closeDropdown();
+    });
+
+    // set default to first (will be overwritten by IP detection)
+    selectCountry(countryData[0]);
+  }
+
+  // --- Form submit handling -----------------------------------------------
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name')?.value || '';
+      const email = document.getElementById('email')?.value || '';
+      const message = document.getElementById('message')?.value || '';
+      const phoneValid = validatePhoneNumber();
+
+      if (!name || !email || !message || !phoneValid) {
+        showNotification && showNotification('Please fill in all required fields correctly.', 'error');
+        return;
+      }
+
+      // Build payload
+      const payload = {
+        name, email, message,
+        phone: (selectedCountry.dialCode || '') + phoneInput.value.replace(/\D+/g,'')
+      };
+
+      // Example: POST to your backend endpoint. Replace '/contact' with your endpoint.
+      fetch('/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(r => {
+        if (!r.ok) throw new Error('Server error');
+        showNotification && showNotification('Thank you for your message! We will reply soon.', 'success');
+        contactForm.reset();
+        // reset phone input UI
+        selectCountry(countryData[0]);
+        phoneInput.value = '';
+        validatePhoneNumber();
+      })
+      .catch(err => {
+        console.error(err);
+        showNotification && showNotification('Failed to send message. Try again later.', 'error');
+      });
+    });
+  }
+
+  // --- Run startup: detect IP country then init UI -------------------------
+  initUI();
+  try {
+    const detected = await detectCountryByIP();
+    if (detected) {
+      // find matching country by cca2
+      const match = countryData.find(c => c.code === detected.toUpperCase());
+      if (match) selectCountry(match);
+    }
+  } catch (e) {
+    console.warn('IP detection failed', e);
+  }
+
+  // --- small helper used in example (if not present on page) --------------
+  // Minimal notification stub if page doesn't provide one.
+  if (typeof showNotification !== 'function') {
+    window.showNotification = (msg, type) => {
+      // simple ephemeral banner
+      const el = document.createElement('div');
+      el.textContent = msg;
+      el.style.position = 'fixed';
+      el.style.right = '16px';
+      el.style.top = '16px';
+      el.style.padding = '10px 14px';
+      el.style.background = type === 'success' ? '#22c55e' : '#ef4444';
+      el.style.color = '#fff';
+      el.style.zIndex = 9999;
+      el.style.borderRadius = '6px';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(), 3500);
+    };
+  }
+
+})(); // end IIFE
     </script>
 </body>
 </html>
