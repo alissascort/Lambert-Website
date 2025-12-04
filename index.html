@@ -1219,26 +1219,6 @@
             transform: scale(1);
         }
 
-        /* Number Counter Animation Styles */
-        .counter-number {
-            transition: transform 0.3s var(--bounce), color 0.3s ease;
-            display: inline-block;
-        }
-
-        .counter-container {
-            display: inline-block;
-        }
-
-        @keyframes numberPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .counter-complete {
-            animation: numberPulse 0.5s var(--bounce);
-        }
-
         /* Responsive Design */
         @media (max-width: 992px) {
             /* Stack hero content on tablets */
@@ -1422,7 +1402,7 @@
     </section>
   
     <!-- Added statistics section similar to bello.png -->
-    <!-- Statistics Section with Animated Numbers -->
+    <!-- Statistics Section -->
     <section class="section" style="background: var(--white); padding: calc(var(--spacing-xxl) * 1.5) 0;">
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--spacing-xxl) * 2); align-items: center;">
@@ -1442,31 +1422,23 @@
                 </div>
             </div>
             
-            <!-- Statistics grid with animation-ready elements -->
+            <!-- Statistics grid -->
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-xxl); margin-top: calc(var(--spacing-xxl) * 1.5); padding-top: calc(var(--spacing-xxl) * 1.5); border-top: 1px solid var(--light-dark);">
                 <!-- Stat 1 -->
                 <div style="border-left: 3px solid var(--light-dark); padding-left: var(--spacing-lg);">
-                    <div class="counter-container" data-target="15">
-                        <span class="counter-number" style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md); display: block;">0</span>
-                        <span style="font-size: 3rem; color: var(--primary);">+</span>
-                    </div>
+                    <div style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md);">15<span style="font-size: 3rem;">+</span></div>
                     <p style="font-size: 1.1rem; color: var(--dark); margin: 0;">Years in Business</p>
                 </div>
                 
                 <!-- Stat 2 -->
                 <div style="border-left: 3px solid var(--light-dark); padding-left: var(--spacing-lg);">
-                    <div class="counter-container" data-target="100">
-                        <span class="counter-number" style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md); display: block;">0</span>
-                        <span style="font-size: 3rem; color: var(--primary);">+</span>
-                    </div>
+                    <div style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md);">100<span style="font-size: 3rem;">+</span></div>
                     <p style="font-size: 1.1rem; color: var(--dark); margin: 0;">Satisfied Clients</p>
                 </div>
                 
                 <!-- Stat 3 -->
                 <div style="border-left: 3px solid var(--light-dark); padding-left: var(--spacing-lg);">
-                    <div class="counter-container" data-target="6">
-                        <span class="counter-number" style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md); display: block;">0</span>
-                    </div>
+                    <div style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md);">6</div>
                     <p style="font-size: 1.1rem; color: var(--dark); margin: 0;">Service Offerings</p>
                 </div>
             </div>
@@ -1750,69 +1722,6 @@
                     }
                 });
             }
-            
-            // Number Counter Animation Function
-            function animateCounter() {
-                const counters = document.querySelectorAll('.counter-container');
-                const speed = 80; // Lower = faster animation (80ms per increment)
-                
-                counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    const numberElement = counter.querySelector('.counter-number');
-                    let current = 0;
-                    
-                    // Calculate increment based on target value for optimal speed
-                    const increment = Math.max(1, Math.ceil(target / 25)); // Will complete in ~25 steps
-                    
-                    const updateCounter = () => {
-                        current += increment;
-                        
-                        // If we've reached or passed the target
-                        if (current >= target) {
-                            current = target;
-                            numberElement.textContent = current;
-                            
-                            // Add visual effect when complete
-                            numberElement.classList.add('counter-complete');
-                            
-                            // For the 100+ counter, ensure we show the plus sign after animation
-                            if (target === 100) {
-                                counter.querySelector('span[style*="font-size: 3rem"]').style.opacity = '1';
-                            }
-                        } else {
-                            numberElement.textContent = current;
-                            setTimeout(updateCounter, speed);
-                        }
-                    };
-                    
-                    // Start animation with a slight delay for dramatic effect
-                    setTimeout(updateCounter, 300);
-                });
-            }
-            
-            // Add Intersection Observer to trigger animation when statistics section is in view
-            const statsSection = document.querySelector('.section[style*="background: var(--white)"]');
-            let hasAnimated = false;
-            
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        animateCounter();
-                        hasAnimated = true;
-                    }
-                });
-            }, {
-                threshold: 0.2, // Trigger when 20% of the section is visible
-                rootMargin: '0px 0px -50px 0px'
-            });
-            
-            if (statsSection) {
-                statsObserver.observe(statsSection);
-            }
-            
-            // Alternative: Trigger animation immediately on page load
-            // Uncomment the line below if you want the animation to start immediately when page loads
-            // animateCounter();
         });
     </script>
 </body>
