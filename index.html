@@ -213,7 +213,7 @@
             padding: var(--spacing-lg);
         }
 
-        /* Navigation */
+        /* Navigation - FIXED */
         .navbar {
             position: fixed;
             top: 0;
@@ -266,6 +266,9 @@
 
         .nav-item {
             margin: 0 var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
 
         .nav-link {
@@ -274,6 +277,10 @@
             border-radius: var(--radius-md);
             position: relative;
             transition: var(--transition-slow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
 
         .nav-link::after {
@@ -302,7 +309,7 @@
             color: var(--primary);
         }
         
-        /* Dropdown Styles */
+        /* Dropdown Styles - FIXED */
         .nav-item.dropdown {
             position: relative;
         }
@@ -310,31 +317,35 @@
         .nav-link.dropdown-toggle {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
+            padding-right: var(--spacing-lg); /* Added space for dropdown arrow */
         }
         
+        /* Fixed dropdown arrow - now positioned on the right side */
         .dropdown-toggle::after {
             content: '';
             display: inline-block;
             width: 0;
             height: 0;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-top: 4px solid currentColor;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid currentColor;
             transition: var(--transition-fast);
             opacity: 0.7;
+            margin-left: 4px;
+            margin-top: 2px; /* Slight adjustment for perfect alignment */
         }
         
         .nav-link.dropdown-toggle:hover::after {
             opacity: 1;
-            transform: translateY(1px);
+            transform: translateY(2px);
         }
         
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
-            min-width: 180px;
+            min-width: 220px;
             background: var(--white);
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-lg);
@@ -359,6 +370,7 @@
             color: var(--dark);
             transition: var(--transition-fast);
             font-weight: 500;
+            white-space: nowrap;
         }
         
         .dropdown-item:hover {
@@ -1327,7 +1339,7 @@
     </style>
 </head>
 <body>
-    <!-- Updated Navigation -->
+    <!-- Updated Navigation with fixes -->
     <nav class="navbar">
         <div class="container navbar-container">
             <a href="index.html" class="logo">
