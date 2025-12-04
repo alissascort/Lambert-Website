@@ -426,14 +426,13 @@
             color: var(--primary);
         }
 
-        /* Updated hero section with split layout for text left and image right */
+        /* UPDATED HERO SECTION WITH WHITE BACKGROUND */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            /* Changed background from teal/blue to red/maroon gradient to match original design */
-            background: linear-gradient(135deg, #8B1538 0%, #6B0F2A 50%, #9B1B30 100%);
-            color: var(--white);
+            background: var(--white); /* CHANGED TO WHITE */
+            color: var(--dark); /* CHANGED TEXT COLOR TO DARK FOR VISIBILITY */
             position: relative;
             overflow: hidden;
             padding-top: 80px;
@@ -446,10 +445,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%239b1b30' fill-opacity='0.05' d='M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
             background-size: cover;
             background-position: center bottom;
-            opacity: 0.2;
+            opacity: 0.3;
             animation: waveMove 20s ease-in-out infinite;
         }
 
@@ -461,10 +460,10 @@
             width: 100%;
             height: 100%;
             background-image:
-                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
-                radial-gradient(2px 2px at 40px 70px, rgba(212,175,55,0.4), transparent),
-                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.2), transparent),
-                radial-gradient(1px 1px at 130px 80px, rgba(212,175,55,0.3), transparent);
+                radial-gradient(2px 2px at 20px 30px, rgba(155, 27, 48, 0.05), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(212, 175, 55, 0.05), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(155, 27, 48, 0.03), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(212, 175, 55, 0.04), transparent);
             background-repeat: repeat;
             background-size: 200px 100px;
             animation: particleFloat 25s linear infinite;
@@ -492,7 +491,7 @@
             font-size: 3.5rem;
             margin-bottom: var(--spacing-lg);
             line-height: 1.1;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            color: var(--primary); /* Primary color for title */
             font-weight: 700;
         }
 
@@ -503,6 +502,7 @@
             min-height: 60px;
             display: flex;
             align-items: center;
+            color: var(--dark); /* Dark color for text */
         }
 
         .hero-typing-container .static-text {
@@ -510,22 +510,22 @@
         }
 
         .typing-text {
-            color: var(--secondary);
+            color: var(--primary); /* Primary color for typing text */
             font-weight: 600;
-            border-right: 3px solid var(--secondary);
+            border-right: 3px solid var(--primary);
             padding-right: 8px;
             animation: blink 0.7s step-end infinite;
         }
 
         @keyframes blink {
-            0%, 50% { border-color: var(--secondary); }
+            0%, 50% { border-color: var(--primary); }
             51%, 100% { border-color: transparent; }
         }
 
         .hero-description {
             font-size: 1.1rem;
             margin-bottom: var(--spacing-xl);
-            opacity: 0.9;
+            color: var(--dark-light); /* Dark-light color for description */
             line-height: 1.8;
         }
 
@@ -556,9 +556,9 @@
             height: calc(100% + 20px);
             background: url('LIK.jpeg') center/cover;
             /* Increased blur for softer reflection and adjusted brightness */
-            filter: blur(50px) brightness(0.5);
-            /* Increased opacity for more visible reflection */
-            opacity: 0.4;
+            filter: blur(50px) brightness(0.8);
+            /* Reduced opacity for subtle reflection on white background */
+            opacity: 0.3;
             z-index: 1;
             border-radius: var(--radius-xl);
         }
@@ -569,13 +569,14 @@
             width: 100%;
             height: auto;
             border-radius: var(--radius-xl);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             transition: var(--transition-slow);
+            border: 1px solid rgba(155, 27, 48, 0.1);
         }
 
         .hero-image:hover {
             transform: scale(1.05);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
         }
 
         /* About Section */
@@ -1371,7 +1372,7 @@
     </nav>
     
     <!-- Hero Section -->
-    <!-- Completely redesigned hero section with split layout -->
+    <!-- Completely redesigned hero section with split layout and WHITE BACKGROUND -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
