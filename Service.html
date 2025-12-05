@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Our Services - LIK & LAMBERT CONSULTANTS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Consultation Services | LIK & LAMBERT CONSULTANTS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Brand Colors */
             --primary: #9b1b30;
             --primary-dark: #7a1526;
             --primary-light: #d32f2f;
@@ -16,14 +15,17 @@
             --secondary-dark: #b8941f;
             --secondary-light: #ffd54f;
             --accent: #bfaf2a;
-            --dark: #333333;
-            --dark-light: #555555;
-            --light: #f7f7f7;
-            --light-dark: #e0e0e0;
+            --dark: #1a1a1a;
+            --dark-light: #333333;
+            --gray: #666666;
+            --light: #f8f9fa;
+            --light-dark: #e9ecef;
             --white: #ffffff;
             --black: #000000;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 
-            /* Spacing */
             --spacing-xs: 0.25rem;
             --spacing-sm: 0.5rem;
             --spacing-md: 1rem;
@@ -31,22 +33,21 @@
             --spacing-xl: 2rem;
             --spacing-xxl: 3rem;
 
-            /* Border Radius */
-            --radius-sm: 0.25rem;
-            --radius-md: 0.5rem;
-            --radius-lg: 1rem;
-            --radius-xl: 1.5rem;
+            --radius-sm: 0.5rem;
+            --radius-md: 1rem;
+            --radius-lg: 1.5rem;
+            --radius-xl: 2rem;
+            --radius-full: 9999px;
 
-            /* Shadows */
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
-            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.05);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.15);
+            --shadow-glow: 0 0 30px rgba(155, 27, 48, 0.2);
 
-            /* Transitions */
-            --transition-slow: 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-normal: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-slow: 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+            --transition-normal: 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+            --transition-fast: 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
 
         * {
@@ -57,24 +58,29 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--dark);
             background-color: var(--white);
             overflow-x: hidden;
+            font-weight: 400;
         }
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 80px;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: var(--spacing-md);
+            color: var(--dark);
         }
 
         p {
             margin-bottom: var(--spacing-md);
+            color: var(--gray);
+            font-size: 1.05rem;
         }
 
         a {
@@ -83,18 +89,19 @@
             transition: var(--transition-fast);
         }
 
-        ul {
+        ul, ol {
             list-style: none;
         }
 
         img {
             max-width: 100%;
             height: auto;
+            display: block;
         }
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 var(--spacing-md);
         }
@@ -104,78 +111,35 @@
             position: relative;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: var(--spacing-xxl);
-            position: relative;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: var(--spacing-md);
-            text-shadow: 0 2px 4px rgba(155, 27, 48, 0.1);
-        }
-
-        .section-title .divider {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
-            margin: 0 auto var(--spacing-lg);
-            border-radius: 2px;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        .section-title p {
-            font-size: 1.1rem;
-            color: var(--dark-light);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: var(--spacing-md) var(--spacing-xl);
+        /* Glass Morphism Base Classes */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
             border-radius: var(--radius-md);
-            font-weight: 600;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition-slow);
-            border: none;
-            outline: none;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--glass-shadow);
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(155, 27, 48, 0.3);
-        }
-
-        /* Navigation */
+        /* Navigation - Glass Morphism */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            box-shadow: var(--shadow-sm);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(155, 27, 48, 0.1);
             transition: var(--transition-normal);
+            box-shadow: var(--shadow-sm);
         }
 
         .navbar.scrolled {
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.95);
             box-shadow: var(--shadow-md);
+            border-bottom-color: rgba(155, 27, 48, 0.15);
         }
 
         .navbar-container {
@@ -188,7 +152,7 @@
         .logo {
             display: flex;
             align-items: center;
-            animation: logoGlow 4s ease-in-out infinite;
+            position: relative;
         }
 
         .logo img {
@@ -201,6 +165,18 @@
             transform: scale(1.05);
         }
 
+        .logo-badge {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+        }
+
         .nav-menu {
             display: flex;
             align-items: center;
@@ -208,45 +184,49 @@
 
         .nav-list {
             display: flex;
-            margin-right: var(--spacing-lg);
+            gap: var(--spacing-sm);
         }
 
         .nav-item {
-            margin: 0 var(--spacing-sm);
+            position: relative;
         }
 
         .nav-link {
             font-weight: 500;
             padding: var(--spacing-sm) var(--spacing-md);
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-sm);
+            color: var(--dark);
             position: relative;
-            transition: var(--transition-slow);
+            transition: var(--transition-fast);
+            font-size: 0.95rem;
         }
 
-        .nav-link::after {
+        .nav-link::before {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: var(--transition-slow);
-            transform: translateX(-50%);
+            transition: var(--transition-normal);
+            border-radius: 1px;
         }
 
-        .nav-link:hover::after,
-        .nav-link.active::after {
+        .nav-link:hover::before,
+        .nav-link.active::before {
             width: 80%;
         }
 
         .nav-link:hover {
             color: var(--primary);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .nav-link.active {
             color: var(--primary);
+            font-weight: 600;
         }
 
         .mobile-toggle {
@@ -257,296 +237,679 @@
             cursor: pointer;
             color: var(--dark);
             transition: var(--transition-normal);
+            z-index: 1001;
         }
 
-        .mobile-toggle:hover {
-            transform: rotate(90deg);
-            color: var(--primary);
-        }
-
-        /* Hero Section */
+        /* Hero Section - Like the Image */
         .page-hero {
-            min-height: 60vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary-light) 100%);
             color: var(--white);
             position: relative;
-            overflow: hidden;
             padding-top: 80px;
+            overflow: hidden;
         }
 
-        .page-hero::before {
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--spacing-xxl) 0;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.6;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+            margin: 0 auto var(--spacing-xl);
+            border-radius: 2px;
+        }
+
+        /* HR Content Section */
+        .hr-section {
+            background: linear-gradient(135deg, var(--light) 0%, #ffffff 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* UPDATED: Intro Block with Bouncing and Red Hover Animation */
+        .intro-block {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xxl);
+            margin-bottom: var(--spacing-xxl);
+            box-shadow: var(--shadow-lg);
+            border-left: 5px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-normal);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .intro-block::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,224C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
-            background-size: cover;
-            background-position: center bottom;
-            opacity: 0.2;
-            animation: waveMove 20s ease-in-out infinite;
+            background: var(--primary);
+            opacity: 0;
+            transition: var(--transition-normal);
+            z-index: 0;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: var(--spacing-xl) 0;
+        .intro-block:hover::before {
+            opacity: 0.1;
         }
 
-        .hero-title {
-            font-size: 3.5rem;
+        .intro-block:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(155, 27, 48, 0.15);
+        }
+
+        .intro-block h2 {
+            color: var(--primary);
+            font-size: 2.2rem;
             margin-bottom: var(--spacing-lg);
-            line-height: 1.1;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: var(--spacing-xl);
-            opacity: 0.9;
-        }
-
-        /* Services Overview */
-        .services-overview {
-            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-xl);
-        }
-
-        .service-card {
-            text-align: center;
-            padding: var(--spacing-xl);
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-slow);
-            border: 1px solid rgba(155, 27, 48, 0.1);
-            cursor: pointer;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--secondary);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            color: var(--white);
-            border-radius: 50%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--spacing-lg);
-            font-size: 2rem;
-            transition: var(--transition-slow);
-            animation: serviceFloat 4s ease-in-out infinite;
+            gap: var(--spacing-md);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-normal);
         }
 
-        .service-card:hover .service-icon {
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
-            color: var(--dark);
-            transform: scale(1.15) rotate(10deg);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        .intro-block:hover h2 {
+            color: var(--primary-dark);
+            transform: translateX(10px);
         }
 
-        .service-title {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: var(--spacing-md);
+        .intro-block h2 i {
+            color: var(--secondary);
+            transition: var(--transition-normal);
         }
 
-        .service-description {
+        .intro-block:hover h2 i {
+            color: var(--primary-dark);
+        }
+
+        .intro-block p {
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: var(--dark-light);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-normal);
         }
 
-        /* Service Detail Sections */
-        .service-detail {
-            padding: var(--spacing-xxl) 0;
+        .intro-block:hover p {
+            color: var(--dark);
         }
 
-        .service-detail:nth-child(even) {
-            background: linear-gradient(135deg, var(--light) 0%, rgba(247, 247, 247, 0.8) 100%);
+        /* UPDATED: Highlight Box with Yellow Background Animation */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(155, 27, 48, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-xxl) 0;
+            border: 1px solid rgba(155, 27, 48, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-normal);
         }
 
-        .service-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--secondary-light) 100%);
+            transition: var(--transition-slow);
+            z-index: 0;
+        }
+
+        .highlight-box:hover::before {
+            width: 100%;
+        }
+
+        .highlight-box h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: var(--spacing-md);
+            display: flex;
             align-items: center;
+            gap: var(--spacing-md);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-normal);
         }
 
-        .service-text h3 {
-            font-size: 2rem;
+        .highlight-box:hover h3 {
+            color: var(--dark);
+        }
+
+        .highlight-box h3 i {
+            color: var(--secondary);
+            transition: var(--transition-normal);
+        }
+
+        .highlight-box:hover h3 i {
+            color: var(--dark);
+        }
+
+        .highlight-box p {
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-normal);
+        }
+
+        .highlight-box:hover p {
+            color: var(--dark);
+        }
+
+        /* UPDATED: Services Gallery with More Space */
+        .services-section {
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        .services-slider-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-xl);
+        }
+
+        .slider-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            background: linear-gradient(135deg, var(--light) 0%, #ffffff 100%);
+            height: 600px; /* Increased height */
+        }
+
+        .slider-track {
+            display: flex;
+            transition: var(--transition-slow);
+            height: 100%;
+        }
+
+        .service-slide {
+            min-width: 100%;
+            padding: var(--spacing-xxl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--spacing-xl);
+            height: 100%;
+        }
+
+        .slide-content {
+            flex: 1;
+            padding-right: var(--spacing-xl);
+            overflow-y: auto;
+            max-height: 500px;
+            padding-right: 15px;
+        }
+
+        /* Custom scrollbar for slide content */
+        .slide-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .slide-content::-webkit-scrollbar-track {
+            background: rgba(155, 27, 48, 0.05);
+            border-radius: 10px;
+        }
+
+        .slide-content::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .slide-content h3 {
+            font-size: 2.2rem;
             color: var(--primary);
             margin-bottom: var(--spacing-lg);
+            line-height: 1.2;
         }
 
-        .service-text p {
+        .slide-content p {
             font-size: 1.1rem;
+            line-height: 1.8;
             color: var(--dark-light);
             margin-bottom: var(--spacing-lg);
         }
 
         .service-features {
-            margin-top: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
         }
 
         .feature-item {
             display: flex;
             align-items: flex-start;
+            gap: var(--spacing-md);
             margin-bottom: var(--spacing-md);
-            transition: var(--transition-normal);
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid rgba(155, 27, 48, 0.1);
         }
 
-        .feature-item:hover {
-            transform: translateX(5px);
+        .feature-item:last-child {
+            border-bottom: none;
         }
 
         .feature-icon {
-            color: var(--secondary);
-            font-size: 1.2rem;
-            margin-right: var(--spacing-md);
-            margin-top: 4px;
-            flex-shrink: 0;
-            animation: checkPulse 2s ease-in-out infinite;
-        }
-
-        .feature-text {
-            color: var(--dark-light);
-        }
-
-        .service-image {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .service-image img {
-            width: 100%;
-            height: auto;
-            transition: var(--transition-slow);
-        }
-
-        .service-image:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Service Slider */
-        .service-slider {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-            /* increased height from 400px to 550px for better consistency with longer text content */
-            height: 550px;
-        }
-
-        .slides {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
             display: flex;
-            transition: transform 0.8s ease-in-out;
-            height: 100%;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 4px;
         }
 
-        .slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
+        .feature-item strong {
+            color: var(--primary);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
         }
 
-        .slide img {
+        .feature-item p {
+            margin: 0;
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .slide-image {
+            flex: 1;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            height: 450px; /* Increased height */
+            box-shadow: var(--shadow-lg);
+        }
+
+        .slide-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition-normal);
         }
 
-        .slide-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            color: var(--white);
-            padding: var(--spacing-lg);
-            transform: translateY(100%);
-            transition: transform 0.5s ease-in-out;
+        .slide-image:hover img {
+            transform: scale(1.05);
         }
 
-        .slide:hover .slide-content {
-            transform: translateY(0);
+        /* Advanced Slider Navigation */
+        .slider-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: var(--spacing-xl);
+            padding: 0 var(--spacing-md);
         }
 
         .slider-nav {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .slider-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .slider-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .auto-play-toggle {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--dark);
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .toggle-switch {
+            width: 50px;
+            height: 26px;
+            background: var(--light-dark);
+            border-radius: var(--radius-full);
+            position: relative;
+            transition: var(--transition-normal);
+        }
+
+        .toggle-switch::after {
+            content: '';
             position: absolute;
-            bottom: var(--spacing-md);
-            left: 50%;
-            transform: translateX(-50%);
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: var(--white);
+            border-radius: 50%;
+            transition: var(--transition-normal);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .auto-play-toggle.active .toggle-switch {
+            background: var(--primary);
+        }
+
+        .auto-play-toggle.active .toggle-switch::after {
+            transform: translateX(24px);
+        }
+
+        .slider-dots {
             display: flex;
             gap: var(--spacing-sm);
-            z-index: 10;
+            justify-content: center;
+            margin-top: var(--spacing-lg);
         }
 
         .slider-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: var(--light-dark);
+            border: none;
             cursor: pointer;
             transition: var(--transition-normal);
+            position: relative;
         }
 
         .slider-dot.active {
-            background: var(--secondary);
+            background: var(--primary);
             transform: scale(1.2);
         }
 
-        .slider-arrow {
+        .slider-dot::after {
+            content: '';
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
-            color: var(--dark);
-            width: 50px;
-            height: 50px;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
             border-radius: 50%;
+            border: 2px solid transparent;
+            transition: var(--transition-normal);
+        }
+
+        .slider-dot:hover::after {
+            border-color: var(--primary-light);
+        }
+
+        /* HRO Services Section */
+        .hro-section {
+            background: linear-gradient(135deg, var(--dark) 0%, #2c2c2c 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hro-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(155, 27, 48, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xxl);
+        }
+
+        .hro-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hro-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .hro-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: var(--spacing-lg);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            z-index: 10;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            background: rgba(212, 175, 55, 0.1);
         }
 
-        .slider-arrow:hover {
-            background: var(--secondary);
+        .hro-card h3 {
             color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
         }
 
-        .slider-arrow.prev {
-            left: var(--spacing-md);
+        .hro-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0;
         }
 
-        .slider-arrow.next {
-            right: var(--spacing-md);
+        /* UPDATED: Excellence Areas with Yellow Animation */
+        .excellence-section {
+            background: linear-gradient(135deg, var(--light) 0%, #f5f5f5 100%);
+        }
+
+        .excellence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xxl);
+        }
+
+        .excellence-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            border-top: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .excellence-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--secondary-light) 100%);
+            transition: var(--transition-slow);
+            z-index: 0;
+        }
+
+        .excellence-card:hover::before {
+            width: 100%;
+        }
+
+        .excellence-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .excellence-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: rgba(155, 27, 48, 0.1);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-normal);
+        }
+
+        .excellence-card:hover .excellence-number {
+            color: rgba(26, 26, 26, 0.2);
+        }
+
+        .excellence-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-normal);
+        }
+
+        .excellence-card:hover h3 {
+            color: var(--dark);
+        }
+
+        .excellence-card p {
+            color: var(--dark-light);
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition-normal);
+        }
+
+        .excellence-card:hover p {
+            color: var(--dark);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xxl);
+        }
+
+        .stat-item {
+            padding: var(--spacing-xl);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--secondary-light);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
         }
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--primary-light) 100%);
-            color: var(--white);
+            background: linear-gradient(135deg, var(--light) 0%, #ffffff 100%);
             text-align: center;
         }
 
@@ -557,185 +920,91 @@
 
         .cta-title {
             font-size: 2.5rem;
+            color: var(--primary);
             margin-bottom: var(--spacing-lg);
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
-        .cta-description {
+        .cta-subtitle {
             font-size: 1.2rem;
+            color: var(--gray);
             margin-bottom: var(--spacing-xl);
-            opacity: 0.9;
+            line-height: 1.6;
         }
 
-        /* Dropdown Styles */
-.nav-item.dropdown {
-    position: relative;
-}
-
-.nav-link.dropdown-toggle {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.dropdown-toggle::after {
-    content: '';
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid currentColor;
-    transition: var(--transition-fast);
-    opacity: 0.7;
-}
-
-.nav-link.dropdown-toggle:hover::after {
-    opacity: 1;
-    transform: translateY(1px);
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 180px;
-    background: var(--white);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    padding: var(--spacing-sm) 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: var(--transition-normal);
-    z-index: 1000;
-    border: 1px solid rgba(155, 27, 48, 0.1);
-}
-
-.nav-item.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.dropdown-item {
-    display: block;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    color: var(--dark);
-    transition: var(--transition-fast);
-    font-weight: 500;
-}
-
-.dropdown-item:hover {
-    background: rgba(155, 27, 48, 0.05);
-    color: var(--primary);
-    transform: translateX(3px);
-}
-
-/* Mobile dropdown styles */
-@media (max-width: 768px) {
-    .nav-item.dropdown {
-        width: 100%;
-    }
-    
-    .dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        background: transparent;
-        padding-left: var(--spacing-lg);
-        border: none;
-        display: none;
-    }
-    
-    .nav-item.dropdown.active .dropdown-menu {
-        display: block;
-    }
-    
-    .dropdown-toggle::after {
-        margin-left: auto;
-        transform: rotate(-90deg);
-    }
-    
-    .nav-item.dropdown.active .dropdown-toggle::after {
-        transform: rotate(0deg);
-    }
-}
-
-        /* Footer Wave */
-        .footer-wave {
-            width: 100%;
-            height: 80px;
-            background: white;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 0;
-            line-height: 0;
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .footer-wave svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
+        .btn {
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-normal);
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(155, 27, 48, 0.1);
+            transform: translateY(-3px);
         }
 
         /* Footer */
         .footer {
-            background: linear-gradient(135deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
+            background: var(--dark);
             color: var(--white);
             padding: var(--spacing-xxl) 0 var(--spacing-lg);
-            border-top: none;
             position: relative;
-            overflow: hidden;
         }
 
-        .footer::before {
-            content: '';
+        .footer-wave {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(155, 27, 48, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .footer .container {
-            position: relative;
-            z-index: 2;
+            width: 100%;
+            height: 100px;
+            background: var(--white);
+            transform: translateY(-99px);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: var(--spacing-xl);
             margin-bottom: var(--spacing-xxl);
-            padding-bottom: var(--spacing-xxl);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .footer-col {
-            transition: var(--transition-normal);
-        }
-
-        .footer-col:hover {
-            transform: translateY(-3px);
         }
 
         .footer-col h3 {
-            font-size: 1.4rem;
-            margin-bottom: var(--spacing-lg);
             color: var(--white);
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
             position: relative;
             display: inline-block;
         }
@@ -745,145 +1014,57 @@
             position: absolute;
             bottom: -8px;
             left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
-            border-radius: 2px;
-            transition: var(--transition-normal);
-        }
-
-        .footer-col:hover h3::after {
-            width: 100%;
-        }
-
-        .footer-col p {
-            opacity: 0.85;
-            margin-bottom: var(--spacing-md);
-            line-height: 1.7;
-            font-size: 0.95rem;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
         }
 
         .footer-links {
-            margin-top: var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
         }
 
         .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition-fast);
             display: flex;
             align-items: center;
-            margin-bottom: var(--spacing-sm);
-            opacity: 0.8;
-            transition: var(--transition-normal);
-            font-size: 0.95rem;
-            padding: var(--spacing-sm) 0;
+            gap: var(--spacing-sm);
         }
 
         .footer-link:hover {
-            opacity: 1;
             color: var(--secondary);
             transform: translateX(5px);
-        }
-
-        .footer-link i {
-            margin-right: var(--spacing-md);
-            width: 20px;
-            text-align: center;
-            transition: var(--transition-normal);
-        }
-
-        .footer-link:hover i {
-            transform: scale(1.2) rotate(15deg);
-            color: var(--secondary-light);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: var(--spacing-xl);
-            border-top: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .footer-credits {
-            margin-bottom: var(--spacing-md);
-            opacity: 0.8;
-        }
-
-        .design-credit, .content-credit {
-            margin: 0 0 var(--spacing-xs) 0;
-            font-size: 0.85rem;
-            line-height: 1.4;
-        }
-
-        .design-credit strong, .content-credit strong {
-            color: var(--secondary-light);
-            font-weight: 600;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .copyright {
-            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--secondary-light);
-            opacity: 0.9;
         }
 
         /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scaleX(1); opacity: 1; }
-            50% { transform: scaleX(1.1); opacity: 0.8; }
-        }
-
-        @keyframes logoGlow {
-            0%, 100% { text-shadow: 0 0 5px rgba(155, 27, 48, 0.3); }
-            50% { text-shadow: 0 0 20px rgba(155, 27, 48, 0.6), 0 0 30px rgba(212, 175, 55, 0.3); }
-        }
-
-        @keyframes waveMove {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            25% { transform: translateX(-5px) translateY(-2px); }
-            50% { transform: translateX(0) translateY(-5px); }
-            75% { transform: translateX(5px) translateY(-2px); }
-        }
-
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        @keyframes checkPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        @keyframes serviceFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-3px) rotate(1deg); }
-            50% { transform: translateY(-6px) rotate(0deg); }
-            75% { transform: translateY(-3px) rotate(-1deg); }
-        }
-
-        @keyframes waveAnimation {
-            0% {
-                transform: translateX(0);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            100% {
-                transform: translateX(1440px);
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        .wave-layer {
-            animation: waveAnimation 25s linear infinite;
-            transform-origin: center;
-        }
-
-        /* Scroll Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(20px);
+            transition: opacity 0.8s var(--transition-normal), transform 0.8s var(--transition-normal);
         }
 
         .fade-in.visible {
@@ -891,48 +1072,34 @@
             transform: translateY(0);
         }
 
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .zoom-in {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .zoom-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .service-content,
-            .footer-content {
-                grid-template-columns: 1fr;
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3rem;
             }
-
-            .service-image {
-                order: -1;
+            
+            .service-slide {
+                flex-direction: column;
+                text-align: center;
+                height: auto;
+                padding: var(--spacing-xl);
+            }
+            
+            .slide-content {
+                padding-right: 0;
+                max-height: none;
+                overflow-y: visible;
+            }
+            
+            .slide-image {
+                height: 300px;
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .slider-wrapper {
+                height: auto;
             }
         }
 
@@ -940,126 +1107,55 @@
             .navbar-container {
                 padding: var(--spacing-sm) 0;
             }
-
+            
             .nav-menu {
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 70%;
+                width: 80%;
                 height: 100vh;
-                background: var(--white);
-                box-shadow: var(--shadow-lg);
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
                 flex-direction: column;
-                align-items: flex-start;
-                padding: var(--spacing-xl);
+                padding: var(--spacing-xxl) var(--spacing-xl);
                 transition: var(--transition-slow);
-                z-index: 1000;
+                box-shadow: var(--shadow-lg);
             }
-
+            
             .nav-menu.active {
                 right: 0;
             }
-
+            
             .nav-list {
                 flex-direction: column;
-                width: 100%;
-                margin-right: 0;
-            }
-
-            .nav-item {
-                margin: var(--spacing-sm) 0;
+                gap: var(--spacing-md);
                 width: 100%;
             }
-
-            .nav-link {
-                display: block;
-                padding: var(--spacing-md);
-            }
-
+            
             .mobile-toggle {
                 display: block;
-                z-index: 1001;
             }
-                /* Dropdown Styles */
-        .nav-item.dropdown {
-            position: relative;
-        }
-        
-        .nav-link.dropdown-toggle {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .dropdown-toggle::after {
-            content: '';
-            display: inline-block;
-            width: 0;
-            height: 0;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-top: 4px solid currentColor;
-            transition: var(--transition-fast);
-            opacity: 0.7;
-        }
-        
-        .nav-link.dropdown-toggle:hover::after {
-            opacity: 1;
-            transform: translateY(1px);
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            min-width: 180px;
-            background: var(--white);
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-lg);
-            padding: var(--spacing-sm) 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: var(--transition-normal);
-            z-index: 1000;
-            border: 1px solid rgba(155, 27, 48, 0.1);
-        }
-        
-        .nav-item.dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .dropdown-item {
-            display: block;
-            padding: var(--spacing-sm) var(--spacing-lg);
-            color: var(--dark);
-            transition: var(--transition-fast);
-            font-weight: 500;
-        }
-        
-        .dropdown-item:hover {
-            background: rgba(155, 27, 48, 0.05);
-            color: var(--primary);
-            transform: translateX(3px);
-        }
-
+            
             .hero-title {
                 font-size: 2.5rem;
             }
-
+            
             .hero-subtitle {
                 font-size: 1.2rem;
             }
-
-            .footer-content {
-                grid-template-columns: 1fr;
+            
+            .section-title h2 {
+                font-size: 2.2rem;
             }
-
-            /* adjusted slider height for tablet/mobile - reduced to 400px */
-            .service-slider {
-                height: 400px;
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
 
@@ -1067,73 +1163,23 @@
             .section {
                 padding: var(--spacing-xl) 0;
             }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
+            
             .hero-title {
                 font-size: 2rem;
             }
-
-            /* adjusted slider height for small mobile - reduced to 300px */
-            .service-slider {
-                height: 300px;
+            
+            .intro-block {
+                padding: var(--spacing-xl);
             }
-        }
-
-        .coal-types {
-            margin-top: 20px;
-        }
-
-        .coal-types h4 {
-            margin-bottom: 15px;
-            color: #333;
-            font-size: 1.2rem;
-        }
-
-        .coal-type-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-
-        .coal-icon {
-            color: #e74c3c;
-            margin-right: 10px;
-            margin-top: 3px;
-        }
-
-        .coal-text {
-            line-height: 1.5;
-        }
-
-        .production-capacity {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .production-capacity h4 {
-            margin-bottom: 15px;
-            color: #333;
-            font-size: 1.2rem;
-        }
-
-        .capacity-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-
-        .capacity-icon {
-            color: #27ae60;
-            margin-right: 10px;
-            margin-top: 3px;
-        }
-
-        .capacity-text {
-            line-height: 1.5;
+            
+            .services-slider-container {
+                padding: var(--spacing-md);
+            }
+            
+            .slider-controls {
+                flex-direction: column;
+                gap: var(--spacing-lg);
+            }
         }
     </style>
 </head>
@@ -1142,30 +1188,26 @@
     <nav class="navbar">
         <div class="container navbar-container">
             <a href="index.html" class="logo">
-                <img src="LIK & LAMBERT LOGO_page-0001.jpg" alt="LIK & LAMBERT CONSULTANTS" />
+                <img src="LIK & LAMBERT LOGO_page-0001.jpg" alt="LIK & LAMBERT CONSULTANTS">
+                <span class="logo-badge">HR</span>
             </a>
             
             <button class="mobile-toggle" id="mobileToggle">
                 <i class="fas fa-bars"></i>
             </button>
             
-             <div class="nav-menu" id="navMenu">
+            <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link ">Home</a></li>
-                   <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle">About Us</a> 
-                        <div class="dropdown-menu">
-                            <a href="About-lik-&-lambert-consultants.html" class="dropdown-item">About lik & lambert consultants</a>
-                             <a href="Our-Profile.html" class="dropdown-item">Our Profile</a>
-                            <a href="Our-Culture.html" class="dropdown-item">Our Culture</a>
-                            <a href="Corporate-Social-Responsibility.html" class="dropdown-item">Corporate Social Responsibility</a>
-                        </div> 
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle">About Us</a>
                     </li>
-                    <li class="nav-item"><a href="Service.html" class="nav-link active">Services</a></li>
+                    <li class="nav-item"><a href="Service.html" class="nav-link">Services</a></li>
                     <li class="nav-item"><a href="Projects.html" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link active">HR Excellence</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
-             </div>
+            </div>
         </div>
     </nav>
 
@@ -1173,663 +1215,375 @@
     <section class="page-hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title fade-in">Our Services</h1>
-                <p class="hero-subtitle fade-in">Comprehensive Solutions for Your Business Success</p>
+                <h1 class="hero-title fade-in">HUMAN RESOURCES CONSULTATION</h1>
+                <div class="hero-divider"></div>
+                <p class="hero-subtitle fade-in">Comprehensive, modern, and results-driven HR services that empower organizations to strengthen performance, enhance employee engagement, and maintain full compliance with Tanzanian labor laws and global HR standards.</p>
             </div>
         </div>
     </section>
 
-    <!-- Services Overview -->
-    <section class="section services-overview">
+    <!-- HR Content Section -->
+    <section class="section hr-section">
         <div class="container">
             <div class="section-title">
-                <h2>Our Comprehensive Services</h2>
-                <div class="divider"></div>
-                <p>We offer a wide range of professional services designed to meet the diverse needs of businesses across various industries.</p>
+                <h2>Transform Your Human Capital</h2>
+                <p>With a strong reputation and a proven track record of serving reputable companies across Arusha and nationwide, our HR solutions are trusted, practical, and fully aligned with today's workplace demands.</p>
             </div>
             
-            <div class="services-grid">
-                <div class="service-card fade-in" onclick="scrollToService('taxation')">
-                    <div class="service-icon">
-                        <i class="fas fa-calculator"></i>
+            <div class="intro-block fade-in">
+                <h2><i class="fas fa-handshake"></i> Comprehensive HR Consultation</h2>
+                <p>Our experienced HR specialists collaborate closely with organizations to design and implement effective talent management frameworks, create structured recruitment systems, and build positive, productive workplace cultures. We focus on developing HR structures that support day-to-day operations while enabling long-term growth, stability, and strategic advantage.</p>
+                <p>At Lik & Lambert Consultancy, we combine industry best practices with cutting-edge HR technologies to give businesses powerful tools, strategic insight, and hands-on support. Our mission is to transform human capital into a long-lasting competitive advantage for every client we serve.</p>
+            </div>
+            
+            <div class="highlight-box fade-in">
+                <h3><i class="fas fa-chart-line"></i> Our Proven Track Record</h3>
+                <p>We have successfully delivered HR outsourcing services to more than 20 industries and companies across Tanzania for the past 5 years, and our service network continues to expand nationwide. To guarantee efficiency, we deploy a dedicated Onsite Supervisor at every client workstation who works closely with both the client and our internal management team to ensure smooth operations, consistent performance, and accurate reporting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Gallery with Advanced Slider -->
+    <section class="section services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Comprehensive HR Solutions</h2>
+                <p>End-to-end HR consultation and outsourcing services designed to meet the diverse needs of businesses across Tanzania.</p>
+            </div>
+            
+            <div class="services-slider-container">
+                <div class="slider-wrapper">
+                    <div class="slider-track" id="sliderTrack">
+                        <!-- Slide 1: HRO Services -->
+                        <div class="service-slide">
+                            <div class="slide-content">
+                                <h3>Human Resource Outsourcing (HRO)</h3>
+                                <p>Beyond consultation - Complete labor management solutions for both private and public institutions. Our outsourcing service ensures seamless daily operations with dedicated Onsite Supervisors at every client workstation.</p>
+                                
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Recruitment & Placement Management</strong>
+                                            <p>Complete management of casual and permanent employees from recruitment to placement, ensuring the right talent for organizational needs. We handle everything from job postings to final interviews and onboarding.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Comprehensive Monitoring & Supervision</strong>
+                                            <p>Full monitoring of all outsourced staff with detailed performance tracking, regular assessments, and real-time reporting. Our Onsite Supervisors provide continuous oversight and support.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Attendance & Compliance Management</strong>
+                                            <p>Comprehensive attendance tracking systems, social security administration, health insurance follow-up, disciplinary handling, and full compliance with Tanzanian labor laws.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Employee Welfare & Support Systems</strong>
+                                            <p>Complete welfare support programs including health and wellness initiatives, grievance handling, career development support, and employee assistance programs to enhance satisfaction and retention.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Performance Management & Development</strong>
+                                            <p>Structured performance evaluation systems, KPI tracking, skill gap analysis, and professional development programs to ensure continuous improvement and career growth.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-image">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="HR Outsourcing Services">
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2: Core HR Services -->
+                        <div class="service-slide">
+                            <div class="slide-content">
+                                <h3>Core HR Excellence Areas</h3>
+                                <p>Specialized HR services designed to transform your organization's human capital into sustainable competitive advantage through strategic frameworks and data-driven insights.</p>
+                                
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Employee Engagement & Retention Strategies</strong>
+                                            <p>Comprehensive engagement assessments, pulse surveys, feedback systems, and retention analytics to improve workplace morale, reduce turnover, and enhance productivity through data-driven insights.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-trophy"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Performance Management Systems</strong>
+                                            <p>Development and implementation of structured performance frameworks including goal setting, regular reviews, 360-degree feedback, competency mapping, and performance-linked compensation systems.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-globe-africa"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Talent Mobility & Global Workforce Management</strong>
+                                            <p>Comprehensive international and local mobility program management including relocation support, visa processing, cultural orientation, expatriate management, and cross-border compliance.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Strategic Talent Acquisition & Recruitment</strong>
+                                            <p>End-to-end recruitment strategies including employer branding, talent sourcing, assessment centers, interview processes, background verification, and onboarding systems aligned with organizational goals.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-network-wired"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Succession Planning & Leadership Development</strong>
+                                            <p>Building leadership pipelines, identifying high-potential employees, developing succession plans, and creating leadership development programs for organizational continuity and growth.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-image">
+                                <img src="https://images.unsplash.com/photo-1551836026-d5c2c5af78e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Core HR Services">
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 3: Additional HR Services -->
+                        <div class="service-slide">
+                            <div class="slide-content">
+                                <h3>Comprehensive HR Specializations</h3>
+                                <p>Advanced HR solutions covering every aspect of human capital management, policy development, and organizational effectiveness for sustainable business success.</p>
+                                
+                                <div class="service-features">
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-graduation-cap"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Employee Development & Training Programs</strong>
+                                            <p>Customized training needs analysis, skill development programs, leadership workshops, technical training, soft skills enhancement, and career progression frameworks for organizational growth.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-file-contract"></i>
+                                        </div>
+                                        <div>
+                                            <strong>HR Policy Development & Legal Compliance</strong>
+                                            <p>Creation, review, and implementation of comprehensive HR policies, procedures, employee handbooks, and compliance frameworks aligned with Tanzanian labor laws and international standards.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-chart-bar"></i>
+                                        </div>
+                                        <div>
+                                            <strong>HR Analytics & Data-Driven Decision Making</strong>
+                                            <p>Implementation of HR analytics systems, workforce planning tools, predictive analytics, reporting dashboards, and data visualization for strategic human capital management decisions.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-balance-scale"></i>
+                                        </div>
+                                        <div>
+                                            <strong>Labor Law Advisory & Dispute Resolution</strong>
+                                            <p>Expert guidance on Tanzanian employment laws, contract management, disciplinary procedures, grievance handling, mediation services, and legal compliance audits for risk mitigation.</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature-item">
+                                        <div class="feature-icon">
+                                            <i class="fas fa-tools"></i>
+                                        </div>
+                                        <div>
+                                            <strong>HR Technology Implementation & Optimization</strong>
+                                            <p>Selection, implementation, and optimization of HRIS systems, payroll software, performance management tools, recruitment platforms, and employee self-service portals.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-image">
+                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="HR Specializations">
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="service-title">Accounts & Auditing</h3>
-                    <p class="service-description">Strategic tax planning and compliance solutions for businesses and individuals.</p>
                 </div>
                 
-                <div class="service-card fade-in" onclick="scrollToService('it')">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
+                <div class="slider-controls">
+                    <div class="slider-nav">
+                        <button class="slider-btn" id="prevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-btn" id="nextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-                    <h3 class="service-title">ICT Solutions</h3>
-                    <p class="service-description">Technology solutions to drive efficiency and digital transformation.</p>
+                    
+                    <div class="auto-play-toggle" id="autoPlayToggle">
+                        <span>Auto Play</span>
+                        <div class="toggle-switch"></div>
+                    </div>
                 </div>
                 
-                <div class="service-card fade-in" onclick="scrollToService('HR Consultation')">
-                    <div class="service-icon">
+                <div class="slider-dots" id="sliderDots">
+                    <!-- Dots will be generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HRO Services Section -->
+    <section class="section hro-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Complete HRO Service Components</h2>
+                <p style="color: rgba(255, 255, 255, 0.9);">Our comprehensive Human Resource Outsourcing ensures seamless operations with dedicated Onsite Supervisors at every client workstation.</p>
+            </div>
+            
+            <div class="hro-grid">
+                <div class="hro-card fade-in">
+                    <div class="hro-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Onsite Supervision</h3>
+                    <p>Dedicated supervisors working directly at client workstations to ensure smooth operations and consistent performance.</p>
+                </div>
+                
+                <div class="hro-card fade-in">
+                    <div class="hro-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Compliance Management</h3>
+                    <p>Full compliance with Tanzanian labor laws, social security, health insurance, and disciplinary procedures.</p>
+                </div>
+                
+                <div class="hro-card fade-in">
+                    <div class="hro-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3 class="service-title">HR Consultation</h3>
-                    <p class="service-description">Strategic guidance to refine HR operations and drive profitability.</p>
+                    <h3>Performance Tracking</h3>
+                    <p>Comprehensive monitoring and reporting systems ensuring optimal workforce efficiency and productivity.</p>
                 </div>
                 
-                <div class="service-card fade-in" onclick="scrollToService('Industrial Coal')">
-                    <div class="service-icon">
-                        <i class="fas fa-passport"></i>
+                <div class="hro-card fade-in">
+                    <div class="hro-icon">
+                        <i class="fas fa-hands-helping"></i>
                     </div>
-                    <h3 class="service-title">Industrial Coal</h3>
-                    <p class="service-description">Expert guidance on coal supply and production permits.</p>
-                </div>
-                
-                <div class="service-card fade-in" onclick="scrollToService('West Wood')">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3 class="service-title">West Wood</h3>
-                    <p class="service-description">Strategic West Wood mining facility represents wood.</p>
-                </div>
-                
-                <div class="service-card fade-in" onclick="scrollToService('Healthcare Materials')">
-                    <div class="service-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3 class="service-title">Healthcare Materials</h3>
-                    <p class="service-description">Medical equipment supply and professional training.</p>
+                    <h3>Employee Welfare</h3>
+                    <p>Complete welfare support programs enhancing employee satisfaction, retention, and overall wellbeing.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Service Details -->
-    
-    <!-- Accounts & Auditing-->
-    <section id="taxation" class="service-detail">
+    <!-- Excellence Areas -->
+    <section class="section excellence-section">
         <div class="container">
-            <div class="service-content">
-                <div class="service-text slide-in-left">
-                    <h3>Accounts & Auditing</h3>
-                    <p>At LIK AND LAMBERT CONSULTANTS, we provide comprehensive taxation services designed to help businesses and individuals navigate the complexities of tax compliance, planning, and management.</p>
-                    <p>Our experienced tax consultants offer strategic guidance on corporate and individual tax matters, ensuring full adherence to local and international tax regulations. We assist clients with tax registration, return filing, audits, transfer pricing, and advisory on tax-efficient structures.</p>
-                    <p>By combining technical expertise with industry insight, we help clients minimize liabilities, optimize profitability, and maintain transparency in all tax-related matters.</p>
-                    
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-check"></i></span>
-                            <span class="feature-text">Tax compliance and regulatory adherence</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-check"></i></span>
-                            <span class="feature-text">Strategic tax planning and optimization</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-check"></i></span>
-                            <span class="feature-text">Tax audit support and representation</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-check"></i></span>
-                            <span class="feature-text">Transfer pricing documentation and advisory</span>
-                        </div>
-                    </div>
+            <div class="section-title">
+                <h2>Core Areas of Excellence</h2>
+                <p>Specialized HR services that drive organizational success and employee satisfaction.</p>
+            </div>
+            
+            <div class="excellence-grid">
+                <div class="excellence-card fade-in">
+                    <div class="excellence-number">01</div>
+                    <h3>Employee Engagement</h3>
+                    <p>We enhance engagement through assessments and data-driven insights aimed at improving retention, morale, and workplace productivity.</p>
                 </div>
                 
-                <div class="service-image slide-in-right">
-                    <div class="service-slider" id="taxation-slider">
-                        <div class="slides">
-                            <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tax Consultation">
-                                <div class="slide-content">
-                                    <h4>Expert Tax Advisory</h4>
-                                    <p>Strategic guidance for tax optimization and compliance</p>
-                                </div>
-                            </div>
-                            <div class="slide">
-                                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tax Planning">
-                                <div class="slide-content">
-                                    <h4>Comprehensive Tax Planning</h4>
-                                    <p>Minimize liabilities while maximizing profitability</p>
-                                </div>
-                            </div>
-                            <div class="slide">
-                                <img src="G1.jpg" alt="Tax Compliance">
-                                <div class="slide-content">
-                                    <h4>Regulatory Compliance</h4>
-                                    <p>Ensure full adherence to local and international tax laws</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider-arrow prev" onclick="changeSlide('taxation-slider', -1)">
-                            <i class="fas fa-chevron-left"></i>
-                        </div>
-                        <div class="slider-arrow next" onclick="changeSlide('taxation-slider', 1)">
-                            <i class="fas fa-chevron-right"></i>
-                        </div>
-                        <div class="slider-nav">
-                            <div class="slider-dot active" onclick="goToSlide('taxation-slider', 0)"></div>
-                            <div class="slider-dot" onclick="goToSlide('taxation-slider', 1)"></div>
-                            <div class="slider-dot" onclick="goToSlide('taxation-slider', 2)"></div>
-                        </div>
-                    </div>
+                <div class="excellence-card fade-in">
+                    <div class="excellence-number">02</div>
+                    <h3>Performance Management</h3>
+                    <p>We create clear and structured performance systems that enhance accountability, track development, and boost productivity.</p>
+                </div>
+                
+                <div class="excellence-card fade-in">
+                    <div class="excellence-number">03</div>
+                    <h3>Talent Mobility</h3>
+                    <p>We oversee international and local mobility programs, offering support from pre-move processes to expatriate management.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- IT Consultation -->
-    <section id="it" class="service-detail">
+    <!-- Stats Section -->
+    <section class="section stats-section">
         <div class="container">
-            <div class="service-content">
-                <div class="service-image slide-in-left">
-                    <div class="service-slider" id="it-slider">
-                        <div class="slides">
-                            <div class="slide">
-                                <img src="AT WORK.jpeg" alt="IT Infrastructure">
-                                <div class="slide-content">
-                                    <h4>IT Infrastructure Design</h4>
-                                    <p>Robust and scalable technology solutions</p>
-                                </div>
-                            </div>
-                            <div class="slide">
-                                <img src="J2.jpeg" alt="Cybersecurity">
-                                <div class="slide-content">
-                                    <h4>Cybersecurity Enhancement</h4>
-                                    <p>Protecting your digital assets and data</p>
-                                </div>
-                            </div>
-                            <div class="slide">
-                                <img src="TOOLS.jpeg" alt="Digital Transformation">
-                                <div class="slide-content">
-                                    <h4>Digital Transformation</h4>
-                                    <p>Modernizing business processes and systems</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider-arrow prev" onclick="changeSlide('it-slider', -1)">
-                            <i class="fas fa-chevron-left"></i>
-                        </div>
-                        <div class="slider-arrow next" onclick="changeSlide('it-slider', 1)">
-                            <i class="fas fa-chevron-right"></i>
-                        </div>
-                        <div class="slider-nav">
-                            <div class="slider-dot active" onclick="goToSlide('it-slider', 0)"></div>
-                            <div class="slider-dot" onclick="goToSlide('it-slider', 1)"></div>
-                            <div class="slider-dot" onclick="goToSlide('it-slider', 2)"></div>
-                        </div>
-                    </div>
+            <div class="section-title">
+                <h2 style="color: white;">Our Impact in Numbers</h2>
+                <p style="color: rgba(255, 255, 255, 0.9);">Proven results and extensive experience across Tanzania</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-count="20">0</div>
+                    <div class="stat-label">Industries Served</div>
                 </div>
                 
-                <div class="service-text slide-in-right">
-                    <h3>ICT solution</h3>
-                    <p>At Lik & Lambert Consultancy, we provide comprehensive, modern, and results-drivenInformation and Communication Technology (ICT) consultation services that empowerorganizations to strengthen their technological infrastructure, enhance operational efficiency,
-and maintain robust security and compliance with relevant data regulations.</p>
-                    
-                    <p>With a strong reputation and a proven track record of serving reputable companies across
-Arusha and nationwide, our ICT solutions are trusted, practical, and fully aligned with the
-demands of today's digital landscape. We bridge the gap between your business objectives and
-technology, ensuring your systems are powerful, secure, and strategically positioned for growth</p> 
-
-                    <p>Our experienced ICT consultants collaborate closely with organizations to design and
-implement effective technology infrastructure, create structured IT systems and networks, and
-build secure, scalable digital environments. We focus on developing robust IT architectures that
-support day-to-day operations while enabling long-term growth, stability, and strategic
-advantage through digital transformation.</p>
-
-                    <h5>ICT MANAGED SERVICES & OUTSOURCING</h5>
-                   <p> •CCTV cameras IP camera setup leverages a network infrastructure, offering superior image quality and remote accessibility.</p>
-                   <p> •Full monitoring and maintenance of all IT infrastructure, networks, and cloud services.</p>
-                   <p> •System performance and availability management, ensuring maximum uptime.</p>
-                   <p> •Software license management and security compliance follow-up.</p>
-                   <p> •Wireless Nurse Call System quickly respond to patient calls. It works wirelessly using
-                         RF (Radio Frequency) communication, sending signals from patient call buttons to a
-                                 central RF receiver.</p>
-                    <p> •End-user helpdesk and technical support for all employees.</p>
-                    <p> •We supply Hardware & Peripheral Solutions </p>
-                    <p>Beyond consultation, Lik & Lambert Consultancy specializes in ICT Managed Services, offering comprehensive IT management solutions to both private and public institutions. Our outsourcing service ensures seamless daily operations and a robust, secure IT environment by providing:</p>
-                        
-                     <h5>LIK AND LAMBERT CONSULTANTS ICT – SERVICE</h5>
-                         <h5> 1. WIRELESS NURSE CALL SYSTEM</h5>
-                    <p>A system for hospitals to enhance patient care through rapid response.</p>
-<p> •Technology: Uses RF (Radio Frequency) for wireless communication from patient to
-nurse station.</p>
-<p> •Functionality: Patient call buttons send signals to a central receiver, which displays calls
-in real-time on the Nurse Call Application. </p>
-<p> •Our Role: We configure call/cancel buttons, display units, warning lamps, and install
-reporting software.</p>
-   <h5> 2. HARDWARE & PERIPHERAL SOLUTIONS</h5>
-<p> We supply and install a range of essential hardware devices:</p>
-<p> •Radio Communication: Two-way wireless communication systems for instant voice
-messaging using radio waves.<p>
-<p> •CCTV & Security:</p>
-      <p> • IP/Network Cameras: High-resolution digital cameras for remote viewing over a
-network/internet.</p>
-      <p> • NVR (Network Video Recorder): The central unit for receiving, storing, and
-managing video from IP cameras.</p>
-<h5>COMPUTING DEVICES:</h5>
-     <p> Tablets: Portable, touchscreen computers with Wi-Fi/cellular connectivity,
-          running iPadOS or Android.</p>
-     <p> Desktop Computers: High-performance stationary PCs for demanding tasks
-like design and office work.
-     <p> Laptops: All-in-one, portable computers integrating screen, keyboard, and
-hardware.
-<h5> SPECIALIZED HARDWARE:</h5>
-         <p> Ticket Kiosks: Self-service, touchscreen terminals for automated ticket
-selection and printing.</p>
-         <p> Printers: Hardware for generating physical hard copies of digital documents.</p>
-<h5> 3. SUPPORT & MANAGEMENT SERVICES</h5>
-<p> Ongoing maintenance and user assistance to ensure system stability and security.</p>
-<p> •Help Desk & Technical Support: Direct assistance for user IT issues.</p>
-<p> •Managed IT Services: Full outsourcing of a company's IT infrastructure management.</p>
-<p> •System Administration & Monitoring: Proactive management of servers, networks, and
-applications to ensure performance and uptime.</p>
-<p> "At Lik & Lambert Consultancy, we integrate industry best practices with cutting-edge
-information and communication technologies (ICT) to provide businesses with robust solutions,
-strategic insight, and hands-on technical support. Our mission is to transform technology
-infrastructure into a reliable and scalable competitive advantage for every client we serve."ert Consultants ICT – Service</p>
-                    
-                    <div class="service-features">
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-check"></i></span>
-                            <span class="feature-text">Hardware & Software</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-check"></i></span>
-                            <span class="feature-text">Security</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-check"></i></span>
-                            <span class="feature-text">IT Support & Help desk (Remonte IT)</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="feature-icon"><i class="fas fa-check"></i></span>
-                            <span class="feature-text">Network Setup</span>
-                        </div>
-                    </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-count="5">0</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-count="100">0</div>
+                    <div class="stat-label">Client Success Stories</div>
+                </div>
+                
+                <div class="stat-item fade-in">
+                    <div class="stat-number" data-count="24">0</div>
+                    <div class="stat-label">/7 Support</div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Healthcare Projects -->
-<section id="Healthcare Materials" class="service-detail">
-    <div class="container">
-        <div class="service-content">
-            <div class="service-image slide-in-left">
-                <div class="service-slider" id="healthcare-slider">
-                    <div class="slides">
-                        <div class="slide">
-                            <img src="DD1.jpeg" alt="Nurse Call System">
-                            <div class="slide-content">
-                                <h4>Nurse Call Systems</h4>
-                                <p>State-of-the-art communication solutions for healthcare facilities</p>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <img src="D1.jpeg" alt="Medical Equipment">
-                            <div class="slide-content">
-                                <h4>Medical Equipment Supply</h4>
-                                <p>Advanced orthopedic and surgical products distribution</p>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <img src="D4.jpeg" alt="Medical Training">
-                            <div class="slide-content">
-                                <h4>Professional Training</h4>
-                                <p>Comprehensive healthcare staff development programs</p>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <img src="D2.jpeg" alt="Hospital Implementation">
-                            <div class="slide-content">
-                                <h4>Hospital Projects</h4>
-                                <p>Successfully implemented at Mount Meru and AICC Hospitals</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-arrow prev" onclick="changeSlide('healthcare-slider', -1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="slider-arrow next" onclick="changeSlide('healthcare-slider', 1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="slider-nav">
-                        <div class="slider-dot active" onclick="goToSlide('healthcare-slider', 0)"></div>
-                        <div class="slider-dot" onclick="goToSlide('healthcare-slider', 1)"></div>
-                        <div class="slider-dot" onclick="goToSlide('healthcare-slider', 2)"></div>
-                        <div class="slider-dot" onclick="goToSlide('healthcare-slider', 3)"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-text slide-in-right">
-                <h3>Healthcare Projects & Advanced Medical Solutions</h3>
-                <p>Lik & Lambert Consultants is deeply involved in the healthcare sector, where we deliver specialized consultancy and advanced medical technology solutions to enhance patient care and operational efficiency.</p>
-                <p>We have successfully implemented the Nurse Call System—a state-of-the-art communication solution that enhances patient care and hospital efficiency—at Mount Meru Referral Hospital and AICC Hospital in Arusha.</p>
-                
-                <div class="service-features">
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">Nurse Call Systems implementation and integration</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">Advanced medical equipment supply and distribution</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">Professional medical staff training and development</span>
-                    </div>
-                </div>
-                <div class="healthcare-specializations">
-                    <h4>Our Healthcare Specializations:</h4>
-                    <div class="specialization-item">
-                        <span class="specialization-icon"><i class="fas fa-bell"></i></span>
-                        <div class="specialization-content">
-                            <strong>Nurse Call Systems</strong>
-                            <p>Advanced communication solutions enhancing patient care and hospital efficiency at major medical facilities including Mount Meru Referral Hospital and AICC Hospital.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    
-    <section id="HR Consultation" class="service-detail">
-    <div class="container">
-        <div class="service-content">
-            <div class="service-text slide-in-left">
-                <h3>HUMAN RESOURCES CONSULTATION</h3>                
-<p>At Lik & Lambert Consultancy, we provide comprehensive, modern, and results-driven Human Resources Consultation services that empower organizations to strengthen performance, enhance employee engagement, and maintain full compliance with Tanzanian labor laws and global HR standards. With a strong reputation and a proven track record of serving reputable companies across Arusha and nationwide, our HR solutions are trusted, practical, and fully aligned with today’s workplace demands.</p>
-                <p>Our experienced HR specialists collaborate closely with organizations to design and implement effective talent management frameworks, create structured recruitment systems, and build positive, productive workplace cultures. We focus on developing HR structures that support day-to-day operations while enabling long-term growth, stability, and strategic advantage.</p>
-                <p>Human Resource Outsourcing (HRO) Beyond consultation</p>
-                <p>Lik & Lambert Consultancy specializes in Human Resource Outsourcing, offering full labor management solutions to both private and public institutions. Our outsourcing service ensures seamless daily operations by providing:</p>
-                <p>Recruitment, placement, and management of casual and permanent employees</p>
-                <ul>
-                    <li>Full monitoring of all outsourced staff</li>
-                    <li>Attendance management</li>
-                    <li>Social security and health insurance follow-up</li>
-                    <li>Disciplinary handling and compliance</li>
-                    <li>Employee welfare support</li>
-                </ul>
-                <h5>Core Areas of Excellence in Our HR Services</h>
-<h5> 1. EMPLOYEE ENGAGEMENT</h5>
-<p> We enhance engagement through assessments and data-driven insights aimed at improving retention, morale, and workplace productivity.</p>
-<h5> 2. PERFORMANCE MANAGEMENT</h5>
-<p> We create clear and structured performance systems that enhance accountability, track development, and boost productivity.</p>
-<h5> 3. TANLENT MOBILITY</h5>
-<p> We oversee international and local mobility programs, offering support from pre-move processes to expatriate management.</p>
-<p> To guarantee efficiency, we deploy a dedicated Onsite Supervisor at every client workstation. This supervisor works closely with both the client and our internal management team to ensure smooth operations, consistent performance, and accurate reporting, operating directly on behalf of Lik & Lambert Consultancy.</p>
-<p> We have successfully delivered HR outsourcing services to more than 20 industries and companies across Tanzania for the past 5 years, and our service network continues to expand nationwide.</p>
-<p> At Lik & Lambert Consultancy, we combine industry best practices with cutting-edge HR technologies to give businesses powerful tools, strategic insight, and hands-on support. Our mission is to transform human capital into a long-lasting competitive advantage for every client we serve.</p>
-                <div class="service-features">
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">Talent acquisition and recruitment strategy</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">Performance management systems</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">Employee development and training programs</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">HR policy development and compliance</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-image slide-in-right"> 
-                <div class="service-slider" id="hr-slider">
-                    <div class="slides">
-                        <div class="slide">
-                            <img src="GPP1.jpeg" alt="HR Strategy">
-                            <div class="slide-content">
-                                <h4>Talent Management</h4>
-                                <p>Developing strategies to attract and retain top talent</p>
-                            </div>
-                        </div>
-                         <div class="slide">
-                            <img src="TEAM.jpeg" alt="HR Strategy">
-                            <div class="slide-content">
-                                <h4>Validated Professional Competencies</h4>
-                                <p>Officially certified skills that meet industry standards and requirement</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-arrow prev" onclick="changeSlide('hr-slider', -1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="slider-arrow next" onclick="changeSlide('hr-slider', 1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="slider-nav">
-                        <div class="slider-dot active" onclick="goToSlide('hr-slider', 0)"></div>
-                        <div class="slider-dot" onclick="goToSlide('hr-slider', 1)"></div>
-                        <div class="slider-dot" onclick="goToSlide('hr-slider', 2)"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="Industrial Coal" class="service-detail">
-    <div class="container">
-        <div class="service-content">
-            <div class="service-text slide-in-left">
-                <h3>Industrial Coal</h3>
-                <p>We specialize in the mining and supply of high-quality industrial coal products, serving diverse industrial applications with reliable energy solutions.</p>
-                <p>Our mining operations are strategically located in Kitai, Songea, Ruvuma, and West Wood, ensuring consistent supply and logistical efficiency. We offer a comprehensive range of coal types to meet various industrial requirements, from energy generation to manufacturing processes.</p>
-                <p>Our commitment to sustainable mining practices and quality control ensures that our clients receive premium coal products that deliver optimal performance and value.</p>
-                
-                <div class="coal-types">
-                    <h4>Coal Types We Supply:</h4>
-                    <div class="coal-type-item">
-                        <span class="coal-icon"><i class="fas fa-cube"></i></span>
-                        <span class="coal-text"><strong>Cobbles:</strong> Large-sized coal pieces ideal for specific industrial applications requiring slow, consistent burn.</span>
-                    </div>
-                    <div class="coal-type-item">
-                        <span class="coal-icon"><i class="fas fa-mountain"></i></span>
-                        <span class="coal-text"><strong>ROM (Run of Mine):</strong> Raw coal directly from our mining sites, suitable for various processing needs.</span>
-                    </div>
-                    <div class="coal-type-item">
-                        <span class="coal-icon"><i class="fas fa-gem"></i></span>
-                        <span class="coal-text"><strong>Crushed:</strong> Processed coal in smaller, uniform sizes for efficient combustion in industrial boilers.</span>
-                    </div>
-                    <div class="coal-type-item">
-                        <span class="coal-icon"><i class="fas fa-fire"></i></span>
-                        <span class="coal-text"><strong>PCAS (Pulverized Coal for Activated Carbon):</strong> Specially processed coal for activated carbon production and specialized applications.</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-image slide-in-right">
-                <div class="service-slider" id="coal-slider">
-                    <div class="slides">
-                        <div class="slide">
-                            <img src="C2.jpeg" alt="Coal Mining">
-                            <div class="slide-content">
-                                <h4>Mining Operations</h4>
-                                <p>Strategic locations in Kitai, Songea, Ruvuma and West Wood</p>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <img src="C1.jpeg" alt="Coal Processing">
-                            <div class="slide-content">
-                                <h4>Quality Processing</h4>
-                                <p>Advanced processing for consistent coal quality</p>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <img src="C3.jpg" alt="Industrial Application">
-                            <div class="slide-content">
-                                <h4>Industrial Applications</h4>
-                                <p>Reliable energy solutions for diverse industries</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-arrow prev" onclick="changeSlide('coal-slider', -1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="slider-arrow next" onclick="changeSlide('coal-slider', 1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="slider-nav">
-                        <div class="slider-dot active" onclick="goToSlide('coal-slider', 0)"></div>
-                        <div class="slider-dot" onclick="goToSlide('coal-slider', 1)"></div>
-                        <div class="slider-dot" onclick="goToSlide('coal-slider', 2)"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-    <section id="West Wood" class="service-detail">
-    <div class="container">
-        <div class="service-content">
-            <div class="service-text slide-in-left">
-                <h3>West Wood Mining Operations</h3>
-                <p>Our West Wood mining facility represents the pinnacle of modern mining technology and sustainable resource extraction practices in the region.</p>
-                <p>Strategically located in the mineral-rich West Wood area, this facility specializes in high-quality coal production with advanced processing capabilities. We employ state-of-the-art extraction methods and environmental management systems to ensure responsible mining while maximizing output efficiency.</p>
-                <p>The West Wood operation serves as our flagship mining site, featuring comprehensive processing facilities that transform raw coal into premium products for domestic and international markets.</p>
-                
-                <div class="service-features">
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">Advanced surface and underground mining operations</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">State-of-the-art coal processing and beneficiation</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">Environmental compliance and land rehabilitation</span> 
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon"><i class="fas fa-check"></i></span>
-                        <span class="feature-text">Logistics and supply chain optimization</span>
-                    </div>
-                </div>
-
-                <div class="production-capacity">
-                    <h4>Production Highlights:</h4>
-                    <div class="capacity-item">
-                        <span class="capacity-icon"><i class="fas fa-chart-line"></i></span>
-                        <span class="capacity-text"><strong>Annual Output:</strong> 500,000+ tons of premium coal products</span>
-                    </div>
-                    <div class="capacity-item">
-                        <span class="capacity-icon"><i class="fas fa-users"></i></span>
-                        <span class="capacity-text"><strong>Employment:</strong> 300+ direct jobs with local community focus</span>
-                    </div>
-                    <div class="capacity-item">
-                        <span class="capacity-icon"><i class="fas fa-truck-loading"></i></span>
-                        <span class="capacity-text"><strong>Infrastructure:</strong> Direct rail access and modern loading facilities</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="service-image slide-in-right">
-                <div class="service-slider" id="westwood-slider">
-                    <div class="slides">
-                        <div class="slide">
-                            <img src="MM8.jpeg" alt="West Wood Facility">
-                            <div class="slide-content">
-                                <h4>West Wood Main Facility</h4>
-                                <p>Modern mining infrastructure and processing plant</p>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <img src="MM9.jpeg" alt="Processing Operations">
-                            <div class="slide-content">
-                                <h4>Advanced Processing</h4>
-                                <p>Cutting-edge coal beneficiation technology</p>
-                            </div>
-                        </div>
-                        <div class="slide">
-                            <img src="MM10.jpg" alt="Environmental Management">
-                            <div class="slide-content">
-                                <h4>Sustainable Operations</h4>
-                                <p>Environmental stewardship and community engagement</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-arrow prev" onclick="changeSlide('westwood-slider', -1)">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                    <div class="slider-arrow next" onclick="changeSlide('westwood-slider', 1)">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="slider-nav">
-                        <div class="slider-dot active" onclick="goToSlide('westwood-slider', 0)"></div>
-                        <div class="slider-dot" onclick="goToSlide('westwood-slider', 1)"></div>
-                        <div class="slider-dot" onclick="goToSlide('westwood-slider', 2)"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Additional service sections would follow the same pattern -->
-    <!-- Due to length constraints, I'm showing 3 examples but the pattern continues for all services -->
 
     <!-- CTA Section -->
     <section class="section cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2 class="cta-title fade-in">Ready to Transform Your Business?</h2>
-                <p class="cta-description fade-in">Contact us today to discuss how our comprehensive services can help your organization achieve its goals and drive sustainable growth.</p>
-                <a href="contact.html" class="btn btn-primary fade-in">Get In Touch</a>
+                <h2 class="cta-title fade-in">Ready to Transform Your HR Operations?</h2>
+                <p class="cta-subtitle fade-in">Join 20+ industries across Tanzania who trust Lik & Lambert for comprehensive, modern, and results-driven HR solutions. Let's build your competitive advantage together.</p>
+                
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary fade-in">
+                        <i class="fas fa-calendar-check"></i>
+                        Schedule Consultation
+                    </a>
+                    <a href="tel:+255123456789" class="btn btn-secondary fade-in">
+                        <i class="fas fa-phone-alt"></i>
+                        Call Our HR Experts
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer Wave -->
-    <div class="footer-wave">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="none">
-            <defs>
-                <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style="stop-color:#d4af37;stop-opacity:0.8" />
-                    <stop offset="100%" style="stop-color:#b8941f;stop-opacity:0.6" />
-                </linearGradient>
-                <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style="stop-color:#9b1b30;stop-opacity:0.75" />
-                    <stop offset="100%" style="stop-color:#7a1526;stop-opacity:0.5" />
-                </linearGradient>
-                <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style="stop-color:#d32f2f;stop-opacity:0.9" />
-                    <stop offset="100%" style="stop-color:#9b1b30;stop-opacity:0.7" />
-                </linearGradient>
-                <linearGradient id="waveGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" style="stop-color:#ffd54f;stop-opacity:0.4" />
-                    <stop offset="100%" style="stop-color:#d4af37;stop-opacity:0.3" />
-                </linearGradient>
-            </defs>
-
-            <g id="waves">
-                <path d="M0,80 Q360,40 720,60 T1440,80 L1440,220 L0,220 Z" fill="url(#waveGradient4)" opacity="0.6">
-                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="20s" repeatCount="indefinite" />
-                </path>
-                <path d="M0,100 Q360,60 720,90 T1440,110 L1440,220 L0,220 Z" fill="url(#waveGradient1)" opacity="0.8">
-                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="22s" repeatCount="indefinite" />
-                </path>
-                <path d="M0,130 Q360,100 720,120 T1440,140 L1440,220 L0,220 Z" fill="url(#waveGradient3)" opacity="0.85">
-                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="24s" repeatCount="indefinite" />
-                </path>
-                <path d="M0,150 Q360,120 720,145 T1440,160 L1440,220 L0,220 Z" fill="url(#waveGradient2)" opacity="0.75">
-                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="26s" repeatCount="indefinite" />
-                </path>
-                <path d="M0,170 Q360,150 720,165 T1440,180 L1440,220 L0,220 Z" fill="#1a1a1a" opacity="0.6">
-                    <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="28s" repeatCount="indefinite" />
-                </path>
-            </g>
-        </svg>
-    </div>
-
-    <!-- Footer -->
+       <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -1838,7 +1592,7 @@ infrastructure into a reliable and scalable competitive advantage for every clie
                     <p>Delivering comprehensive consulting solutions across Tanzania and beyond. Your trusted partner for business growth and operational excellence.</p>
                 </div>
                 
-                <div class="footer-col">
+              <div class="footer-col">
                     <h3>Quick Links</h3>
                     <div class="footer-links">
                         <a href="index.html" class="footer-link">Home</a>
@@ -1852,10 +1606,10 @@ infrastructure into a reliable and scalable competitive advantage for every clie
                 <div class="footer-col">
                     <h3>Services</h3>
                     <div class="footer-links">
-                        <a href="services.html" class="footer-link">Accounts & Auditing</a>
-                        <a href="services.html" class="footer-link">ICT Services</a>
-                        <a href="services.html" class="footer-link">HR Consulting</a>
-                        <a href="services.html" class="footer-link">Supply Solutions</a>
+                        <a href="#services" class="footer-link">Accounts & Auditing</a>
+                        <a href="#services" class="footer-link">ICT Services</a>
+                        <a href="#services" class="footer-link">HR Consulting</a>
+                        <a href="#services" class="footer-link">Supply Solutions</a>
                     </div>
                 </div>
                 
@@ -1872,7 +1626,7 @@ infrastructure into a reliable and scalable competitive advantage for every clie
             
            <div class="footer-bottom">
     <div class="footer-credits">
-        <p class="design-credit">This Website is Designed and Maintained by <strong>Fortishield-Matrix</strong></p>
+        <p class="design-credit">This Website is Designed and Maintained by <strong>FOERISHIELD-MATRIX</strong></p>
         <p class="content-credit">Content Maintained by <strong>LIK & LAMBERT CONSULTANTS</strong></p>
     </div>
     <p class="copyright">&copy; 2025 LIK & LAMBERT CONSULTANTS. All Rights Reserved.</p>
@@ -1880,165 +1634,226 @@ infrastructure into a reliable and scalable competitive advantage for every clie
         </div>
     </footer>
 
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Navigation Toggle
-            const mobileToggle = document.getElementById('mobileToggle');
-            const navMenu = document.getElementById('navMenu');
-            
-            mobileToggle.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-                mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        // Mobile Navigation
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
-            
-            // Close mobile menu when clicking on a nav link
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navMenu.classList.remove('active');
-                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-count');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => animateCounter(counter), 1);
+            } else {
+                counter.innerText = target;
+            }
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
             });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Advanced Image Slider
+        const sliderTrack = document.getElementById('sliderTrack');
+        const slides = document.querySelectorAll('.service-slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const autoPlayToggle = document.getElementById('autoPlayToggle');
+        const sliderDots = document.getElementById('sliderDots');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        let autoPlayInterval = null;
+        let autoPlayActive = true;
+        const autoPlaySpeed = 8000; // 8 seconds for more reading time
+        
+        // Create dots
+        function createDots() {
+            sliderDots.innerHTML = '';
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('slider-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                sliderDots.appendChild(dot);
+            }
+        }
+        
+        createDots();
+        const dots = document.querySelectorAll('.slider-dot');
+        
+        // Update slider position
+        function updateSlider() {
+            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
             
-            // Navbar scroll effect
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
+            // Update dots
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.add('active');
                 } else {
-                    navbar.classList.remove('scrolled');
+                    dot.classList.remove('active');
                 }
             });
             
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Scroll animations
-            const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .zoom-in');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('visible');
-                        }, index * 100);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-            
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-            
-            // Initialize all sliders
-            initializeSliders();
-        });
-
-        // Service scrolling function
-        function scrollToService(serviceId) {
-            const element = document.getElementById(serviceId);
-            if (element) {
-                window.scrollTo({
-                    top: element.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+            // Reset auto-play timer if active
+            if (autoPlayActive) {
+                clearInterval(autoPlayInterval);
+                startAutoPlay();
             }
         }
-
-        // Slider functionality
-        function initializeSliders() {
-            const sliders = document.querySelectorAll('.service-slider');
+        
+        // Go to specific slide
+        function goToSlide(index) {
+            currentSlide = index;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            updateSlider();
+        }
+        
+        // Next slide
+        function nextSlide() {
+            currentSlide++;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            updateSlider();
+        }
+        
+        // Previous slide
+        function prevSlide() {
+            currentSlide--;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            updateSlider();
+        }
+        
+        // Auto-play functions
+        function startAutoPlay() {
+            if (autoPlayActive) {
+                autoPlayInterval = setInterval(nextSlide, autoPlaySpeed);
+            }
+        }
+        
+        function toggleAutoPlay() {
+            autoPlayActive = !autoPlayActive;
+            autoPlayToggle.classList.toggle('active', autoPlayActive);
             
-            sliders.forEach(slider => {
-                const slides = slider.querySelector('.slides');
-                const dots = slider.querySelectorAll('.slider-dot');
-                let currentSlide = 0;
+            if (autoPlayActive) {
+                startAutoPlay();
+            } else {
+                clearInterval(autoPlayInterval);
+            }
+        }
+        
+        // Event listeners
+        prevBtn.addEventListener('click', () => {
+            prevSlide();
+            // Pause auto-play briefly when user interacts
+            if (autoPlayActive) {
+                clearInterval(autoPlayInterval);
+                setTimeout(startAutoPlay, 5000);
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            nextSlide();
+            // Pause auto-play briefly when user interacts
+            if (autoPlayActive) {
+                clearInterval(autoPlayInterval);
+                setTimeout(startAutoPlay, 5000);
+            }
+        });
+        
+        autoPlayToggle.addEventListener('click', toggleAutoPlay);
+        
+        // Pause auto-play on hover
+        const sliderWrapper = document.querySelector('.slider-wrapper');
+        sliderWrapper.addEventListener('mouseenter', () => {
+            if (autoPlayActive) {
+                clearInterval(autoPlayInterval);
+            }
+        });
+        
+        sliderWrapper.addEventListener('mouseleave', () => {
+            if (autoPlayActive) {
+                startAutoPlay();
+            }
+        });
+        
+        // Start auto-play initially
+        startAutoPlay();
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === ' ') {
+                e.preventDefault();
+                toggleAutoPlay();
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
                 
-                // Store slider state
-                slider.currentSlide = currentSlide;
-                slider.totalSlides = slides.children.length;
-                
-                // Auto slide
-                setInterval(() => {
-                    changeSlide(slider.id, 1);
-                }, 5000);
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
-        }
-
-        function changeSlide(sliderId, direction) {
-            const slider = document.getElementById(sliderId);
-            const slides = slider.querySelector('.slides');
-            const dots = slider.querySelectorAll('.slider-dot');
-            
-            let currentSlide = slider.currentSlide || 0;
-            const totalSlides = slider.totalSlides || slides.children.length;
-            
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            
-            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-            
-            // Update current slide
-            slider.currentSlide = currentSlide;
-        }
-
-        function goToSlide(sliderId, slideIndex) {
-            const slider = document.getElementById(sliderId);
-            const slides = slider.querySelector('.slides');
-            const dots = slider.querySelectorAll('.slider-dot');
-            
-            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === slideIndex);
-            });
-            
-            // Update current slide
-            slider.currentSlide = slideIndex;
-        }
-        // Mobile dropdown toggle
-const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-dropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-            e.preventDefault();
-            const dropdown = this.parentElement;
-            dropdown.classList.toggle('active');
-        }
-    });
-});
-
-// Prevent About dropdown from navigating when clicked on desktop
-const aboutLink = document.querySelector('.nav-item.dropdown .dropdown-toggle');
-aboutLink.addEventListener('click', function(e) {
-    if (window.innerWidth > 768) { // Only on desktop
-        e.preventDefault();
-    }
-});
+        });
     </script>
 </body>
 </html>
