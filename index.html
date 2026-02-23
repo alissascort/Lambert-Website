@@ -65,6 +65,10 @@
             overflow-x: hidden;
         }
 
+        body.menu-open {
+            overflow: hidden;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -236,6 +240,7 @@
             justify-content: space-between;
             align-items: center;
             padding: var(--spacing-md) 0;
+            position: relative;
         }
 
         .logo {
@@ -300,7 +305,6 @@
             width: 40%;
         }
 
-
         .nav-link:hover {
             color: var(--primary);
             transform: translateY(-2px);
@@ -310,7 +314,7 @@
             color: var(--primary);
         }
         
-        /* Dropdown Styles - FIXED */
+        /* Dropdown Styles - FIXED with arrow on right */
         .nav-item.dropdown {
             position: relative;
         }
@@ -318,23 +322,23 @@
         .nav-link.dropdown-toggle {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding-right: var(--spacing-lg); /* Added space for dropdown arrow */
+            gap: 8px;
+            padding-right: var(--spacing-md);
         }
         
-        /* Updated dropdown arrow to point right instead of down, and repositioned margin */
         .dropdown-toggle::after {
             content: '';
             display: inline-block;
             width: 0;
             height: 0;
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-            border-top: 5px solid currentColor; /* ← DOWNWARD ARROW! */
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid currentColor;
             transition: var(--transition-fast);
             opacity: 0.7;
             margin-left: 6px;
             margin-top: 0;
+            order: 1;
         }
         
         .nav-link.dropdown-toggle:hover::after {
@@ -380,38 +384,6 @@
             transform: translateX(3px);
         }
         
-        /* Mobile dropdown styles */
-        @media (max-width: 768px) {
-            .nav-item.dropdown {
-                width: 100%;
-            }
-            
-            .dropdown-menu {
-                position: static; 
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background: transparent;
-                padding-left: var(--spacing-lg);
-                border: none;
-                display: none;
-            }
-            
-            .nav-item.dropdown.active .dropdown-menu {
-                display: block;
-            }
-            
-            .dropdown-toggle::after {
-                margin-left: auto;
-                transform: rotate(-90deg);
-            }
-            
-            .nav-item.dropdown.active .dropdown-toggle::after {
-                transform: rotate(0deg);
-            }
-        }
-
         .mobile-toggle {
             display: none;
             background: none;
@@ -420,6 +392,7 @@
             cursor: pointer;
             color: var(--dark);
             transition: var(--transition-normal);
+            z-index: 1000;
         }
 
         .mobile-toggle:hover {
@@ -427,12 +400,18 @@
             color: var(--primary);
         }
 
-        /* Updated hero section with split layout for text left and image right */
+        .mobile-toggle.active {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            color: var(--primary);
+        }
+
+        /* Updated hero section with split layout */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            /* Changed background from teal/blue to red/maroon gradient to match original design */
             background: linear-gradient(135deg, #8B1538 0%, #6B0F2A 50%, #9B1B30 100%);
             color: var(--white);
             position: relative;
@@ -471,7 +450,6 @@
             animation: particleFloat 25s linear infinite;
         }
 
-        /* New hero grid layout for split design */
         .hero-content {
             position: relative;
             z-index: 1;
@@ -483,12 +461,10 @@
             padding: var(--spacing-xl) 0;
         }
 
-        /* Hero text section on the left */
         .hero-text {
             text-align: left;
         }
 
-        /* Main company title */
         .hero-title {
             font-size: 3.5rem;
             margin-bottom: var(--spacing-lg);
@@ -497,7 +473,6 @@
             font-weight: 700;
         }
 
-        /* Auto-typing text container */
         .hero-typing-container {
             font-size: 1.8rem;
             margin-bottom: var(--spacing-xl);
@@ -530,7 +505,6 @@
             line-height: 1.8;
         }
 
-        /* Hero image section on the right with reflection effect */
         .hero-image-container {
             position: relative;
             display: flex;
@@ -544,11 +518,9 @@
             max-width: 500px;
         }
 
-        /* Reflection/blur effect behind the image using the same image */
         .hero-image-wrapper::before {
             content: '';
             position: absolute;
-            /* Adjusted positioning for better reflection effect - offset slightly down and right */
             top: 20px;
             left: 20px;
             right: -20px;
@@ -556,9 +528,7 @@
             width: calc(100% + 20px);
             height: calc(100% + 20px);
             background: url('LIK.jpeg') center/cover;
-            /* Increased blur for softer reflection and adjusted brightness */
             filter: blur(50px) brightness(0.5);
-            /* Increased opacity for more visible reflection */
             opacity: 0.4;
             z-index: 1;
             border-radius: var(--radius-xl);
@@ -946,13 +916,14 @@
             resize: vertical;
         }
 
+        /* Footer - Professional Redesign */
         .footer {
-            background: linear-gradient(135deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
             color: var(--white);
             padding: var(--spacing-xxl) 0 var(--spacing-lg);
-            border-top: none;
             position: relative;
             overflow: hidden;
+            border-top: 3px solid var(--secondary);
         }
 
         .footer::before {
@@ -961,12 +932,18 @@
             top: 0;
             left: 0;
             right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+
+        .footer::after {
+            content: '';
+            position: absolute;
             bottom: 0;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(155, 27, 48, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
         }
 
         .footer .container {
@@ -980,7 +957,7 @@
             gap: var(--spacing-xl);
             margin-bottom: var(--spacing-xxl);
             padding-bottom: var(--spacing-xxl);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
         }
 
         .footer-col {
@@ -992,13 +969,14 @@
         }
 
         .footer-col h3 {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             margin-bottom: var(--spacing-lg);
             color: var(--white);
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 0.5px;
             position: relative;
             display: inline-block;
+            text-transform: uppercase;
         }
 
         .footer-col h3::after {
@@ -1006,19 +984,19 @@
             position: absolute;
             bottom: -8px;
             left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
             border-radius: 2px;
-            transition: var(--transition-normal);
+            transition: width var(--transition-normal);
         }
 
         .footer-col:hover h3::after {
-            width: 100%;
+            width: 60px;
         }
 
         .footer-col p {
-            opacity: 0.85;
+            opacity: 0.8;
             margin-bottom: var(--spacing-md);
             line-height: 1.7;
             font-size: 0.95rem;
@@ -1032,10 +1010,11 @@
             display: flex;
             align-items: center;
             margin-bottom: var(--spacing-sm);
-            opacity: 0.8;
+            opacity: 0.7;
             transition: var(--transition-normal);
             font-size: 0.95rem;
-            padding: var(--spacing-sm) 0;
+            padding: var(--spacing-xs) 0;
+            color: var(--white);
         }
 
         .footer-link:hover {
@@ -1049,41 +1028,89 @@
             width: 20px;
             text-align: center;
             transition: var(--transition-normal);
+            color: var(--secondary);
+            font-size: 0.9rem;
         }
 
         .footer-link:hover i {
-            transform: scale(1.2) rotate(15deg);
+            transform: scale(1.1);
             color: var(--secondary-light);
         }
 
+        /* Professional Footer Bottom */
         .footer-bottom {
             text-align: center;
             padding-top: var(--spacing-xl);
-            border-top: 1px solid rgba(212, 175, 55, 0.15);
         }
 
         .footer-credits {
-            margin-bottom: var(--spacing-md);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md) 0;
+            position: relative;
+        }
+
+        .footer-credits::before,
+        .footer-credits::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+
+        .footer-credits::before {
+            top: 0;
+        }
+
+        .footer-credits::after {
+            bottom: 0;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .credit-item i {
+            color: var(--secondary);
+            font-size: 0.8rem;
             opacity: 0.8;
         }
 
-        .design-credit, .content-credit {
-            margin: 0 0 var(--spacing-xs) 0;
-            font-size: 0.85rem;
-            line-height: 1.4;
+        .credit-item strong {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-left: 4px;
+            letter-spacing: 0.3px;
         }
 
-        .design-credit strong, .content-credit strong {
-            color: var(--secondary-light);
-            font-weight: 600;
+        .design-credit, .content-credit {
+            margin: 0;
+            line-height: 1.5;
         }
 
         .copyright {
             margin: 0;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--secondary-light);
-            opacity: 0.9;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .copyright i {
+            color: var(--secondary);
+            margin: 0 4px;
+            font-size: 0.7rem;
         }
 
         .footer-wave {
@@ -1106,12 +1133,8 @@
         }
 
         @keyframes waveAnimation {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(1440px);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(1440px); }
         }
 
         .wave-layer {
@@ -1120,12 +1143,8 @@
         }
 
         @keyframes waveSlide {
-            0% {
-                background-position-x: 0;
-            }
-            100% {
-                background-position-x: -300px;
-            }
+            0% { background-position-x: 0; }
+            100% { background-position-x: -300px; }
         }
 
         @keyframes float {
@@ -1141,11 +1160,6 @@
         @keyframes logoGlow {
             0%, 100% { text-shadow: 0 0 5px rgba(155, 27, 48, 0.3); }
             50% { text-shadow: 0 0 20px rgba(155, 27, 48, 0.6), 0 0 30px rgba(212, 175, 55, 0.3); }
-        }
-
-        @keyframes logoRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         @keyframes waveMove {
@@ -1177,15 +1191,6 @@
             25% { transform: translateY(-3px) rotate(1deg); }
             50% { transform: translateY(-6px) rotate(0deg); }
             75% { transform: translateY(-3px) rotate(-1deg); }
-        }
-
-        @keyframes waveFlow {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 300px 0;
-            }
         }
 
         .fade-in {
@@ -1232,9 +1237,8 @@
             transform: scale(1);
         }
 
-        /* Responsive Design */
+        /* Mobile Responsive Design - FIXED */
         @media (max-width: 992px) {
-            /* Stack hero content on tablets */
             .hero-content {
                 grid-template-columns: 1fr;
                 gap: var(--spacing-xl);
@@ -1258,21 +1262,24 @@
         @media (max-width: 768px) {
             .navbar-container {
                 padding: var(--spacing-sm) 0;
+                position: relative;
             }
 
             .nav-menu {
                 position: fixed;
                 top: 0; 
                 right: -100%;
-                width: 70%;
+                width: 80%;
+                max-width: 350px;
                 height: 100vh;
                 background: var(--white);
                 box-shadow: var(--shadow-lg);
                 flex-direction: column;
                 align-items: flex-start;
-                padding: var(--spacing-xl);
-                transition: var(--transition-slow);
-                z-index: 1000;
+                padding: 80px var(--spacing-xl) var(--spacing-xl);
+                transition: right var(--transition-slow);
+                z-index: 999;
+                overflow-y: auto;
             }
 
             .nav-menu.active {
@@ -1293,14 +1300,62 @@
             .nav-link {
                 display: block;
                 padding: var(--spacing-md);
+                width: 100%;
             }
 
             .mobile-toggle {
                 display: block;
-                z-index: 1001;
+                z-index: 1000;
+                position: relative;
             }
 
-            /* Adjust hero typography for mobile */
+            .mobile-toggle.active {
+                position: fixed;
+                right: 20px;
+                top: 20px;
+                color: var(--primary);
+            }
+
+            /* Mobile dropdown fixes */
+            .nav-item.dropdown {
+                width: 100%;
+            }
+            
+            .dropdown-toggle {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100%;
+            }
+            
+            .dropdown-toggle::after {
+                margin-left: auto !important;
+                transform: rotate(-90deg);
+                transition: transform var(--transition-fast);
+            }
+            
+            .nav-item.dropdown.active .dropdown-toggle::after {
+                transform: rotate(0deg);
+            }
+            
+            .dropdown-menu {
+                position: static; 
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: transparent;
+                padding-left: var(--spacing-lg);
+                border: none;
+                display: none;
+                width: 100%;
+            }
+            
+            .nav-item.dropdown.active .dropdown-menu {
+                display: block;
+            }
+
+            /* Hero adjustments */
             .hero-title {
                 font-size: 2.5rem;
             }
@@ -1316,6 +1371,11 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
+
+            .footer-credits {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
         }
 
         @media (max-width: 576px) {
@@ -1327,7 +1387,6 @@
                 font-size: 2rem;
             }
 
-            /* Further reduce hero text size on small mobile */
             .hero-title {
                 font-size: 2rem;
             }
@@ -1372,11 +1431,9 @@
     </nav>
     
     <!-- Hero Section -->
-    <!-- Completely redesigned hero section with split layout -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <!-- Left side: Text with auto-typing effect -->
                 <div class="hero-text fade-in">
                     <h1 class="hero-title">LIK & LAMBERT CONSULTANTS</h1>
                     <div class="hero-typing-container">
@@ -1387,7 +1444,6 @@
                     <a href="Service.html" class="btn btn-secondary">Explore Our Services</a>
                 </div>
                 
-                <!-- Right side: Image with reflection effect using LIK.jpeg -->
                 <div class="hero-image-container fade-in">
                     <div class="hero-image-wrapper">
                         <img src="logi4.jpg" alt="LIK & LAMBERT Consultants Team" class="hero-image">
@@ -1407,49 +1463,40 @@
                 <p style="max-width: 800px; margin: var(--spacing-lg) auto; font-size: 1.15rem; line-height: 1.8;">If you are an ambitious person looking for new challenges and opportunities to grow, you have come to the right place. Consulting is a dynamic industry and we pride ourselves on our high standards and the determination we see in our team members year after year.</p>
             </div>
             
-            <!-- Reduced button size from large to medium -->
             <div style="text-align: center; margin-top: var(--spacing-xl);">
                 <a href="contact.html" class="btn btn-primary" style="font-size: 0.95rem; padding: var(--spacing-md) var(--spacing-lg);">Join Us</a>
             </div>
         </div>
     </section>
   
-    <!-- Added statistics section similar to bello.png -->
     <!-- Statistics Section -->
     <section class="section" style="background: var(--white); padding: calc(var(--spacing-xxl) * 1.5) 0;">
         <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--spacing-xxl) * 2); align-items: center;">
-                <!-- Left side: Track record title -->
                 <div>
                     <p style="color: var(--primary); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: var(--spacing-lg);">Our track record</p>
                     <h2 style="font-size: 3rem; line-height: 1.2; color: var(--dark); margin-bottom: 0;">High-performing <span style="color: var(--primary);">consultants</span> across Tanzania</h2>
                 </div>
                 
-                <!-- Right side: Discover text -->
-                 <div class="statistics-cta">
-                <p class="discover-text">Discover why we are the best at what we do</p>             
-                <!-- Right side: Learn more link -->
+                <div class="statistics-cta">
+                    <p class="discover-text">Discover why we are the best at what we do</p>             
                     <a href="About.html" style="color: var(--dark); font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: var(--spacing-sm); transition: var(--transition-normal);">
                         Learn more <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
             
-            <!-- Statistics grid -->
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacing-xxl); margin-top: calc(var(--spacing-xxl) * 1.5); padding-top: calc(var(--spacing-xxl) * 1.5); border-top: 1px solid var(--light-dark);">
-                <!-- Stat 1 -->
                 <div style="border-left: 3px solid var(--light-dark); padding-left: var(--spacing-lg);">
                     <div style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md);">15<span style="font-size: 3rem;">+</span></div>
                     <p style="font-size: 1.1rem; color: var(--dark); margin: 0;">Years in Business</p>
                 </div>
                 
-                <!-- Stat 2 -->
                 <div style="border-left: 3px solid var(--light-dark); padding-left: var(--spacing-lg);">
                     <div style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md);">100<span style="font-size: 3rem;">+</span></div>
                     <p style="font-size: 1.1rem; color: var(--dark); margin: 0;">Satisfied Clients</p>
                 </div>
                 
-                <!-- Stat 3 -->
                 <div style="border-left: 3px solid var(--light-dark); padding-left: var(--spacing-lg);">
                     <div style="font-size: 4rem; font-weight: 300; color: var(--primary); line-height: 1; margin-bottom: var(--spacing-md);">6</div>
                     <p style="font-size: 1.1rem; color: var(--dark); margin: 0;">Service Offerings</p>
@@ -1458,7 +1505,6 @@
         </div>
     </section>
 
-    <!-- Added testimonial section similar to LIK4.png -->
     <!-- Testimonial Section -->
     <section class="section" style="background: #9b1b30; color: var(--white); padding: calc(var(--spacing-xxl) * 1.5) 0;">
         <div class="container">
@@ -1517,40 +1563,40 @@
         </svg>
     </div>
 
-    <!-- Footer -->
+    <!-- Professional Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <h3>LK & LAMBERT CONSULTANTS</h3>
+                    <h3>LK & LAMBERT</h3>
                     <p>Delivering comprehensive consulting solutions across Tanzania and beyond. Your trusted partner for business growth and operational excellence.</p>
                 </div>
                 
-              <div class="footer-col">
+                <div class="footer-col">
                     <h3>Quick Links</h3>
                     <div class="footer-links">
-                        <a href="index.html" class="footer-link">Home</a>
-                        <a href="About.html" class="footer-link">About</a>
-                        <a href="Service.html" class="footer-link">Services</a>
-                        <a href="Projects.html" class="footer-link">Projects</a>
-                        <a href="contact.html" class="footer-link">Contact</a>
+                        <a href="index.html" class="footer-link"><i class="fas fa-chevron-right"></i> Home</a>
+                        <a href="About-lik-&-lambert-consultants.html" class="footer-link"><i class="fas fa-chevron-right"></i> About</a>
+                        <a href="Service.html" class="footer-link"><i class="fas fa-chevron-right"></i> Services</a>
+                        <a href="Projects.html" class="footer-link"><i class="fas fa-chevron-right"></i> Projects</a>
+                        <a href="contact.html" class="footer-link"><i class="fas fa-chevron-right"></i> Contact</a>
                     </div>
                 </div>
                 
                 <div class="footer-col">
                     <h3>Services</h3>
-                   <div class="footer-links">
-                        <a href="Accounts & Auditing.html" class="footer-link">Accounts & Auditing</a>
-                        <a href="services-ict.html" class="footer-link">ICT Solutions</a>
-                        <a href="Hr-consultation.html" class="footer-link">HR Consulting</a>
-                        <a href="Supply-Coal.html" class="footer-link">Industrial Coal</a>
-                        <a href="waste-Wood.html" class="footer-link">West Wood</a>
-                        <a href="Health-Care.html" class="footer-link">Healthcare Materials</a>
+                    <div class="footer-links">
+                        <a href="Accounts & Auditing.html" class="footer-link"><i class="fas fa-chevron-right"></i> Accounts & Auditing</a>
+                        <a href="ICT-Solutions.html" class="footer-link"><i class="fas fa-chevron-right"></i> ICT Solutions</a>
+                        <a href="Hr-consultation.html" class="footer-link"><i class="fas fa-chevron-right"></i> HR Consulting</a>
+                        <a href="Supply-Coal.html" class="footer-link"><i class="fas fa-chevron-right"></i> Industrial Coal</a>
+                        <a href="Waste-Wood.html" class="footer-link"><i class="fas fa-chevron-right"></i> West Wood</a>
+                        <a href="Health-Care.html" class="footer-link"><i class="fas fa-chevron-right"></i> Healthcare Materials</a>
                     </div>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Connect With Us</h3>
+                    <h3>Connect</h3>
                     <div class="footer-links">
                         <a href="#" class="footer-link"><i class="fab fa-facebook-f"></i> Facebook</a>
                         <a href="#" class="footer-link"><i class="fab fa-twitter"></i> Twitter</a>
@@ -1560,13 +1606,21 @@
                 </div>
             </div>
             
-           <div class="footer-bottom">
-    <div class="footer-credits">
-        <p class="design-credit">This Website is Designed and Maintained by <strong>FOERISHIELD-MATRIX</strong></p>
-        <p class="content-credit">Content Maintained by <strong>LIK & LAMBERT CONSULTANTS</strong></p>
-    </div>
-    <p class="copyright">&copy; 2025 LIK & LAMBERT CONSULTANTS. All Rights Reserved.</p>
-</div>
+            <div class="footer-bottom">
+                <div class="footer-credits">
+                    <div class="credit-item">
+                        <i class="fas fa-code"></i>
+                        <p class="design-credit">Designed & Maintained by <strong>FOERISHIELD-MATRIX</strong></p>
+                    </div>
+                    <div class="credit-item">
+                        <i class="fas fa-copyright"></i>
+                        <p class="content-credit">Content by <strong>LIK & LAMBERT CONSULTANTS</strong></p>
+                    </div>
+                </div>
+                <p class="copyright">
+                    <i class="far fa-copyright"></i> 2025 LIK & LAMBERT CONSULTANTS. All Rights Reserved.
+                </p>
+            </div>
         </div>
     </footer>
 
@@ -1614,21 +1668,47 @@
             
             typeEffect();
             
-            // Mobile Navigation Toggle
+            // Mobile Navigation Toggle - FIXED
             const mobileToggle = document.getElementById('mobileToggle');
             const navMenu = document.getElementById('navMenu');
+            const body = document.body;
             
-            mobileToggle.addEventListener('click', function() {
+            mobileToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
                 navMenu.classList.toggle('active');
-                mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                mobileToggle.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+                    body.classList.add('menu-open');
+                } else {
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    body.classList.remove('menu-open');
+                }
             });
             
-            const navLinks = document.querySelectorAll('.nav-link');
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target) && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileToggle.classList.remove('active');
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        body.classList.remove('menu-open');
+                    }
+                }
+            });
+            
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
-                    navMenu.classList.remove('active');
-                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    if (window.innerWidth <= 768) {
+                        navMenu.classList.remove('active');
+                        mobileToggle.classList.remove('active');
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        body.classList.remove('menu-open');
+                    }
                 });
             });
             
@@ -1646,11 +1726,13 @@
             
             // Prevent About dropdown from navigating when clicked on desktop
             const aboutLink = document.querySelector('.nav-item.dropdown .dropdown-toggle');
-            aboutLink.addEventListener('click', function(e) {
-                if (window.innerWidth > 768) { // Only on desktop
-                    e.preventDefault();
-                }
-            });
+            if (aboutLink) {
+                aboutLink.addEventListener('click', function(e) {
+                    if (window.innerWidth > 768) {
+                        e.preventDefault();
+                    }
+                });
+            }
             
             const navbar = document.querySelector('.navbar');
             window.addEventListener('scroll', function() {
