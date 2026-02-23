@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Contact Us - LIK & LAMBERT CONSULTANTS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* All your existing CSS remains exactly the same */
         :root {
             /* Brand Colors */
             --primary: #9b1b30;
@@ -62,10 +61,18 @@
             color: var(--dark);
             background-color: var(--white);
             overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         html {
             scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -172,7 +179,7 @@
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
         }
 
-        /* Navigation */
+        /* Navigation - UPDATED to match index.html */
         .navbar {
             position: fixed;
             top: 0;
@@ -195,6 +202,8 @@
             justify-content: space-between;
             align-items: center;
             padding: var(--spacing-md) 0;
+            position: relative;
+            width: 100%;
         }
 
         .logo {
@@ -225,6 +234,9 @@
 
         .nav-item {
             margin: 0 var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
 
         .nav-link {
@@ -233,23 +245,27 @@
             border-radius: var(--radius-md);
             position: relative;
             transition: var(--transition-slow);
+            display: inline-flex;
+            align-items: center;
+            height: 100%;
+            color: var(--dark);
         }
 
-        .nav-link::after {
+        .nav-link::before {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             width: 0;
-            height: 2px;
+            height: 1px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             transition: var(--transition-slow);
             transform: translateX(-50%);
         }
 
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 80%;
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 40%;
         }
 
         .nav-link:hover {
@@ -261,6 +277,70 @@
             color: var(--primary);
         }
 
+        /* DROPDOWN ARROW - UPDATED to match index.html (right next to text) */
+        .nav-item.dropdown {
+            position: relative;
+        }
+        
+        .nav-link.dropdown-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .dropdown-toggle::after {
+            content: "▼";
+            font-size: 12px;
+            margin-left: 2px;
+            position: relative;
+            top: 0px;
+            opacity: 0.8;
+            transition: var(--transition-fast);
+        }
+        
+        .nav-link.dropdown-toggle:hover::after {
+            opacity: 1;
+            transform: translateY(1px);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-sm) 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition-normal);
+            z-index: 1000;
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            color: var(--dark);
+            transition: var(--transition-fast);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(155, 27, 48, 0.05);
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
         .mobile-toggle {
             display: none;
             background: none;
@@ -269,6 +349,9 @@
             cursor: pointer;
             color: var(--dark);
             transition: var(--transition-normal);
+            z-index: 1001;
+            position: relative;
+            right: 0;
         }
 
         .mobile-toggle:hover {
@@ -286,6 +369,7 @@
             position: relative;
             overflow: hidden;
             padding-top: 80px;
+            width: 100%;
         }
 
         .page-hero::before {
@@ -525,102 +609,6 @@
             color: var(--dark-light);
             margin-bottom: var(--spacing-lg);
         }
-        /* Dropdown Styles */
-.nav-item.dropdown {
-    position: relative;
-}
-
-.nav-link.dropdown-toggle {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.dropdown-toggle::after {
-    content: '';
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 4px solid currentColor;
-    transition: var(--transition-fast);
-    opacity: 0.7;
-}
-
-.nav-link.dropdown-toggle:hover::after {
-    opacity: 1;
-    transform: translateY(1px);
-}
-
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 180px;
-    background: var(--white);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    padding: var(--spacing-sm) 0;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: var(--transition-normal);
-    z-index: 1000;
-    border: 1px solid rgba(155, 27, 48, 0.1);
-}
-
-.nav-item.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.dropdown-item {
-    display: block;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    color: var(--dark);
-    transition: var(--transition-fast);
-    font-weight: 500;
-}
-
-.dropdown-item:hover {
-    background: rgba(155, 27, 48, 0.05);
-    color: var(--primary);
-    transform: translateX(3px);
-}
-
-/* Mobile dropdown styles */
-@media (max-width: 768px) {
-    .nav-item.dropdown {
-        width: 100%;
-    }
-    
-    .dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        background: transparent;
-        padding-left: var(--spacing-lg);
-        border: none;
-        display: none;
-    }
-    
-    .nav-item.dropdown.active .dropdown-menu {
-        display: block;
-    }
-    
-    .dropdown-toggle::after {
-        margin-left: auto;
-        transform: rotate(-90deg);
-    }
-    
-    .nav-item.dropdown.active .dropdown-toggle::after {
-        transform: rotate(0deg);
-    }
-}
 
         /* CTA Section */
         .cta-section {
@@ -683,7 +671,204 @@
             margin: 0;
         }
 
-        /* Footer Wave */
+        /* Professional Footer - UPDATED to match index.html */
+        .footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
+            color: var(--white);
+            padding: var(--spacing-xxl) 0 var(--spacing-lg);
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid var(--secondary);
+            width: 100%;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+
+        .footer::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .footer-col {
+            transition: var(--transition-normal);
+        }
+
+        .footer-col:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer-col h3 {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--white);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+            border-radius: 2px;
+            transition: width var(--transition-normal);
+        }
+
+        .footer-col:hover h3::after {
+            width: 60px;
+        }
+
+        .footer-col p {
+            opacity: 0.8;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin-top: var(--spacing-md);
+        }
+
+        .footer-link {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.7;
+            transition: var(--transition-normal);
+            font-size: 0.95rem;
+            padding: var(--spacing-xs) 0;
+            color: var(--white);
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .footer-link i {
+            margin-right: var(--spacing-md);
+            width: 20px;
+            text-align: center;
+            transition: var(--transition-normal);
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-link:hover i {
+            transform: scale(1.1);
+            color: var(--secondary-light);
+        }
+
+        /* Professional Footer Bottom */
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-xl);
+        }
+
+        .footer-credits {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md) 0;
+            position: relative;
+        }
+
+        .footer-credits::before,
+        .footer-credits::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+
+        .footer-credits::before {
+            top: 0;
+        }
+
+        .footer-credits::after {
+            bottom: 0;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .credit-item i {
+            color: var(--secondary);
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .credit-item strong {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-left: 4px;
+            letter-spacing: 0.3px;
+        }
+
+        .design-credit, .content-credit {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .copyright {
+            margin: 0;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .copyright i {
+            color: var(--secondary);
+            margin: 0 4px;
+            font-size: 0.7rem;
+        }
+
         .footer-wave {
             width: 100%;
             height: 80px;
@@ -703,333 +888,12 @@
             left: 0;
         }
 
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #1a1a1a 0%, #242424 50%, #1a1a1a 100%);
-            color: var(--white);
-            padding: var(--spacing-xxl) 0 var(--spacing-lg);
-            border-top: none;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(155, 27, 48, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .footer .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--spacing-xl);
-            margin-bottom: var(--spacing-xxl);
-            padding-bottom: var(--spacing-xxl);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        .footer-col {
-            transition: var(--transition-normal);
-        }
-
-        .footer-col:hover {
-            transform: translateY(-3px);
-        }
-
-        .footer-col h3 {
-            font-size: 1.4rem;
-            margin-bottom: var(--spacing-lg);
-            color: var(--white);
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
-            border-radius: 2px;
-            transition: var(--transition-normal);
-        }
-
-        .footer-col:hover h3::after {
-            width: 100%;
-        }
-
-        .footer-col p {
-            opacity: 0.85;
-            margin-bottom: var(--spacing-md);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .footer-links {
-            margin-top: var(--spacing-md);
-        }
-
-        .footer-link {
-            display: flex;
-            align-items: center;
-            margin-bottom: var(--spacing-sm);
-            opacity: 0.8;
-            transition: var(--transition-normal);
-            font-size: 0.95rem;
-            padding: var(--spacing-sm) 0;
-        }
-
-        .footer-link:hover {
-            opacity: 1;
-            color: var(--secondary);
-            transform: translateX(5px);
-        }
-
-        .footer-link i {
-            margin-right: var(--spacing-md);
-            width: 20px;
-            text-align: center;
-            transition: var(--transition-normal);
-        }
-
-        .footer-link:hover i {
-            transform: scale(1.2) rotate(15deg);
-            color: var(--secondary-light);
-        }
-
-       .footer-bottom {
-    text-align: center;
-    padding-top: var(--spacing-xl);
-    border-top: 1px solid rgba(212, 175, 55, 0.15);
-}
-
-.footer-credits {
-    margin-bottom: var(--spacing-md);
-    opacity: 0.8;
-}
-
-.design-credit, .content-credit {
-    margin: 0 0 var(--spacing-xs) 0;
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
-
-.design-credit strong, .content-credit strong {
-    color: var(--secondary-light);
-    font-weight: 600;
-}
-
-.copyright {
-    margin: 0;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--secondary-light);
-    opacity: 0.9;
-}
-
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scaleX(1); opacity: 1; }
-            50% { transform: scaleX(1.1); opacity: 0.8; }
-        }
-
-        @keyframes logoGlow {
-            0%, 100% { text-shadow: 0 0 5px rgba(155, 27, 48, 0.3); }
-            50% { text-shadow: 0 0 20px rgba(155, 27, 48, 0.6), 0 0 30px rgba(212, 175, 55, 0.3); }
-        }
-
-        @keyframes waveMove {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            25% { transform: translateX(-5px) translateY(-2px); }
-            50% { transform: translateX(0) translateY(-5px); }
-            75% { transform: translateX(5px) translateY(-2px); }
-        }
-
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        @keyframes checkPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        @keyframes waveAnimation {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(1440px);
-            }
-        }
-
         .wave-layer {
             animation: waveAnimation 25s linear infinite;
             transform-origin: center;
-        } 
-
-        /* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .slide-in-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .slide-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .slide-in-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .slide-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .zoom-in {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .zoom-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .contact-content,
-            .footer-content,
-            .cta-features {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-features {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar-container {
-                padding: var(--spacing-sm) 0;
-            }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: var(--white);
-                box-shadow: var(--shadow-lg);
-                flex-direction: column;
-                align-items: flex-start;
-                padding: var(--spacing-xl);
-                transition: var(--transition-slow);
-                z-index: 1000;
-            }
-
-            .nav-menu.active {
-                right: 0;
-            }
-
-            .nav-list {
-                flex-direction: column;
-                width: 100%;
-                margin-right: 0;
-            }
-
-            .nav-item {
-                margin: var(--spacing-sm) 0;
-                width: 100%;
-            }
-
-            .nav-link {
-                display: block;
-                padding: var(--spacing-md);
-            }
-
-            .mobile-toggle {
-                display: block;
-                z-index: 1001;
-            }
-
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-features {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .section {
-                padding: var(--spacing-xl) 0;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .contact-info,
-            .contact-form {
-                padding: var(--spacing-lg);
-            }
-        }
-         /* WhatsApp Floating Button Styles */
+        /* WhatsApp Floating Button Styles */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -1055,7 +919,7 @@
         .whatsapp-float:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-            animation: none; /* Stop bounce on hover */
+            animation: none;
         }
 
         .whatsapp-float::after {
@@ -1104,35 +968,7 @@
             visibility: visible;
         }
 
-        /* Bounce Animation */
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        /* Pulse Animation */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.8;
-            }
-            70% {
-                transform: scale(1.3);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1.3);
-                opacity: 0;
-            }
-        }
-                /* Phone Input Styles */
+        /* Phone Input Styles */
         .phone-input-container {
             position: relative;
             margin-bottom: var(--spacing-lg);
@@ -1332,9 +1168,249 @@
         .phone-help-text.invalid {
             color: #f44336;
         }
-        
-        /* Responsive adjustments */
-        @media (max-width: 576px) {
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scaleX(1); opacity: 1; }
+            50% { transform: scaleX(1.1); opacity: 0.8; }
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { text-shadow: 0 0 5px rgba(155, 27, 48, 0.3); }
+            50% { text-shadow: 0 0 20px rgba(155, 27, 48, 0.6), 0 0 30px rgba(212, 175, 55, 0.3); }
+        }
+
+        @keyframes waveMove {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            25% { transform: translateX(-5px) translateY(-2px); }
+            50% { transform: translateX(0) translateY(-5px); }
+            75% { transform: translateX(5px) translateY(-2px); }
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes checkPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes waveAnimation {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(1440px); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .zoom-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Responsive Design - UPDATED to match index.html */
+        @media (max-width: 992px) {
+            .contact-content,
+            .footer-content,
+            .cta-features {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                padding: var(--spacing-sm) 0;
+                position: relative;
+                width: 100%;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 350px;
+                height: 100vh;
+                background: var(--white);
+                box-shadow: var(--shadow-lg);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px var(--spacing-xl) var(--spacing-xl);
+                transition: right 0.4s ease;
+                z-index: 999;
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+                margin-right: 0;
+            }
+
+            .nav-item {
+                margin: 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(155, 27, 48, 0.05);
+            }
+
+            .nav-link {
+                display: flex;
+                align-items: center;
+                padding: var(--spacing-md) 0;
+                width: 100%;
+                font-size: 1rem;
+                justify-content: flex-start;
+            }
+
+            .mobile-toggle {
+                display: block;
+                position: relative;
+                right: 0;
+            }
+            
+            .mobile-toggle.active {
+                position: fixed;
+                right: 20px;
+                top: 20px;
+                color: var(--primary);
+                z-index: 1001;
+            }
+
+            /* Mobile dropdown styles - FIXED */
+            .nav-item.dropdown {
+                width: 100%;
+            }
+            
+            .nav-link.dropdown-toggle {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100%;
+                padding: var(--spacing-md) 0;
+                white-space: normal;
+            }
+            
+            .dropdown-toggle::after {
+                transform: rotate(-90deg);
+                margin-left: auto;
+                margin-right: 0;
+                transition: transform 0.3s ease;
+                top: 0;
+                font-size: 12px;
+            }
+            
+            .nav-item.dropdown.active .dropdown-toggle::after {
+                transform: rotate(0deg);
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(155, 27, 48, 0.02);
+                padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-lg);
+                border: none;
+                display: none;
+                width: 100%;
+                margin-top: 0;
+                border-radius: 0;
+            }
+            
+            .nav-item.dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .dropdown-item {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 0.95rem;
+                white-space: normal;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-credits {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
             .country-selector {
                 min-width: 100px;
             }
@@ -1343,10 +1419,29 @@
                 font-size: 0.9rem;
             }
         }
+
+        @media (max-width: 576px) {
+            .section {
+                padding: var(--spacing-xl) 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: var(--spacing-lg);
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation - UPDATED with correct dropdown -->
     <nav class="navbar">
         <div class="container navbar-container">
             <a href="index.html" class="logo">
@@ -1357,17 +1452,17 @@
                 <i class="fas fa-bars"></i>
             </button>
             
-                 <div class="nav-menu" id="navMenu">
+            <div class="nav-menu" id="navMenu">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link ">Home</a></li>
-                   <li class="nav-item dropdown">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle">About Us</a>
                         <div class="dropdown-menu">
                             <a href="About-lik-&-lambert-consultants.html" class="dropdown-item">About lik & lambert consultants</a>
                             <a href="Our-Profile.html" class="dropdown-item">Our Profile</a>
-                            <a href="Our-Culture.html" class="dropdown-item">Our Culture</a> 
+                            <a href="Our-Culture.html" class="dropdown-item">Our Culture</a>
                             <a href="Corporate-Social-Responsibility.html" class="dropdown-item">Corporate Social Responsibility</a>
-                        </div> 
+                        </div>
                     </li>
                     <li class="nav-item"><a href="Service.html" class="nav-link">Services</a></li>
                     <li class="nav-item"><a href="Projects.html" class="nav-link">Projects</a></li>
@@ -1388,7 +1483,7 @@
         </div>
     </section>
 
-<!-- Contact Section -->
+    <!-- Contact Section -->
     <section id="contact" class="section contact-section">
         <div class="container">
             <div class="section-title">
@@ -1410,7 +1505,7 @@
                             <div class="contact-text">
                                 <h4>Email</h4>
                                 <p>info@liklambertconsultants.com</p>
-                                <p>jacklinemchuma@liklalmbertconsultants.com </p>
+                                <p>jacklinemchuma@liklambertconsultants.com</p>
                             </div>
                         </div>
                         
@@ -1451,12 +1546,10 @@
                            class="social-link" target="_blank" aria-label="Facebook">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-
                         <a href="https://www.threads.net/@lik_and_lambert_consultants" 
                            class="social-link" target="_blank" aria-label="Threads">
                             <i class="fab fa-threads"></i>
                         </a>
-
                         <a href="https://www.instagram.com/lik_and_lambert_consultants?igsh=MzU4c3k4eDYwNmg3" 
                            class="social-link" target="_blank" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
@@ -1533,14 +1626,14 @@
         </div>
     </section>
 
-      <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/255744435343?text=Hello%20LIK%20%26%20LAMBERT%20CONSULTANTS,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services"
-   class="whatsapp-float"
-   target="_blank"
-   aria-label="Contact us on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    <span class="whatsapp-tooltip">Chat with us on WhatsApp!</span>
-</a>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/255744435343?text=Hello%20LIK%20%26%20LAMBERT%20CONSULTANTS,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services"
+       class="whatsapp-float"
+       target="_blank"
+       aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us on WhatsApp!</span>
+    </a>
     
     <!-- Map Section -->
     <section class="map-section">
@@ -1611,7 +1704,6 @@
                     <stop offset="100%" style="stop-color:#d4af37;stop-opacity:0.3" />
                 </linearGradient>
             </defs>
-
             <g id="waves">
                 <path d="M0,80 Q360,40 720,60 T1440,80 L1440,220 L0,220 Z" fill="url(#waveGradient4)" opacity="0.6">
                     <animateTransform attributeName="transform" type="translate" from="-1440 0" to="0 0" dur="20s" repeatCount="indefinite" />
@@ -1632,57 +1724,63 @@
         </svg>
     </div>
 
-    <!-- Footer -->
+    <!-- Professional Footer - UPDATED to match index.html -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <h3>LK & LAMBERT CONSULTANTS</h3>
-                    <p>Delivering comprehensive consulting solutions across Tanzania and beyond. Your trusted partner for business growth and operational excellence.</p>
+                    <h3>LAMBERT</h3>
+                    <p>Offering comprehensive consulting solutions for Tanzania and beyond. Your trusted partner in business growth and operational excellence.</p>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Quick Links</h3>
+                    <h3>QUICK LINKS</h3>
                     <div class="footer-links">
-                        <a href="index.html" class="footer-link">Home</a>
-                        <a href="about.html" class="footer-link">About</a>
-                        <a href="services.html" class="footer-link">Services</a>
-                        <a href="projects.html" class="footer-link">Projects</a>
-                        <a href="contact.html" class="footer-link">Contact</a>
+                        <a href="index.html" class="footer-link"><i class="fas fa-chevron-right"></i> Home</a>
+                        <a href="About-lik-&-lambert-consultants.html" class="footer-link"><i class="fas fa-chevron-right"></i> About</a>
+                        <a href="Service.html" class="footer-link"><i class="fas fa-chevron-right"></i> Services</a>
+                        <a href="Projects.html" class="footer-link"><i class="fas fa-chevron-right"></i> Projects</a>
+                        <a href="contact.html" class="footer-link"><i class="fas fa-chevron-right"></i> Contact</a>
                     </div>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Services</h3>
-                   <div class="footer-links">
-                        <a href="Accounts & Auditing.html" class="footer-link">Accounts & Auditing</a>
-                        <a href="services-ict.html" class="footer-link">ICT Solutions</a>
-                        <a href="Hr-consultation.html" class="footer-link">HR Consulting</a>
-                        <a href="Supply-Coal.html" class="footer-link">Industrial Coal</a>
-                        <a href="waste-Wood.html" class="footer-link">West Wood</a>
-                        <a href="Health-Care.html" class="footer-link">Healthcare Materials</a>
+                    <h3>SERVICES</h3>
+                    <div class="footer-links">
+                        <a href="Accounts & Auditing.html" class="footer-link"><i class="fas fa-chevron-right"></i> Accounts & Auditing</a>
+                        <a href="ICT-Solutions.html" class="footer-link"><i class="fas fa-chevron-right"></i> ICT Solutions</a>
+                        <a href="Hr-consultation.html" class="footer-link"><i class="fas fa-chevron-right"></i> HR Consulting</a>
+                        <a href="Supply-Coal.html" class="footer-link"><i class="fas fa-chevron-right"></i> Industrial Coal</a>
+                        <a href="Waste-Wood.html" class="footer-link"><i class="fas fa-chevron-right"></i> Waste Wood</a>
+                        <a href="Health-Care.html" class="footer-link"><i class="fas fa-chevron-right"></i> Healthcare Materials</a>
                     </div>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Connect With Us</h3>
+                    <h3>CONNECT</h3>
                     <div class="footer-links">
-                       <a href="https://www.facebook.com/share/17XqtALBGo/" class="footer-link"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="https://www.facebook.com/share/17XqtALBGo/" class="footer-link"><i class="fab fa-facebook-f"></i> Facebook</a>
                         <a href="#" class="footer-link"><i class="fab fa-twitter"></i> Twitter</a>
                         <a href="https://www.instagram.com/lik_and_lambert_consultants?igsh=MzU4c3k4eDYwNmg3" class="footer-link"><i class="fab fa-instagram"></i> Instagram</a>
                     </div>
                 </div>
-                    </div>
-                </div>
             </div>
             
-          <div class="footer-bottom">
-    <div class="footer-credits">
-        <p class="design-credit">This Website is Designed and Maintained by <strong>Fortishield-Matrix</strong></p>
-        <p class="content-credit">Content Maintained by <strong>LIK & LAMBERT CONSULTANTS</strong></p>
-    </div>
-    <p class="copyright">&copy; 2025 LIK & LAMBERT CONSULTANTS. All Rights Reserved.</p>
-</div>
+            <div class="footer-bottom">
+                <div class="footer-credits">
+                    <div class="credit-item">
+                        <i class="fas fa-code"></i>
+                        <p class="design-credit">Designed & Maintained by <strong>FOERISHIELD-MATRIX</strong></p>
+                    </div>
+                    <div class="credit-item">
+                        <i class="far fa-copyright"></i>
+                        <p class="content-credit">Content by <strong>LIK & LAMBERT CONSULTANTS</strong></p>
+                    </div>
+                </div>
+                <p class="copyright">
+                    <i class="far fa-copyright"></i> 2025 LIK & LAMBERT CONSULTANTS. All Rights Reserved.
+                </p>
+            </div>
         </div>
     </footer>
 
@@ -1690,173 +1788,173 @@
         // Simplified Phone Input Implementation
         document.addEventListener('DOMContentLoaded', function() {
             const countryData = [
-    { code: 'TZ', name: 'Tanzania', dialCode: '+255', flag: 'https://flagcdn.com/w40/tz.png' },
-    { code: 'AF', name: 'Afghanistan', dialCode: '+93', flag: 'https://flagcdn.com/w40/af.png' },
-    { code: 'AL', name: 'Albania', dialCode: '+355', flag: 'https://flagcdn.com/w40/al.png' },
-    { code: 'DZ', name: 'Algeria', dialCode: '+213', flag: 'https://flagcdn.com/w40/dz.png' },
-    { code: 'AR', name: 'Argentina', dialCode: '+54', flag: 'https://flagcdn.com/w40/ar.png' },
-    { code: 'AM', name: 'Armenia', dialCode: '+374', flag: 'https://flagcdn.com/w40/am.png' },
-    { code: 'AU', name: 'Australia', dialCode: '+61', flag: 'https://flagcdn.com/w40/au.png' },
-    { code: 'AT', name: 'Austria', dialCode: '+43', flag: 'https://flagcdn.com/w40/at.png' },
-    { code: 'AZ', name: 'Azerbaijan', dialCode: '+994', flag: 'https://flagcdn.com/w40/az.png' },
-    { code: 'BH', name: 'Bahrain', dialCode: '+973', flag: 'https://flagcdn.com/w40/bh.png' },
-    { code: 'BD', name: 'Bangladesh', dialCode: '+880', flag: 'https://flagcdn.com/w40/bd.png' },
-    { code: 'BY', name: 'Belarus', dialCode: '+375', flag: 'https://flagcdn.com/w40/by.png' },
-    { code: 'BE', name: 'Belgium', dialCode: '+32', flag: 'https://flagcdn.com/w40/be.png' },
-    { code: 'BJ', name: 'Benin', dialCode: '+229', flag: 'https://flagcdn.com/w40/bj.png' },
-    { code: 'BT', name: 'Bhutan', dialCode: '+975', flag: 'https://flagcdn.com/w40/bt.png' },
-    { code: 'BO', name: 'Bolivia', dialCode: '+591', flag: 'https://flagcdn.com/w40/bo.png' },
-    { code: 'BA', name: 'Bosnia and Herzegovina', dialCode: '+387', flag: 'https://flagcdn.com/w40/ba.png' },
-    { code: 'BW', name: 'Botswana', dialCode: '+267', flag: 'https://flagcdn.com/w40/bw.png' },
-    { code: 'BR', name: 'Brazil', dialCode: '+55', flag: 'https://flagcdn.com/w40/br.png' },
-    { code: 'BG', name: 'Bulgaria', dialCode: '+359', flag: 'https://flagcdn.com/w40/bg.png' },
-    { code: 'BF', name: 'Burkina Faso', dialCode: '+226', flag: 'https://flagcdn.com/w40/bf.png' },
-    { code: 'BI', name: 'Burundi', dialCode: '+257', flag: 'https://flagcdn.com/w40/bi.png' },
-    { code: 'KH', name: 'Cambodia', dialCode: '+855', flag: 'https://flagcdn.com/w40/kh.png' },
-    { code: 'CM', name: 'Cameroon', dialCode: '+237', flag: 'https://flagcdn.com/w40/cm.png' },
-    { code: 'CA', name: 'Canada', dialCode: '+1', flag: 'https://flagcdn.com/w40/ca.png' },
-    { code: 'CV', name: 'Cape Verde', dialCode: '+238', flag: 'https://flagcdn.com/w40/cv.png' },
-    { code: 'CF', name: 'Central African Republic', dialCode: '+236', flag: 'https://flagcdn.com/w40/cf.png' },
-    { code: 'TD', name: 'Chad', dialCode: '+235', flag: 'https://flagcdn.com/w40/td.png' },
-    { code: 'CL', name: 'Chile', dialCode: '+56', flag: 'https://flagcdn.com/w40/cl.png' },
-    { code: 'CN', name: 'China', dialCode: '+86', flag: 'https://flagcdn.com/w40/cn.png' },
-    { code: 'CO', name: 'Colombia', dialCode: '+57', flag: 'https://flagcdn.com/w40/co.png' },
-    { code: 'KM', name: 'Comoros', dialCode: '+269', flag: 'https://flagcdn.com/w40/km.png' },
-    { code: 'CG', name: 'Congo', dialCode: '+242', flag: 'https://flagcdn.com/w40/cg.png' },
-    { code: 'CD', name: 'Congo (DRC)', dialCode: '+243', flag: 'https://flagcdn.com/w40/cd.png' },
-    { code: 'CR', name: 'Costa Rica', dialCode: '+506', flag: 'https://flagcdn.com/w40/cr.png' },
-    { code: 'HR', name: 'Croatia', dialCode: '+385', flag: 'https://flagcdn.com/w40/hr.png' },
-    { code: 'CU', name: 'Cuba', dialCode: '+53', flag: 'https://flagcdn.com/w40/cu.png' },
-    { code: 'CY', name: 'Cyprus', dialCode: '+357', flag: 'https://flagcdn.com/w40/cy.png' },
-    { code: 'CZ', name: 'Czech Republic', dialCode: '+420', flag: 'https://flagcdn.com/w40/cz.png' },
-    { code: 'DK', name: 'Denmark', dialCode: '+45', flag: 'https://flagcdn.com/w40/dk.png' },
-    { code: 'DJ', name: 'Djibouti', dialCode: '+253', flag: 'https://flagcdn.com/w40/dj.png' },
-    { code: 'DO', name: 'Dominican Republic', dialCode: '+1-809', flag: 'https://flagcdn.com/w40/do.png' },
-    { code: 'EC', name: 'Ecuador', dialCode: '+593', flag: 'https://flagcdn.com/w40/ec.png' },
-    { code: 'EG', name: 'Egypt', dialCode: '+20', flag: 'https://flagcdn.com/w40/eg.png' },
-    { code: 'SV', name: 'El Salvador', dialCode: '+503', flag: 'https://flagcdn.com/w40/sv.png' },
-    { code: 'GQ', name: 'Equatorial Guinea', dialCode: '+240', flag: 'https://flagcdn.com/w40/gq.png' },
-    { code: 'ER', name: 'Eritrea', dialCode: '+291', flag: 'https://flagcdn.com/w40/er.png' },
-    { code: 'EE', name: 'Estonia', dialCode: '+372', flag: 'https://flagcdn.com/w40/ee.png' },
-    { code: 'ET', name: 'Ethiopia', dialCode: '+251', flag: 'https://flagcdn.com/w40/et.png' },
-    { code: 'FJ', name: 'Fiji', dialCode: '+679', flag: 'https://flagcdn.com/w40/fj.png' },
-    { code: 'FI', name: 'Finland', dialCode: '+358', flag: 'https://flagcdn.com/w40/fi.png' },
-    { code: 'FR', name: 'France', dialCode: '+33', flag: 'https://flagcdn.com/w40/fr.png' },
-    { code: 'GA', name: 'Gabon', dialCode: '+241', flag: 'https://flagcdn.com/w40/ga.png' },
-    { code: 'GM', name: 'Gambia', dialCode: '+220', flag: 'https://flagcdn.com/w40/gm.png' },
-    { code: 'GE', name: 'Georgia', dialCode: '+995', flag: 'https://flagcdn.com/w40/ge.png' },
-    { code: 'DE', name: 'Germany', dialCode: '+49', flag: 'https://flagcdn.com/w40/de.png' },
-    { code: 'GH', name: 'Ghana', dialCode: '+233', flag: 'https://flagcdn.com/w40/gh.png' },
-    { code: 'GR', name: 'Greece', dialCode: '+30', flag: 'https://flagcdn.com/w40/gr.png' },
-    { code: 'GT', name: 'Guatemala', dialCode: '+502', flag: 'https://flagcdn.com/w40/gt.png' },
-    { code: 'GN', name: 'Guinea', dialCode: '+224', flag: 'https://flagcdn.com/w40/gn.png' },
-    { code: 'GW', name: 'Guinea-Bissau', dialCode: '+245', flag: 'https://flagcdn.com/w40/gw.png' },
-    { code: 'GY', name: 'Guyana', dialCode: '+592', flag: 'https://flagcdn.com/w40/gy.png' },
-    { code: 'HT', name: 'Haiti', dialCode: '+509', flag: 'https://flagcdn.com/w40/ht.png' },
-    { code: 'HN', name: 'Honduras', dialCode: '+504', flag: 'https://flagcdn.com/w40/hn.png' },
-    { code: 'HU', name: 'Hungary', dialCode: '+36', flag: 'https://flagcdn.com/w40/hu.png' },
-    { code: 'IS', name: 'Iceland', dialCode: '+354', flag: 'https://flagcdn.com/w40/is.png' },
-    { code: 'IN', name: 'India', dialCode: '+91', flag: 'https://flagcdn.com/w40/in.png' },
-    { code: 'ID', name: 'Indonesia', dialCode: '+62', flag: 'https://flagcdn.com/w40/id.png' },
-    { code: 'IR', name: 'Iran', dialCode: '+98', flag: 'https://flagcdn.com/w40/ir.png' },
-    { code: 'IQ', name: 'Iraq', dialCode: '+964', flag: 'https://flagcdn.com/w40/iq.png' },
-    { code: 'IE', name: 'Ireland', dialCode: '+353', flag: 'https://flagcdn.com/w40/ie.png' },
-    { code: 'IL', name: 'Israel', dialCode: '+972', flag: 'https://flagcdn.com/w40/il.png' },
-    { code: 'IT', name: 'Italy', dialCode: '+39', flag: 'https://flagcdn.com/w40/it.png' },
-    { code: 'JM', name: 'Jamaica', dialCode: '+1-876', flag: 'https://flagcdn.com/w40/jm.png' },
-    { code: 'JP', name: 'Japan', dialCode: '+81', flag: 'https://flagcdn.com/w40/jp.png' },
-    { code: 'JO', name: 'Jordan', dialCode: '+962', flag: 'https://flagcdn.com/w40/jo.png' },
-    { code: 'KZ', name: 'Kazakhstan', dialCode: '+7', flag: 'https://flagcdn.com/w40/kz.png' },
-    { code: 'KE', name: 'Kenya', dialCode: '+254', flag: 'https://flagcdn.com/w40/ke.png' },
-    { code: 'KW', name: 'Kuwait', dialCode: '+965', flag: 'https://flagcdn.com/w40/kw.png' },
-    { code: 'KG', name: 'Kyrgyzstan', dialCode: '+996', flag: 'https://flagcdn.com/w40/kg.png' },
-    { code: 'LA', name: 'Laos', dialCode: '+856', flag: 'https://flagcdn.com/w40/la.png' },
-    { code: 'LV', name: 'Latvia', dialCode: '+371', flag: 'https://flagcdn.com/w40/lv.png' },
-    { code: 'LB', name: 'Lebanon', dialCode: '+961', flag: 'https://flagcdn.com/w40/lb.png' },
-    { code: 'LS', name: 'Lesotho', dialCode: '+266', flag: 'https://flagcdn.com/w40/ls.png' },
-    { code: 'LR', name: 'Liberia', dialCode: '+231', flag: 'https://flagcdn.com/w40/lr.png' },
-    { code: 'LY', name: 'Libya', dialCode: '+218', flag: 'https://flagcdn.com/w40/ly.png' },
-    { code: 'LI', name: 'Liechtenstein', dialCode: '+423', flag: 'https://flagcdn.com/w40/li.png' },
-    { code: 'LT', name: 'Lithuania', dialCode: '+370', flag: 'https://flagcdn.com/w40/lt.png' },
-    { code: 'LU', name: 'Luxembourg', dialCode: '+352', flag: 'https://flagcdn.com/w40/lu.png' },
-    { code: 'MG', name: 'Madagascar', dialCode: '+261', flag: 'https://flagcdn.com/w40/mg.png' },
-    { code: 'MW', name: 'Malawi', dialCode: '+265', flag: 'https://flagcdn.com/w40/mw.png' },
-    { code: 'MY', name: 'Malaysia', dialCode: '+60', flag: 'https://flagcdn.com/w40/my.png' },
-    { code: 'MV', name: 'Maldives', dialCode: '+960', flag: 'https://flagcdn.com/w40/mv.png' },
-    { code: 'ML', name: 'Mali', dialCode: '+223', flag: 'https://flagcdn.com/w40/ml.png' },
-    { code: 'MT', name: 'Malta', dialCode: '+356', flag: 'https://flagcdn.com/w40/mt.png' },
-    { code: 'MR', name: 'Mauritania', dialCode: '+222', flag: 'https://flagcdn.com/w40/mr.png' },
-    { code: 'MU', name: 'Mauritius', dialCode: '+230', flag: 'https://flagcdn.com/w40/mu.png' },
-    { code: 'MX', name: 'Mexico', dialCode: '+52', flag: 'https://flagcdn.com/w40/mx.png' },
-    { code: 'MD', name: 'Moldova', dialCode: '+373', flag: 'https://flagcdn.com/w40/md.png' },
-    { code: 'MC', name: 'Monaco', dialCode: '+377', flag: 'https://flagcdn.com/w40/mc.png' },
-    { code: 'MN', name: 'Mongolia', dialCode: '+976', flag: 'https://flagcdn.com/w40/mn.png' },
-    { code: 'ME', name: 'Montenegro', dialCode: '+382', flag: 'https://flagcdn.com/w40/me.png' },
-    { code: 'MA', name: 'Morocco', dialCode: '+212', flag: 'https://flagcdn.com/w40/ma.png' },
-    { code: 'MZ', name: 'Mozambique', dialCode: '+258', flag: 'https://flagcdn.com/w40/mz.png' },
-    { code: 'MM', name: 'Myanmar', dialCode: '+95', flag: 'https://flagcdn.com/w40/mm.png' },
-    { code: 'NA', name: 'Namibia', dialCode: '+264', flag: 'https://flagcdn.com/w40/na.png' },
-    { code: 'NP', name: 'Nepal', dialCode: '+977', flag: 'https://flagcdn.com/w40/np.png' },
-    { code: 'NL', name: 'Netherlands', dialCode: '+31', flag: 'https://flagcdn.com/w40/nl.png' },
-    { code: 'NZ', name: 'New Zealand', dialCode: '+64', flag: 'https://flagcdn.com/w40/nz.png' },
-    { code: 'NI', name: 'Nicaragua', dialCode: '+505', flag: 'https://flagcdn.com/w40/ni.png' },
-    { code: 'NE', name: 'Niger', dialCode: '+227', flag: 'https://flagcdn.com/w40/ne.png' },
-    { code: 'NG', name: 'Nigeria', dialCode: '+234', flag: 'https://flagcdn.com/w40/ng.png' },
-    { code: 'KP', name: 'North Korea', dialCode: '+850', flag: 'https://flagcdn.com/w40/kp.png' },
-    { code: 'NO', name: 'Norway', dialCode: '+47', flag: 'https://flagcdn.com/w40/no.png' },
-    { code: 'OM', name: 'Oman', dialCode: '+968', flag: 'https://flagcdn.com/w40/om.png' },
-    { code: 'PK', name: 'Pakistan', dialCode: '+92', flag: 'https://flagcdn.com/w40/pk.png' },
-    { code: 'PA', name: 'Panama', dialCode: '+507', flag: 'https://flagcdn.com/w40/pa.png' },
-    { code: 'PG', name: 'Papua New Guinea', dialCode: '+675', flag: 'https://flagcdn.com/w40/pg.png' },
-    { code: 'PY', name: 'Paraguay', dialCode: '+595', flag: 'https://flagcdn.com/w40/py.png' },
-    { code: 'PE', name: 'Peru', dialCode: '+51', flag: 'https://flagcdn.com/w40/pe.png' },
-    { code: 'PH', name: 'Philippines', dialCode: '+63', flag: 'https://flagcdn.com/w40/ph.png' },
-    { code: 'PL', name: 'Poland', dialCode: '+48', flag: 'https://flagcdn.com/w40/pl.png' },
-    { code: 'PT', name: 'Portugal', dialCode: '+351', flag: 'https://flagcdn.com/w40/pt.png' },
-    { code: 'QA', name: 'Qatar', dialCode: '+974', flag: 'https://flagcdn.com/w40/qa.png' },
-    { code: 'RO', name: 'Romania', dialCode: '+40', flag: 'https://flagcdn.com/w40/ro.png' },
-    { code: 'RU', name: 'Russia', dialCode: '+7', flag: 'https://flagcdn.com/w40/ru.png' },
-    { code: 'RW', name: 'Rwanda', dialCode: '+250', flag: 'https://flagcdn.com/w40/rw.png' },
-    { code: 'SA', name: 'Saudi Arabia', dialCode: '+966', flag: 'https://flagcdn.com/w40/sa.png' },
-    { code: 'SN', name: 'Senegal', dialCode: '+221', flag: 'https://flagcdn.com/w40/sn.png' },
-    { code: 'RS', name: 'Serbia', dialCode: '+381', flag: 'https://flagcdn.com/w40/rs.png' },
-    { code: 'SC', name: 'Seychelles', dialCode: '+248', flag: 'https://flagcdn.com/w40/sc.png' },
-    { code: 'SL', name: 'Sierra Leone', dialCode: '+232', flag: 'https://flagcdn.com/w40/sl.png' },
-    { code: 'SG', name: 'Singapore', dialCode: '+65', flag: 'https://flagcdn.com/w40/sg.png' },
-    { code: 'SK', name: 'Slovakia', dialCode: '+421', flag: 'https://flagcdn.com/w40/sk.png' },
-    { code: 'SI', name: 'Slovenia', dialCode: '+386', flag: 'https://flagcdn.com/w40/si.png' },
-    { code: 'SB', name: 'Solomon Islands', dialCode: '+677', flag: 'https://flagcdn.com/w40/sb.png' },
-    { code: 'SO', name: 'Somalia', dialCode: '+252', flag: 'https://flagcdn.com/w40/so.png' },
-    { code: 'ZA', name: 'South Africa', dialCode: '+27', flag: 'https://flagcdn.com/w40/za.png' },
-    { code: 'KR', name: 'South Korea', dialCode: '+82', flag: 'https://flagcdn.com/w40/kr.png' },
-    { code: 'SS', name: 'South Sudan', dialCode: '+211', flag: 'https://flagcdn.com/w40/ss.png' },
-    { code: 'ES', name: 'Spain', dialCode: '+34', flag: 'https://flagcdn.com/w40/es.png' },
-    { code: 'LK', name: 'Sri Lanka', dialCode: '+94', flag: 'https://flagcdn.com/w40/lk.png' },
-    { code: 'SD', name: 'Sudan', dialCode: '+249', flag: 'https://flagcdn.com/w40/sd.png' },
-    { code: 'SE', name: 'Sweden', dialCode: '+46', flag: 'https://flagcdn.com/w40/se.png' },
-    { code: 'CH', name: 'Switzerland', dialCode: '+41', flag: 'https://flagcdn.com/w40/ch.png' },
-    { code: 'SY', name: 'Syria', dialCode: '+963', flag: 'https://flagcdn.com/w40/sy.png' },
-    { code: 'TW', name: 'Taiwan', dialCode: '+886', flag: 'https://flagcdn.com/w40/tw.png' },
-    { code: 'TJ', name: 'Tajikistan', dialCode: '+992', flag: 'https://flagcdn.com/w40/tj.png' },
-    { code: 'TH', name: 'Thailand', dialCode: '+66', flag: 'https://flagcdn.com/w40/th.png' },
-    { code: 'TG', name: 'Togo', dialCode: '+228', flag: 'https://flagcdn.com/w40/tg.png' },
-    { code: 'TT', name: 'Trinidad and Tobago', dialCode: '+1-868', flag: 'https://flagcdn.com/w40/tt.png' },
-    { code: 'TN', name: 'Tunisia', dialCode: '+216', flag: 'https://flagcdn.com/w40/tn.png' },
-    { code: 'TR', name: 'Turkey', dialCode: '+90', flag: 'https://flagcdn.com/w40/tr.png' },
-    { code: 'TM', name: 'Turkmenistan', dialCode: '+993', flag: 'https://flagcdn.com/w40/tm.png' },
-    { code: 'UG', name: 'Uganda', dialCode: '+256', flag: 'https://flagcdn.com/w40/ug.png' },
-    { code: 'UA', name: 'Ukraine', dialCode: '+380', flag: 'https://flagcdn.com/w40/ua.png' },
-    { code: 'AE', name: 'United Arab Emirates', dialCode: '+971', flag: 'https://flagcdn.com/w40/ae.png' },
-    { code: 'GB', name: 'United Kingdom', dialCode: '+44', flag: 'https://flagcdn.com/w40/gb.png' },
-    { code: 'US', name: 'United States', dialCode: '+1', flag: 'https://flagcdn.com/w40/us.png' },
-    { code: 'UY', name: 'Uruguay', dialCode: '+598', flag: 'https://flagcdn.com/w40/uy.png' },
-    { code: 'UZ', name: 'Uzbekistan', dialCode: '+998', flag: 'https://flagcdn.com/w40/uz.png' },
-    { code: 'VE', name: 'Venezuela', dialCode: '+58', flag: 'https://flagcdn.com/w40/ve.png' },
-    { code: 'VN', name: 'Vietnam', dialCode: '+84', flag: 'https://flagcdn.com/w40/vn.png' },
-    { code: 'YE', name: 'Yemen', dialCode: '+967', flag: 'https://flagcdn.com/w40/ye.png' },
-    { code: 'ZM', name: 'Zambia', dialCode: '+260', flag: 'https://flagcdn.com/w40/zm.png' },
-    { code: 'ZW', name: 'Zimbabwe', dialCode: '+263', flag: 'https://flagcdn.com/w40/zw.png' }
-];
+                { code: 'TZ', name: 'Tanzania', dialCode: '+255', flag: 'https://flagcdn.com/w40/tz.png' },
+                { code: 'AF', name: 'Afghanistan', dialCode: '+93', flag: 'https://flagcdn.com/w40/af.png' },
+                { code: 'AL', name: 'Albania', dialCode: '+355', flag: 'https://flagcdn.com/w40/al.png' },
+                { code: 'DZ', name: 'Algeria', dialCode: '+213', flag: 'https://flagcdn.com/w40/dz.png' },
+                { code: 'AR', name: 'Argentina', dialCode: '+54', flag: 'https://flagcdn.com/w40/ar.png' },
+                { code: 'AM', name: 'Armenia', dialCode: '+374', flag: 'https://flagcdn.com/w40/am.png' },
+                { code: 'AU', name: 'Australia', dialCode: '+61', flag: 'https://flagcdn.com/w40/au.png' },
+                { code: 'AT', name: 'Austria', dialCode: '+43', flag: 'https://flagcdn.com/w40/at.png' },
+                { code: 'AZ', name: 'Azerbaijan', dialCode: '+994', flag: 'https://flagcdn.com/w40/az.png' },
+                { code: 'BH', name: 'Bahrain', dialCode: '+973', flag: 'https://flagcdn.com/w40/bh.png' },
+                { code: 'BD', name: 'Bangladesh', dialCode: '+880', flag: 'https://flagcdn.com/w40/bd.png' },
+                { code: 'BY', name: 'Belarus', dialCode: '+375', flag: 'https://flagcdn.com/w40/by.png' },
+                { code: 'BE', name: 'Belgium', dialCode: '+32', flag: 'https://flagcdn.com/w40/be.png' },
+                { code: 'BJ', name: 'Benin', dialCode: '+229', flag: 'https://flagcdn.com/w40/bj.png' },
+                { code: 'BT', name: 'Bhutan', dialCode: '+975', flag: 'https://flagcdn.com/w40/bt.png' },
+                { code: 'BO', name: 'Bolivia', dialCode: '+591', flag: 'https://flagcdn.com/w40/bo.png' },
+                { code: 'BA', name: 'Bosnia and Herzegovina', dialCode: '+387', flag: 'https://flagcdn.com/w40/ba.png' },
+                { code: 'BW', name: 'Botswana', dialCode: '+267', flag: 'https://flagcdn.com/w40/bw.png' },
+                { code: 'BR', name: 'Brazil', dialCode: '+55', flag: 'https://flagcdn.com/w40/br.png' },
+                { code: 'BG', name: 'Bulgaria', dialCode: '+359', flag: 'https://flagcdn.com/w40/bg.png' },
+                { code: 'BF', name: 'Burkina Faso', dialCode: '+226', flag: 'https://flagcdn.com/w40/bf.png' },
+                { code: 'BI', name: 'Burundi', dialCode: '+257', flag: 'https://flagcdn.com/w40/bi.png' },
+                { code: 'KH', name: 'Cambodia', dialCode: '+855', flag: 'https://flagcdn.com/w40/kh.png' },
+                { code: 'CM', name: 'Cameroon', dialCode: '+237', flag: 'https://flagcdn.com/w40/cm.png' },
+                { code: 'CA', name: 'Canada', dialCode: '+1', flag: 'https://flagcdn.com/w40/ca.png' },
+                { code: 'CV', name: 'Cape Verde', dialCode: '+238', flag: 'https://flagcdn.com/w40/cv.png' },
+                { code: 'CF', name: 'Central African Republic', dialCode: '+236', flag: 'https://flagcdn.com/w40/cf.png' },
+                { code: 'TD', name: 'Chad', dialCode: '+235', flag: 'https://flagcdn.com/w40/td.png' },
+                { code: 'CL', name: 'Chile', dialCode: '+56', flag: 'https://flagcdn.com/w40/cl.png' },
+                { code: 'CN', name: 'China', dialCode: '+86', flag: 'https://flagcdn.com/w40/cn.png' },
+                { code: 'CO', name: 'Colombia', dialCode: '+57', flag: 'https://flagcdn.com/w40/co.png' },
+                { code: 'KM', name: 'Comoros', dialCode: '+269', flag: 'https://flagcdn.com/w40/km.png' },
+                { code: 'CG', name: 'Congo', dialCode: '+242', flag: 'https://flagcdn.com/w40/cg.png' },
+                { code: 'CD', name: 'Congo (DRC)', dialCode: '+243', flag: 'https://flagcdn.com/w40/cd.png' },
+                { code: 'CR', name: 'Costa Rica', dialCode: '+506', flag: 'https://flagcdn.com/w40/cr.png' },
+                { code: 'HR', name: 'Croatia', dialCode: '+385', flag: 'https://flagcdn.com/w40/hr.png' },
+                { code: 'CU', name: 'Cuba', dialCode: '+53', flag: 'https://flagcdn.com/w40/cu.png' },
+                { code: 'CY', name: 'Cyprus', dialCode: '+357', flag: 'https://flagcdn.com/w40/cy.png' },
+                { code: 'CZ', name: 'Czech Republic', dialCode: '+420', flag: 'https://flagcdn.com/w40/cz.png' },
+                { code: 'DK', name: 'Denmark', dialCode: '+45', flag: 'https://flagcdn.com/w40/dk.png' },
+                { code: 'DJ', name: 'Djibouti', dialCode: '+253', flag: 'https://flagcdn.com/w40/dj.png' },
+                { code: 'DO', name: 'Dominican Republic', dialCode: '+1-809', flag: 'https://flagcdn.com/w40/do.png' },
+                { code: 'EC', name: 'Ecuador', dialCode: '+593', flag: 'https://flagcdn.com/w40/ec.png' },
+                { code: 'EG', name: 'Egypt', dialCode: '+20', flag: 'https://flagcdn.com/w40/eg.png' },
+                { code: 'SV', name: 'El Salvador', dialCode: '+503', flag: 'https://flagcdn.com/w40/sv.png' },
+                { code: 'GQ', name: 'Equatorial Guinea', dialCode: '+240', flag: 'https://flagcdn.com/w40/gq.png' },
+                { code: 'ER', name: 'Eritrea', dialCode: '+291', flag: 'https://flagcdn.com/w40/er.png' },
+                { code: 'EE', name: 'Estonia', dialCode: '+372', flag: 'https://flagcdn.com/w40/ee.png' },
+                { code: 'ET', name: 'Ethiopia', dialCode: '+251', flag: 'https://flagcdn.com/w40/et.png' },
+                { code: 'FJ', name: 'Fiji', dialCode: '+679', flag: 'https://flagcdn.com/w40/fj.png' },
+                { code: 'FI', name: 'Finland', dialCode: '+358', flag: 'https://flagcdn.com/w40/fi.png' },
+                { code: 'FR', name: 'France', dialCode: '+33', flag: 'https://flagcdn.com/w40/fr.png' },
+                { code: 'GA', name: 'Gabon', dialCode: '+241', flag: 'https://flagcdn.com/w40/ga.png' },
+                { code: 'GM', name: 'Gambia', dialCode: '+220', flag: 'https://flagcdn.com/w40/gm.png' },
+                { code: 'GE', name: 'Georgia', dialCode: '+995', flag: 'https://flagcdn.com/w40/ge.png' },
+                { code: 'DE', name: 'Germany', dialCode: '+49', flag: 'https://flagcdn.com/w40/de.png' },
+                { code: 'GH', name: 'Ghana', dialCode: '+233', flag: 'https://flagcdn.com/w40/gh.png' },
+                { code: 'GR', name: 'Greece', dialCode: '+30', flag: 'https://flagcdn.com/w40/gr.png' },
+                { code: 'GT', name: 'Guatemala', dialCode: '+502', flag: 'https://flagcdn.com/w40/gt.png' },
+                { code: 'GN', name: 'Guinea', dialCode: '+224', flag: 'https://flagcdn.com/w40/gn.png' },
+                { code: 'GW', name: 'Guinea-Bissau', dialCode: '+245', flag: 'https://flagcdn.com/w40/gw.png' },
+                { code: 'GY', name: 'Guyana', dialCode: '+592', flag: 'https://flagcdn.com/w40/gy.png' },
+                { code: 'HT', name: 'Haiti', dialCode: '+509', flag: 'https://flagcdn.com/w40/ht.png' },
+                { code: 'HN', name: 'Honduras', dialCode: '+504', flag: 'https://flagcdn.com/w40/hn.png' },
+                { code: 'HU', name: 'Hungary', dialCode: '+36', flag: 'https://flagcdn.com/w40/hu.png' },
+                { code: 'IS', name: 'Iceland', dialCode: '+354', flag: 'https://flagcdn.com/w40/is.png' },
+                { code: 'IN', name: 'India', dialCode: '+91', flag: 'https://flagcdn.com/w40/in.png' },
+                { code: 'ID', name: 'Indonesia', dialCode: '+62', flag: 'https://flagcdn.com/w40/id.png' },
+                { code: 'IR', name: 'Iran', dialCode: '+98', flag: 'https://flagcdn.com/w40/ir.png' },
+                { code: 'IQ', name: 'Iraq', dialCode: '+964', flag: 'https://flagcdn.com/w40/iq.png' },
+                { code: 'IE', name: 'Ireland', dialCode: '+353', flag: 'https://flagcdn.com/w40/ie.png' },
+                { code: 'IL', name: 'Israel', dialCode: '+972', flag: 'https://flagcdn.com/w40/il.png' },
+                { code: 'IT', name: 'Italy', dialCode: '+39', flag: 'https://flagcdn.com/w40/it.png' },
+                { code: 'JM', name: 'Jamaica', dialCode: '+1-876', flag: 'https://flagcdn.com/w40/jm.png' },
+                { code: 'JP', name: 'Japan', dialCode: '+81', flag: 'https://flagcdn.com/w40/jp.png' },
+                { code: 'JO', name: 'Jordan', dialCode: '+962', flag: 'https://flagcdn.com/w40/jo.png' },
+                { code: 'KZ', name: 'Kazakhstan', dialCode: '+7', flag: 'https://flagcdn.com/w40/kz.png' },
+                { code: 'KE', name: 'Kenya', dialCode: '+254', flag: 'https://flagcdn.com/w40/ke.png' },
+                { code: 'KW', name: 'Kuwait', dialCode: '+965', flag: 'https://flagcdn.com/w40/kw.png' },
+                { code: 'KG', name: 'Kyrgyzstan', dialCode: '+996', flag: 'https://flagcdn.com/w40/kg.png' },
+                { code: 'LA', name: 'Laos', dialCode: '+856', flag: 'https://flagcdn.com/w40/la.png' },
+                { code: 'LV', name: 'Latvia', dialCode: '+371', flag: 'https://flagcdn.com/w40/lv.png' },
+                { code: 'LB', name: 'Lebanon', dialCode: '+961', flag: 'https://flagcdn.com/w40/lb.png' },
+                { code: 'LS', name: 'Lesotho', dialCode: '+266', flag: 'https://flagcdn.com/w40/ls.png' },
+                { code: 'LR', name: 'Liberia', dialCode: '+231', flag: 'https://flagcdn.com/w40/lr.png' },
+                { code: 'LY', name: 'Libya', dialCode: '+218', flag: 'https://flagcdn.com/w40/ly.png' },
+                { code: 'LI', name: 'Liechtenstein', dialCode: '+423', flag: 'https://flagcdn.com/w40/li.png' },
+                { code: 'LT', name: 'Lithuania', dialCode: '+370', flag: 'https://flagcdn.com/w40/lt.png' },
+                { code: 'LU', name: 'Luxembourg', dialCode: '+352', flag: 'https://flagcdn.com/w40/lu.png' },
+                { code: 'MG', name: 'Madagascar', dialCode: '+261', flag: 'https://flagcdn.com/w40/mg.png' },
+                { code: 'MW', name: 'Malawi', dialCode: '+265', flag: 'https://flagcdn.com/w40/mw.png' },
+                { code: 'MY', name: 'Malaysia', dialCode: '+60', flag: 'https://flagcdn.com/w40/my.png' },
+                { code: 'MV', name: 'Maldives', dialCode: '+960', flag: 'https://flagcdn.com/w40/mv.png' },
+                { code: 'ML', name: 'Mali', dialCode: '+223', flag: 'https://flagcdn.com/w40/ml.png' },
+                { code: 'MT', name: 'Malta', dialCode: '+356', flag: 'https://flagcdn.com/w40/mt.png' },
+                { code: 'MR', name: 'Mauritania', dialCode: '+222', flag: 'https://flagcdn.com/w40/mr.png' },
+                { code: 'MU', name: 'Mauritius', dialCode: '+230', flag: 'https://flagcdn.com/w40/mu.png' },
+                { code: 'MX', name: 'Mexico', dialCode: '+52', flag: 'https://flagcdn.com/w40/mx.png' },
+                { code: 'MD', name: 'Moldova', dialCode: '+373', flag: 'https://flagcdn.com/w40/md.png' },
+                { code: 'MC', name: 'Monaco', dialCode: '+377', flag: 'https://flagcdn.com/w40/mc.png' },
+                { code: 'MN', name: 'Mongolia', dialCode: '+976', flag: 'https://flagcdn.com/w40/mn.png' },
+                { code: 'ME', name: 'Montenegro', dialCode: '+382', flag: 'https://flagcdn.com/w40/me.png' },
+                { code: 'MA', name: 'Morocco', dialCode: '+212', flag: 'https://flagcdn.com/w40/ma.png' },
+                { code: 'MZ', name: 'Mozambique', dialCode: '+258', flag: 'https://flagcdn.com/w40/mz.png' },
+                { code: 'MM', name: 'Myanmar', dialCode: '+95', flag: 'https://flagcdn.com/w40/mm.png' },
+                { code: 'NA', name: 'Namibia', dialCode: '+264', flag: 'https://flagcdn.com/w40/na.png' },
+                { code: 'NP', name: 'Nepal', dialCode: '+977', flag: 'https://flagcdn.com/w40/np.png' },
+                { code: 'NL', name: 'Netherlands', dialCode: '+31', flag: 'https://flagcdn.com/w40/nl.png' },
+                { code: 'NZ', name: 'New Zealand', dialCode: '+64', flag: 'https://flagcdn.com/w40/nz.png' },
+                { code: 'NI', name: 'Nicaragua', dialCode: '+505', flag: 'https://flagcdn.com/w40/ni.png' },
+                { code: 'NE', name: 'Niger', dialCode: '+227', flag: 'https://flagcdn.com/w40/ne.png' },
+                { code: 'NG', name: 'Nigeria', dialCode: '+234', flag: 'https://flagcdn.com/w40/ng.png' },
+                { code: 'KP', name: 'North Korea', dialCode: '+850', flag: 'https://flagcdn.com/w40/kp.png' },
+                { code: 'NO', name: 'Norway', dialCode: '+47', flag: 'https://flagcdn.com/w40/no.png' },
+                { code: 'OM', name: 'Oman', dialCode: '+968', flag: 'https://flagcdn.com/w40/om.png' },
+                { code: 'PK', name: 'Pakistan', dialCode: '+92', flag: 'https://flagcdn.com/w40/pk.png' },
+                { code: 'PA', name: 'Panama', dialCode: '+507', flag: 'https://flagcdn.com/w40/pa.png' },
+                { code: 'PG', name: 'Papua New Guinea', dialCode: '+675', flag: 'https://flagcdn.com/w40/pg.png' },
+                { code: 'PY', name: 'Paraguay', dialCode: '+595', flag: 'https://flagcdn.com/w40/py.png' },
+                { code: 'PE', name: 'Peru', dialCode: '+51', flag: 'https://flagcdn.com/w40/pe.png' },
+                { code: 'PH', name: 'Philippines', dialCode: '+63', flag: 'https://flagcdn.com/w40/ph.png' },
+                { code: 'PL', name: 'Poland', dialCode: '+48', flag: 'https://flagcdn.com/w40/pl.png' },
+                { code: 'PT', name: 'Portugal', dialCode: '+351', flag: 'https://flagcdn.com/w40/pt.png' },
+                { code: 'QA', name: 'Qatar', dialCode: '+974', flag: 'https://flagcdn.com/w40/qa.png' },
+                { code: 'RO', name: 'Romania', dialCode: '+40', flag: 'https://flagcdn.com/w40/ro.png' },
+                { code: 'RU', name: 'Russia', dialCode: '+7', flag: 'https://flagcdn.com/w40/ru.png' },
+                { code: 'RW', name: 'Rwanda', dialCode: '+250', flag: 'https://flagcdn.com/w40/rw.png' },
+                { code: 'SA', name: 'Saudi Arabia', dialCode: '+966', flag: 'https://flagcdn.com/w40/sa.png' },
+                { code: 'SN', name: 'Senegal', dialCode: '+221', flag: 'https://flagcdn.com/w40/sn.png' },
+                { code: 'RS', name: 'Serbia', dialCode: '+381', flag: 'https://flagcdn.com/w40/rs.png' },
+                { code: 'SC', name: 'Seychelles', dialCode: '+248', flag: 'https://flagcdn.com/w40/sc.png' },
+                { code: 'SL', name: 'Sierra Leone', dialCode: '+232', flag: 'https://flagcdn.com/w40/sl.png' },
+                { code: 'SG', name: 'Singapore', dialCode: '+65', flag: 'https://flagcdn.com/w40/sg.png' },
+                { code: 'SK', name: 'Slovakia', dialCode: '+421', flag: 'https://flagcdn.com/w40/sk.png' },
+                { code: 'SI', name: 'Slovenia', dialCode: '+386', flag: 'https://flagcdn.com/w40/si.png' },
+                { code: 'SB', name: 'Solomon Islands', dialCode: '+677', flag: 'https://flagcdn.com/w40/sb.png' },
+                { code: 'SO', name: 'Somalia', dialCode: '+252', flag: 'https://flagcdn.com/w40/so.png' },
+                { code: 'ZA', name: 'South Africa', dialCode: '+27', flag: 'https://flagcdn.com/w40/za.png' },
+                { code: 'KR', name: 'South Korea', dialCode: '+82', flag: 'https://flagcdn.com/w40/kr.png' },
+                { code: 'SS', name: 'South Sudan', dialCode: '+211', flag: 'https://flagcdn.com/w40/ss.png' },
+                { code: 'ES', name: 'Spain', dialCode: '+34', flag: 'https://flagcdn.com/w40/es.png' },
+                { code: 'LK', name: 'Sri Lanka', dialCode: '+94', flag: 'https://flagcdn.com/w40/lk.png' },
+                { code: 'SD', name: 'Sudan', dialCode: '+249', flag: 'https://flagcdn.com/w40/sd.png' },
+                { code: 'SE', name: 'Sweden', dialCode: '+46', flag: 'https://flagcdn.com/w40/se.png' },
+                { code: 'CH', name: 'Switzerland', dialCode: '+41', flag: 'https://flagcdn.com/w40/ch.png' },
+                { code: 'SY', name: 'Syria', dialCode: '+963', flag: 'https://flagcdn.com/w40/sy.png' },
+                { code: 'TW', name: 'Taiwan', dialCode: '+886', flag: 'https://flagcdn.com/w40/tw.png' },
+                { code: 'TJ', name: 'Tajikistan', dialCode: '+992', flag: 'https://flagcdn.com/w40/tj.png' },
+                { code: 'TH', name: 'Thailand', dialCode: '+66', flag: 'https://flagcdn.com/w40/th.png' },
+                { code: 'TG', name: 'Togo', dialCode: '+228', flag: 'https://flagcdn.com/w40/tg.png' },
+                { code: 'TT', name: 'Trinidad and Tobago', dialCode: '+1-868', flag: 'https://flagcdn.com/w40/tt.png' },
+                { code: 'TN', name: 'Tunisia', dialCode: '+216', flag: 'https://flagcdn.com/w40/tn.png' },
+                { code: 'TR', name: 'Turkey', dialCode: '+90', flag: 'https://flagcdn.com/w40/tr.png' },
+                { code: 'TM', name: 'Turkmenistan', dialCode: '+993', flag: 'https://flagcdn.com/w40/tm.png' },
+                { code: 'UG', name: 'Uganda', dialCode: '+256', flag: 'https://flagcdn.com/w40/ug.png' },
+                { code: 'UA', name: 'Ukraine', dialCode: '+380', flag: 'https://flagcdn.com/w40/ua.png' },
+                { code: 'AE', name: 'United Arab Emirates', dialCode: '+971', flag: 'https://flagcdn.com/w40/ae.png' },
+                { code: 'GB', name: 'United Kingdom', dialCode: '+44', flag: 'https://flagcdn.com/w40/gb.png' },
+                { code: 'US', name: 'United States', dialCode: '+1', flag: 'https://flagcdn.com/w40/us.png' },
+                { code: 'UY', name: 'Uruguay', dialCode: '+598', flag: 'https://flagcdn.com/w40/uy.png' },
+                { code: 'UZ', name: 'Uzbekistan', dialCode: '+998', flag: 'https://flagcdn.com/w40/uz.png' },
+                { code: 'VE', name: 'Venezuela', dialCode: '+58', flag: 'https://flagcdn.com/w40/ve.png' },
+                { code: 'VN', name: 'Vietnam', dialCode: '+84', flag: 'https://flagcdn.com/w40/vn.png' },
+                { code: 'YE', name: 'Yemen', dialCode: '+967', flag: 'https://flagcdn.com/w40/ye.png' },
+                { code: 'ZM', name: 'Zambia', dialCode: '+260', flag: 'https://flagcdn.com/w40/zm.png' },
+                { code: 'ZW', name: 'Zimbabwe', dialCode: '+263', flag: 'https://flagcdn.com/w40/zw.png' }
+            ];
 
             // DOM elements
             const countrySelector = document.getElementById('countrySelector');
@@ -1871,7 +1969,7 @@
             const phoneInputWrapper = document.getElementById('phoneInputWrapper');
 
             // Current selected country
-            let selectedCountry = countryData.find(country => country.code === 'TZ') || countryData[0]; // Default to Tanzania or first country
+            let selectedCountry = countryData.find(country => country.code === 'TZ') || countryData[0];
 
             // Populate country list
             function populateCountryList(countries = countryData) {
@@ -1947,7 +2045,7 @@
                 const phoneNumber = phoneInput.value.trim();
                 const fullNumber = selectedCountry.dialCode + phoneNumber;
                 
-                // Simple validation - you can enhance this with a library like libphonenumber
+                // Simple validation
                 const isValid = phoneNumber.length >= 7 && /^[0-9+\-\s()]+$/.test(phoneNumber);
                 
                 if (phoneNumber === '') {
@@ -1959,14 +2057,14 @@
                     phoneInputWrapper.classList.remove('invalid');
                     phoneInputWrapper.classList.add('valid');
                     phoneValidation.className = 'phone-validation valid';
-                    phoneValidation.innerHTML = '<i class="fas fa-check-circle"></i>'; // Use check-circle icon
+                    phoneValidation.innerHTML = '<i class="fas fa-check-circle"></i>';
                     phoneHelpText.className = 'phone-help-text valid';
                     phoneHelpText.textContent = `Valid ${selectedCountry.name} number: ${fullNumber}`;
                 } else {
                     phoneInputWrapper.classList.remove('valid');
                     phoneInputWrapper.classList.add('invalid');
                     phoneValidation.className = 'phone-validation invalid';
-                    phoneValidation.innerHTML = '<i class="fas fa-exclamation-circle"></i>'; // Use exclamation-circle icon
+                    phoneValidation.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
                     phoneHelpText.className = 'phone-help-text invalid';
                     phoneHelpText.textContent = 'Please enter a valid phone number';
                 }
@@ -1980,7 +2078,7 @@
                 
                 // Event listeners
                 countrySelector.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent click from propagating to document
+                    e.stopPropagation();
                     if (countryDropdown.classList.contains('active')) {
                         closeDropdown();
                     } else {
@@ -1992,12 +2090,10 @@
                 
                 phoneInput.addEventListener('input', validatePhoneNumber);
                 phoneInput.addEventListener('focus', () => {
-                    phoneInputWrapper.classList.add('focused'); // Add a class for styling focus state
+                    phoneInputWrapper.classList.add('focused');
                 });
                 phoneInput.addEventListener('blur', () => {
                     phoneInputWrapper.classList.remove('focused');
-                    // Optionally validate on blur as well, or rely on input events
-                    // validatePhoneNumber(); 
                 });
                 
                 // Close dropdown when clicking outside
@@ -2014,25 +2110,102 @@
             // Initialize the phone input
             initPhoneInput();
 
-            // Your existing JavaScript code for other functionality
-            // Mobile Navigation Toggle
+            // Mobile Navigation - UPDATED to match index.html
             const mobileToggle = document.getElementById('mobileToggle');
             const navMenu = document.getElementById('navMenu');
+            const body = document.body;
             
-            mobileToggle.addEventListener('click', function() {
+            mobileToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
                 navMenu.classList.toggle('active');
-                mobileToggle.innerHTML = navMenu.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                mobileToggle.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+                    body.classList.add('menu-open');
+                } else {
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    body.classList.remove('menu-open');
+                }
             });
             
-            // Close mobile menu when clicking on a nav link
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navMenu.classList.remove('active');
-                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target) && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        mobileToggle.classList.remove('active');
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        body.classList.remove('menu-open');
+                    }
+                }
+            });
+            
+            // Mobile dropdown toggle - FIXED
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // Close other open dropdowns
+                        document.querySelectorAll('.nav-item.dropdown').forEach(dropdown => {
+                            if (dropdown !== this.parentElement) {
+                                dropdown.classList.remove('active');
+                            }
+                        });
+                        
+                        // Toggle current dropdown
+                        this.parentElement.classList.toggle('active');
+                    }
                 });
             });
+            
+            // Close menu when clicking on regular links
+            const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navMenu.classList.remove('active');
+                        mobileToggle.classList.remove('active');
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                        body.classList.remove('menu-open');
+                        
+                        // Close any open dropdowns
+                        document.querySelectorAll('.nav-item.dropdown.active').forEach(dropdown => {
+                            dropdown.classList.remove('active');
+                        });
+                    }
+                });
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    body.classList.remove('menu-open');
+                    
+                    // Close all dropdowns
+                    document.querySelectorAll('.nav-item.dropdown.active').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+            
+            // Prevent About dropdown from navigating on desktop
+            const aboutLink = document.querySelector('.nav-item.dropdown .dropdown-toggle');
+            if (aboutLink) {
+                aboutLink.addEventListener('click', function(e) {
+                    if (window.innerWidth > 768) {
+                        e.preventDefault();
+                    }
+                });
+            }
             
             // Navbar scroll effect
             const navbar = document.querySelector('.navbar');
@@ -2047,7 +2220,6 @@
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    // Prevent default anchor click behavior only if it's an internal link
                     if (this.getAttribute('href').startsWith('#')) {
                         e.preventDefault();
                         
@@ -2056,7 +2228,7 @@
                         
                         if (targetElement) {
                             window.scrollTo({
-                                top: targetElement.offsetTop - 80, // Adjust offset for fixed navbar
+                                top: targetElement.offsetTop - 80,
                                 behavior: 'smooth'
                             });
                         }
@@ -2077,14 +2249,11 @@
                     const phoneValid = validatePhoneNumber();
                     
                     if (name && email && message && phoneValid) {
-                        // Here you would typically send the form data to a server
-                        // For demo purposes, we'll show a success message
                         showNotification('Thank you for your message! We will get back to you within 24 hours.', 'success');
                         contactForm.reset();
-                        // Reset phone input to default country
                         selectCountry(countryData.find(country => country.code === 'TZ') || countryData[0]);
                         phoneInput.value = '';
-                        validatePhoneNumber(); // Re-validate after reset
+                        validatePhoneNumber();
                     } else {
                         showNotification('Please fill in all required fields correctly.', 'error');
                     }
@@ -2102,10 +2271,9 @@
                     </div>
                 `;
                 
-                // Add styles for notification
                 notification.style.cssText = `
                     position: fixed;
-                    top: 100px; /* Position below the navbar */
+                    top: 100px;
                     right: 20px;
                     background: ${type === 'success' ? '#4CAF50' : '#f44336'};
                     color: white;
@@ -2114,22 +2282,10 @@
                     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
                     z-index: 10000;
                     max-width: 400px;
-                    animation: slideInRight 0.3s ease-out;
-                    opacity: 0; /* Start hidden for animation */
-                    transform: translateX(20px); /* Start slightly off-screen */
                 `;
                 
                 document.body.appendChild(notification);
                 
-                // Trigger animation after element is added to DOM
-                requestAnimationFrame(() => {
-                    notification.style.animation = ''; // Clear animation to re-apply
-                    notification.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
-                    notification.style.opacity = '1';
-                    notification.style.transform = 'translateX(0)';
-                });
-                
-                // Remove notification after 5 seconds
                 setTimeout(() => {
                     notification.style.animation = 'slideOutRight 0.3s ease-in';
                     notification.style.opacity = '0';
@@ -2138,7 +2294,7 @@
                         if (document.body.contains(notification)) {
                             document.body.removeChild(notification);
                         }
-                    }, 300); // Match animation duration
+                    }, 300);
                 }, 5000);
             }
             
@@ -2162,58 +2318,18 @@
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
-                        // Add a slight delay based on index for staggered effect
                         setTimeout(() => {
                             entry.target.classList.add('visible');
-                        }, index * 80); // Adjust delay as needed
+                        }, index * 80);
                     }
                 });
             }, {
-                threshold: 0.1, // Trigger when 10% of the element is visible
-                rootMargin: '0px 0px -50px 0px' // Start animation slightly before it enters viewport
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             });
             
             animatedElements.forEach(element => {
                 observer.observe(element);
-            });
-
-            // Mobile dropdown toggle
-            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(e) {
-                    // Only prevent default navigation on mobile screens
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        const dropdown = this.parentElement;
-                        dropdown.classList.toggle('active');
-                    }
-                    // On desktop, the link should still navigate if it has a href other than '#'
-                    // If it's '#' and on desktop, we might prevent it to avoid jumpy behavior
-                    else if (this.getAttribute('href') === '#') {
-                         e.preventDefault();
-                    }
-                });
-            });
-
-            // Smooth scrolling for navigation links that target IDs
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    // Check if the link is supposed to scroll to an ID
-                    if (this.getAttribute('href').startsWith('#')) {
-                        e.preventDefault();
-                        
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 80, // Adjust offset for fixed navbar
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                    // If it has a different href, let the default behavior handle it (e.g., external link)
-                });
             });
         });
     </script>
