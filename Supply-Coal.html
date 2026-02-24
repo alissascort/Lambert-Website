@@ -1,113 +1,12 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Supply Coal | LIK & LAMBERT CONSULTANTS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Supply Coal | LIK & LAMBERT CONSULTANTS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* ALL YOUR EXISTING CSS STAYS THE SAME, EXCEPT: */
-        
-        /* FIX 1: Add more space to the intro block */
-        .intro-block {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-xxl);
-            margin-bottom: var(--spacing-xxl);
-            box-shadow: var(--shadow-lg);
-            /* CHANGED: White border by default, red only on hover */
-            border-left: 5px solid var(--white);
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition-normal);
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        /* FIX 2: Red border appears only on hover */
-        .intro-block:hover {
-            border-left: 5px solid var(--primary);
-            transform: scale(1.02);
-            box-shadow: 0 20px 40px rgba(155, 27, 48, 0.15);
-        }
-
-        /* FIX 3: Add space after the section title paragraph */
-        .section-title p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-            /* ADDED: More space below */
-            margin-bottom: var(--spacing-xl);
-        }
-
-        /* FIX 4: Add space between feature items */
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-lg); /* Increased from var(--spacing-md) */
-            padding: var(--spacing-sm) 0;
-            border-bottom: 1px solid rgba(155, 27, 48, 0.1);
-        }
-
-        /* FIX 5: Add space after service features */
-        .service-features {
-            margin-top: var(--spacing-xl);
-            margin-bottom: var(--spacing-lg); /* Added bottom margin */
-        }
-
-        /* FIX 6: Add more space in the services section */
-        .services-section {
-            background: var(--white);
-            overflow: hidden;
-            padding-top: var(--spacing-xl); /* Added top padding */
-        }
-
-        /* FIX 7: Add space to excellence cards */
-        .excellence-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-xl);
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-normal);
-            border-top: 4px solid var(--white); /* White by default */
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Red border appears only on hover for excellence cards too */
-        .excellence-card:hover {
-            border-top: 4px solid var(--primary);
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-        }
-
-        /* KEEP ALL YOUR ORIGINAL ANIMATIONS AND EFFECTS */
-        .intro-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary);
-            opacity: 0;
-            transition: var(--transition-normal);
-            z-index: 0;
-        }
-
-        .intro-block:hover::before {
-            opacity: 0.1;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* ALL THE REST OF YOUR CSS REMAINS EXACTLY THE SAME */
         :root {
             --primary: #9b1b30;
             --primary-dark: #7a1526;
@@ -163,12 +62,20 @@
             color: var(--dark);
             background-color: var(--white);
             overflow-x: hidden;
+            width: 100%;
+            position: relative;
             font-weight: 400;
+        }
+
+        body.menu-open {
+            overflow: hidden;
         }
 
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 80px;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -221,6 +128,7 @@
             box-shadow: var(--glass-shadow);
         }
 
+        /* Navigation - UPDATED to match index.html */
         .navbar {
             position: fixed;
             top: 0;
@@ -246,6 +154,8 @@
             justify-content: space-between;
             align-items: center;
             padding: var(--spacing-md) 0;
+            position: relative;
+            width: 100%;
         }
 
         .logo {
@@ -287,7 +197,10 @@
         }
 
         .nav-item {
-            position: relative;
+            margin: 0 var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
 
         .nav-link {
@@ -296,7 +209,10 @@
             border-radius: var(--radius-sm);
             color: var(--dark);
             position: relative;
-            transition: var(--transition-fast);
+            transition: var(--transition-slow);
+            display: inline-flex;
+            align-items: center;
+            height: 100%;
             font-size: 0.95rem;
         }
 
@@ -305,27 +221,90 @@
             position: absolute;
             bottom: 0;
             left: 50%;
-            transform: translateX(-50%);
             width: 0;
-            height: 2px;
+            height: 1px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: var(--transition-normal);
-            border-radius: 1px;
+            transition: var(--transition-slow);
+            transform: translateX(-50%);
         }
 
         .nav-link:hover::before,
         .nav-link.active::before {
-            width: 80%;
+            width: 40%;
         }
 
         .nav-link:hover {
             color: var(--primary);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
         }
 
         .nav-link.active {
             color: var(--primary);
             font-weight: 600;
+        }
+
+        /* DROPDOWN ARROW - UPDATED to match index.html (right next to text) */
+        .nav-item.dropdown {
+            position: relative;
+        }
+        
+        .nav-link.dropdown-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .dropdown-toggle::after {
+            content: "▼";
+            font-size: 12px;
+            margin-left: 2px;
+            position: relative;
+            top: 0px;
+            opacity: 0.8;
+            transition: var(--transition-fast);
+        }
+        
+        .nav-link.dropdown-toggle:hover::after {
+            opacity: 1;
+            transform: translateY(1px);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background: var(--white);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            padding: var(--spacing-sm) 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: var(--transition-normal);
+            z-index: 1000;
+            border: 1px solid rgba(155, 27, 48, 0.1);
+        }
+        
+        .nav-item.dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            color: var(--dark);
+            transition: var(--transition-fast);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(155, 27, 48, 0.05);
+            color: var(--primary);
+            transform: translateX(3px);
         }
 
         .mobile-toggle {
@@ -337,6 +316,13 @@
             color: var(--dark);
             transition: var(--transition-normal);
             z-index: 1001;
+            position: relative;
+            right: 0;
+        }
+
+        .mobile-toggle:hover {
+            transform: rotate(90deg);
+            color: var(--primary);
         }
 
         .page-hero {
@@ -348,6 +334,7 @@
             position: relative;
             padding-top: 80px;
             overflow: hidden;
+            width: 100%;
         }
 
         .hero-content {
@@ -409,7 +396,52 @@
             border-radius: 2px;
         }
 
-        /* KEEPING YOUR ORIGINAL INTRO BLOCK STYLES (with my fixes) */
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        /* Intro Block Styles */
+        .intro-block {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xxl);
+            margin-bottom: var(--spacing-xxl);
+            box-shadow: var(--shadow-lg);
+            border-left: 5px solid var(--white);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-normal);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .intro-block:hover {
+            border-left: 5px solid var(--primary);
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px rgba(155, 27, 48, 0.15);
+        }
+
+        .intro-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            opacity: 0;
+            transition: var(--transition-normal);
+            z-index: 0;
+        }
+
+        .intro-block:hover::before {
+            opacity: 0.1;
+        }
+
         .intro-block h2 {
             color: var(--primary);
             font-size: 2.2rem;
@@ -511,6 +543,7 @@
             color: var(--dark);
         }
 
+        /* Services Slider */
         .services-slider-container {
             position: relative;
             max-width: 1400px;
@@ -593,6 +626,15 @@
             margin-top: 4px;
         }
 
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid rgba(155, 27, 48, 0.1);
+        }
+
         .feature-item strong {
             color: var(--primary);
             font-weight: 600;
@@ -604,6 +646,17 @@
             margin: 0;
             color: var(--gray);
             font-size: 1rem;
+        }
+
+        .service-features {
+            margin-top: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .services-section {
+            background: var(--white);
+            overflow: hidden;
+            padding-top: var(--spacing-xl);
         }
 
         .slide-image {
@@ -819,6 +872,23 @@
             margin-top: var(--spacing-xxl);
         }
 
+        .excellence-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-normal);
+            border-top: 4px solid var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .excellence-card:hover {
+            border-top: 4px solid var(--primary);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
         .excellence-number {
             font-size: 3rem;
             font-weight: 800;
@@ -974,36 +1044,68 @@
             transform: translateY(-3px);
         }
 
+        /* Professional Footer - UPDATED to match index.html */
         .footer {
-            background: var(--dark);
+            background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%);
             color: var(--white);
             padding: var(--spacing-xxl) 0 var(--spacing-lg);
             position: relative;
+            overflow: hidden;
+            border-top: 3px solid var(--secondary);
+            width: 100%;
         }
 
-        .footer-wave {
+        .footer::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100px;
-            background: var(--white);
-            transform: translateY(-99px);
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+
+        .footer::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: var(--spacing-xl);
             margin-bottom: var(--spacing-xxl);
+            padding-bottom: var(--spacing-xxl);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .footer-col {
+            transition: var(--transition-normal);
+        }
+
+        .footer-col:hover {
+            transform: translateY(-3px);
         }
 
         .footer-col h3 {
-            color: var(--white);
             font-size: 1.2rem;
             margin-bottom: var(--spacing-lg);
+            color: var(--white);
+            font-weight: 600;
+            letter-spacing: 0.5px;
             position: relative;
             display: inline-block;
+            text-transform: uppercase;
         }
 
         .footer-col h3::after {
@@ -1014,36 +1116,154 @@
             width: 40px;
             height: 2px;
             background: var(--secondary);
+            border-radius: 2px;
+            transition: width var(--transition-normal);
+        }
+
+        .footer-col:hover h3::after {
+            width: 60px;
+        }
+
+        .footer-col p {
+            opacity: 0.8;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.7;
+            font-size: 0.95rem;
         }
 
         .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
         }
 
         .footer-link {
-            color: rgba(255, 255, 255, 0.8);
-            transition: var(--transition-fast);
             display: flex;
             align-items: center;
-            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            opacity: 0.7;
+            transition: var(--transition-normal);
+            font-size: 0.95rem;
+            padding: var(--spacing-xs) 0;
+            color: var(--white);
         }
 
         .footer-link:hover {
+            opacity: 1;
             color: var(--secondary);
             transform: translateX(5px);
         }
 
+        .footer-link i {
+            margin-right: var(--spacing-md);
+            width: 20px;
+            text-align: center;
+            transition: var(--transition-normal);
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-link:hover i {
+            transform: scale(1.1);
+            color: var(--secondary-light);
+        }
+
+        /* Professional Footer Bottom */
         .footer-bottom {
             text-align: center;
             padding-top: var(--spacing-xl);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-credits {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            padding: var(--spacing-md) 0;
+            position: relative;
+        }
+
+        .footer-credits::before,
+        .footer-credits::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+        }
+
+        .footer-credits::before {
+            top: 0;
+        }
+
+        .footer-credits::after {
+            bottom: 0;
+        }
+
+        .credit-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .credit-item i {
+            color: var(--secondary);
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .credit-item strong {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-left: 4px;
+            letter-spacing: 0.3px;
+        }
+
+        .design-credit, .content-credit {
+            margin: 0;
+            line-height: 1.5;
         }
 
         .copyright {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            margin: 0;
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 0.5px;
+        }
+
+        .copyright i {
+            color: var(--secondary);
+            margin: 0 4px;
+            font-size: 0.7rem;
+        }
+
+        .footer-wave {
+            width: 100%;
+            height: 80px;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 0;
+            line-height: 0;
+        }
+
+        .footer-wave svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         @keyframes fadeInUp {
@@ -1068,6 +1288,7 @@
             transform: translateY(0);
         }
 
+        /* Responsive Design - UPDATED to match index.html */
         @media (max-width: 1024px) {
             .hero-title {
                 font-size: 3rem;
@@ -1101,6 +1322,8 @@
         @media (max-width: 768px) {
             .navbar-container {
                 padding: var(--spacing-sm) 0;
+                position: relative;
+                width: 100%;
             }
             
             .nav-menu {
@@ -1108,12 +1331,15 @@
                 top: 0;
                 right: -100%;
                 width: 80%;
+                max-width: 350px;
                 height: 100vh;
                 background: rgba(255, 255, 255, 0.95);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: var(--spacing-xxl) var(--spacing-xl);
-                transition: var(--transition-slow);
+                padding: 80px var(--spacing-xl) var(--spacing-xl);
+                transition: right 0.4s ease;
+                z-index: 999;
+                overflow-y: auto;
                 box-shadow: var(--shadow-lg);
             }
             
@@ -1123,12 +1349,89 @@
             
             .nav-list {
                 flex-direction: column;
-                gap: var(--spacing-md);
+                gap: 0;
                 width: 100%;
+            }
+
+            .nav-item {
+                margin: 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(155, 27, 48, 0.05);
+            }
+
+            .nav-link {
+                display: flex;
+                align-items: center;
+                padding: var(--spacing-md) 0;
+                width: 100%;
+                font-size: 1rem;
+                justify-content: flex-start;
             }
             
             .mobile-toggle {
                 display: block;
+                position: relative;
+                right: 0;
+            }
+            
+            .mobile-toggle.active {
+                position: fixed;
+                right: 20px;
+                top: 20px;
+                color: var(--primary);
+                z-index: 1001;
+            }
+
+            /* Mobile dropdown styles - FIXED */
+            .nav-item.dropdown {
+                width: 100%;
+            }
+            
+            .nav-link.dropdown-toggle {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100%;
+                padding: var(--spacing-md) 0;
+                white-space: normal;
+            }
+            
+            .dropdown-toggle::after {
+                transform: rotate(-90deg);
+                margin-left: auto;
+                margin-right: 0;
+                transition: transform 0.3s ease;
+                top: 0;
+                font-size: 12px;
+            }
+            
+            .nav-item.dropdown.active .dropdown-toggle::after {
+                transform: rotate(0deg);
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(155, 27, 48, 0.02);
+                padding: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-lg);
+                border: none;
+                display: none;
+                width: 100%;
+                margin-top: 0;
+                border-radius: 0;
+            }
+            
+            .nav-item.dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .dropdown-item {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 0.95rem;
+                white-space: normal;
             }
             
             .hero-title {
@@ -1151,6 +1454,15 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-credits {
+                flex-direction: column;
+                gap: var(--spacing-sm);
             }
         }
 
@@ -1179,7 +1491,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation - UPDATED with correct dropdown -->
     <nav class="navbar">
         <div class="container navbar-container">
             <a href="index.html" class="logo">
@@ -1195,9 +1507,15 @@
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle">About Us</a>
+                        <div class="dropdown-menu">
+                            <a href="About-lik-&-lambert-consultants.html" class="dropdown-item">About lik & lambert consultants</a>
+                            <a href="Our-Profile.html" class="dropdown-item">Our Profile</a>
+                            <a href="Our-Culture.html" class="dropdown-item">Our Culture</a>
+                            <a href="Corporate-Social-Responsibility.html" class="dropdown-item">Corporate Social Responsibility</a>
+                        </div>
                     </li>
                     <li class="nav-item"><a href="Service.html" class="nav-link">Services</a></li>
-                     <li class="nav-item"><a href="Supply-Coal.html" class="nav-link active">Supply of Coal</a></li>
+                    <li class="nav-item"><a href="Supply-Coal.html" class="nav-link active">Supply of Coal</a></li>
                     <li class="nav-item"><a href="Projects.html" class="nav-link">Projects</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
@@ -1236,9 +1554,9 @@
                                             <i class="fas fa-check"></i>
                                         </div>
                                         <div>
-                                            <strong>Strong supply chain management </strong>
+                                            <strong>Strong supply chain management</strong>
                                             <p>
-                                                Adherence to environmental standards, we provide consistent, high-grade coal solutions that support the energy needs of diverse industries while promoting responsible resource utilization.
+                                                Adherence to environmental standards, we provide consistent, high-grade coal solutions that support the energy needs of diverse industries while promoting responsible resource utilization.
                                                 Coal is a combustible black or brownish-black sedimentary rock, formed over millions of years from the remains of ancient plants and organic matter. 
                                                 It is primarily composed of carbon, along with various other elements like hydrogen, sulfur, oxygen, and nitrogen.
                                             </p>
@@ -1247,7 +1565,7 @@
                                 </div>
                             </div>
                             <div class="slide-image">
-                                <img src="idustrial coal2.jpeg" alt="HR Outsourcing Services">
+                                <img src="idustrial coal2.jpeg" alt="Coal Supply">
                             </div>
                         </div>
                         
@@ -1256,7 +1574,7 @@
                             <div class="slide-content">
                                 <h3>SUPPLY OF COAL</h3>
                                 <p>
-                                   We manage the supplies and make sure our source are reliable enough to meet our client’s requirement 
+                                    We manage the supplies and make sure our sources are reliable enough to meet our client's requirements 
                                 </p>
 
                                 <div class="service-features">
@@ -1265,35 +1583,34 @@
                                             <i class="fas fa-users"></i>
                                         </div>
                                         <div>
-                                            <strong> TYPES OF COAL </strong>
+                                            <strong>TYPES OF COAL</strong>
                                             <p>
-                                              Crushed coal of varios practicle sizes, which are:
+                                                Crushed coal of various particle sizes, which are:
                                             </p>
 
                                             <p>
-                                                Crushed coal
+                                                • Crushed coal
                                             </p>
 
                                             <p>
-                                                Cobbles coal
+                                                • Cobbles coal
                                             </p>
 
                                             <p>
-                                                Rom coal
+                                                • Rom coal
                                             </p>
 
                                             <p>
-                                                Peas coal
+                                                • Peas coal
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                              <div class="slide-image">
-                                <img src="idustrial coal.jpg" alt="Core HR Services">
+                                <img src="idustrial coal.jpg" alt="Coal Types">
                             </div>
                         </div>  
-                        </div>
                     </div>
                 </div>
                 
@@ -1318,42 +1635,42 @@
                 </div>
             </div>
         </div>
-    </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Professional Footer - UPDATED to match index.html -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
-                    <h3>LK & LAMBERT CONSULTANTS</h3>
-                    <p>Delivering comprehensive consulting solutions across Tanzania and beyond. Your trusted partner for business growth and operational excellence.</p>
+                    <h3>LAMBERT</h3>
+                    <p>Offering comprehensive consulting solutions for Tanzania and beyond. Your trusted partner in business growth and operational excellence.</p>
                 </div>
                 
-              <div class="footer-col">
-                    <h3>Quick Links</h3>
+                <div class="footer-col">
+                    <h3>QUICK LINKS</h3>
                     <div class="footer-links">
-                        <a href="index.html" class="footer-link">Home</a>
-                        <a href="About.html" class="footer-link">About</a>
-                        <a href="Service.html" class="footer-link">Services</a>
-                        <a href="Projects.html" class="footer-link">Projects</a>
-                        <a href="contact.html" class="footer-link">Contact</a>
+                        <a href="index.html" class="footer-link"><i class="fas fa-chevron-right"></i> Home</a>
+                        <a href="About-lik-&-lambert-consultants.html" class="footer-link"><i class="fas fa-chevron-right"></i> About</a>
+                        <a href="Service.html" class="footer-link"><i class="fas fa-chevron-right"></i> Services</a>
+                        <a href="Projects.html" class="footer-link"><i class="fas fa-chevron-right"></i> Projects</a>
+                        <a href="contact.html" class="footer-link"><i class="fas fa-chevron-right"></i> Contact</a>
                     </div>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Services</h3>
+                    <h3>SERVICES</h3>
                     <div class="footer-links">
-                        <a href="Accounts & Auditing.html" class="footer-link">Accounts & Auditing</a>
-                        <a href="ICT-Solutions.html" class="footer-link">ICT Services</a>
-                        <a href="Hr-consultation.html" class="footer-link">HR Consulting</a>
-                        <a href="Health-Care.html" class="footer-link">Healthcare</a>
-                        <a href="Supply-Coal.html" class="footer-link">Supply Solutions</a>
+                        <a href="Accounts & Auditing.html" class="footer-link"><i class="fas fa-chevron-right"></i> Accounts & Auditing</a>
+                        <a href="ICT-Solutions.html" class="footer-link"><i class="fas fa-chevron-right"></i> ICT Solutions</a>
+                        <a href="Hr-consultation.html" class="footer-link"><i class="fas fa-chevron-right"></i> HR Consulting</a>
+                        <a href="Supply-Coal.html" class="footer-link"><i class="fas fa-chevron-right"></i> Industrial Coal</a>
+                        <a href="Waste-Wood.html" class="footer-link"><i class="fas fa-chevron-right"></i> Waste Wood</a>
+                        <a href="Health-Care.html" class="footer-link"><i class="fas fa-chevron-right"></i> Healthcare Materials</a>
                     </div>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Connect With Us</h3>
+                    <h3>CONNECT</h3>
                     <div class="footer-links">
                         <a href="#" class="footer-link"><i class="fab fa-facebook-f"></i> Facebook</a>
                         <a href="#" class="footer-link"><i class="fab fa-twitter"></i> Twitter</a>
@@ -1363,27 +1680,121 @@
                 </div>
             </div>
             
-           <div class="footer-bottom">
-    <div class="footer-credits">
-        <p class="design-credit">This Website is Designed and Maintained by <strong>FOERISHIELD-MATRIX</strong></p>
-        <p class="content-credit">Content Maintained by <strong>LIK & LAMBERT CONSULTANTS</strong></p>
-    </div>
-    <p class="copyright">&copy; 2025 LIK & LAMBERT CONSULTANTS. All Rights Reserved.</p>
-</div>
+            <div class="footer-bottom">
+                <div class="footer-credits">
+                    <div class="credit-item">
+                        <i class="fas fa-code"></i>
+                        <p class="design-credit">Designed & Maintained by <strong>FOERISHIELD-MATRIX</strong></p>
+                    </div>
+                    <div class="credit-item">
+                        <i class="far fa-copyright"></i>
+                        <p class="content-credit">Content by <strong>LIK & LAMBERT CONSULTANTS</strong></p>
+                    </div>
+                </div>
+                <p class="copyright">
+                    <i class="far fa-copyright"></i> 2025 LIK & LAMBERT CONSULTANTS. All Rights Reserved.
+                </p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Navigation
+        // Mobile Navigation - UPDATED to match index.html
         const mobileToggle = document.getElementById('mobileToggle');
         const navMenu = document.getElementById('navMenu');
+        const body = document.body;
 
-        mobileToggle.addEventListener('click', () => {
+        mobileToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             navMenu.classList.toggle('active');
-            mobileToggle.innerHTML = navMenu.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
+            mobileToggle.classList.toggle('active');
+            
+            if (navMenu.classList.contains('active')) {
+                mobileToggle.innerHTML = '<i class="fas fa-times"></i>';
+                body.classList.add('menu-open');
+            } else {
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                body.classList.remove('menu-open');
+            }
         });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target) && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    body.classList.remove('menu-open');
+                }
+            }
+        });
+
+        // Mobile dropdown toggle - FIXED
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Close other open dropdowns
+                    document.querySelectorAll('.nav-item.dropdown').forEach(dropdown => {
+                        if (dropdown !== this.parentElement) {
+                            dropdown.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    this.parentElement.classList.toggle('active');
+                }
+            });
+        });
+
+        // Close menu when clicking on regular links
+        const navLinks = document.querySelectorAll('.nav-link:not(.dropdown-toggle)');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    body.classList.remove('menu-open');
+                    
+                    // Close any open dropdowns
+                    document.querySelectorAll('.nav-item.dropdown.active').forEach(dropdown => {
+                        dropdown.classList.remove('active');
+                    });
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                mobileToggle.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                body.classList.remove('menu-open');
+                
+                // Close all dropdowns
+                document.querySelectorAll('.nav-item.dropdown.active').forEach(dropdown => {
+                    dropdown.classList.remove('active');
+                });
+            }
+        });
+
+        // Prevent About dropdown from navigating on desktop
+        const aboutLink = document.querySelector('.nav-item.dropdown .dropdown-toggle');
+        if (aboutLink) {
+            aboutLink.addEventListener('click', function(e) {
+                if (window.innerWidth > 768) {
+                    e.preventDefault();
+                }
+            });
+        }
 
         // Navbar Scroll Effect
         const navbar = document.querySelector('.navbar');
@@ -1451,7 +1862,7 @@
         const totalSlides = slides.length;
         let autoPlayInterval = null;
         let autoPlayActive = true;
-        const autoPlaySpeed = 8000; // 8 seconds for more reading time
+        const autoPlaySpeed = 8000;
         
         // Create dots
         function createDots() {
@@ -1531,7 +1942,6 @@
         // Event listeners
         prevBtn.addEventListener('click', () => {
             prevSlide();
-            // Pause auto-play briefly when user interacts
             if (autoPlayActive) {
                 clearInterval(autoPlayInterval);
                 setTimeout(startAutoPlay, 5000);
@@ -1540,7 +1950,6 @@
         
         nextBtn.addEventListener('click', () => {
             nextSlide();
-            // Pause auto-play briefly when user interacts
             if (autoPlayActive) {
                 clearInterval(autoPlayInterval);
                 setTimeout(startAutoPlay, 5000);
@@ -1551,17 +1960,19 @@
         
         // Pause auto-play on hover
         const sliderWrapper = document.querySelector('.slider-wrapper');
-        sliderWrapper.addEventListener('mouseenter', () => {
-            if (autoPlayActive) {
-                clearInterval(autoPlayInterval);
-            }
-        });
-        
-        sliderWrapper.addEventListener('mouseleave', () => {
-            if (autoPlayActive) {
-                startAutoPlay();
-            }
-        });
+        if (sliderWrapper) {
+            sliderWrapper.addEventListener('mouseenter', () => {
+                if (autoPlayActive) {
+                    clearInterval(autoPlayInterval);
+                }
+            });
+            
+            sliderWrapper.addEventListener('mouseleave', () => {
+                if (autoPlayActive) {
+                    startAutoPlay();
+                }
+            });
+        }
         
         // Start auto-play initially
         startAutoPlay();
